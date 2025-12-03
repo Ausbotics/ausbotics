@@ -150,6 +150,7 @@ export const authApi = {
 export const workflowApi = {
   async getAll() {
     const data = fetchApi<{ data: { workflows: WorkflowDto[] } }>("/workflows");
+    console.log("all workflows data", await data);
     return (await data).data?.data.workflows;
   },
 
