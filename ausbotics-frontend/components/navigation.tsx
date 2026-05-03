@@ -1,33 +1,38 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
+import * as React from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Button } from "@/components/ui/button"
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from "@/components/ui/navigation-menu";
-import { Sun, Bot, Menu, X } from "lucide-react";
-import { useAuth } from "@/contexts/auth-context";
-import { ProfileDropdown } from "@/components/profile-dropdown";
-import { motion, AnimatePresence } from "framer-motion";
-import clsx from "clsx";
-import { useTheme } from "next-themes";
-import { ModeToggle } from "./Modetoggle";
-import { Moon } from "iconsax-reactjs";
+} from "@/components/ui/navigation-menu"
+import { Menu, X } from "lucide-react"
+import { useAuth } from "@/contexts/auth-context"
+import { ProfileDropdown } from "@/components/profile-dropdown"
+import { motion, AnimatePresence } from "framer-motion"
+import clsx from "clsx"
+import { useTheme } from "next-themes"
+import { ModeToggle } from "./Modetoggle"
+import { Cpu } from "iconsax-reactjs"
+import { useEffect, useRef } from "react"
+import { gsap, initScrollProgressBar } from "@/lib/gsap-utils"
 
 export function Navigation() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const pathname = usePathname();
-  const { user, isLoading } = useAuth();
-  const { theme, setTheme } = useTheme();
-  const isDashboard = pathname.startsWith("/dashboard");
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false)
+  const [isScrolled, setIsScrolled] = React.useState(false)
+  const pathname = usePathname()
+  const { user, isLoading } = useAuth()
+  const { theme } = useTheme()
+  const isDashboard = pathname.startsWith("/dashboard")
   const isRestrictedRole =
     user?.role?.toLowerCase() === "superadmin" ||
-    user?.role?.toLowerCase() === "admin";
+    user?.role?.toLowerCase() === "admin"
+
+  const progressBarRef = useRef<HTMLDivElement>(null)
 
   const marketingNavItems = [
     { href: "/", label: "Home" },
@@ -35,26 +40,48 @@ export function Navigation() {
     { href: "/how-it-works", label: "How It Works" },
     { href: "/pricing", label: "Pricing" },
     { href: "/contact", label: "Contact" },
-  ];
+  ]
 
   const dashboardNavItems = [
     { href: "/dashboard", label: "Overview" },
     { href: "/dashboard/workflows", label: "Workflows" },
     { href: "/dashboard/appointments", label: "Appointments" },
     { href: "/dashboard/settings", label: "Settings" },
-  ];
+  ]
 
-  const navItems = isDashboard ? dashboardNavItems : marketingNavItems;
+  const navItems = isDashboard ? dashboardNavItems : marketingNavItems
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 60)
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useEffect(() => {
+    if (!progressBarRef.current) return
+    initScrollProgressBar(progressBarRef.current)
+    return () => {
+      gsap.killTweensOf(progressBarRef.current)
+    }
+  }, [])
 
   return (
     <nav
       className={clsx(
-        "sticky top-0 z-50 border-b backdrop-blur-xl transition-colors duration-300",
+        "sticky top-0 z-50 border-b backdrop-blur-xl transition-all duration-500",
         "shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]",
-        "dark:bg-neutral-900/85 dark:border-neutral-800",
-        "bg-white border-neutral-200"
+        isScrolled
+          ? "bg-navy/90 border-grid-line dark:bg-[oklch(0.07_0_0)/90] dark:border-[oklch(1_0_0/7%)]"
+          : "bg-cream/90 border-grid-line dark:bg-[oklch(0.07_0_0)/90] dark:border-[oklch(1_0_0/7%)]"
       )}
     >
+      {/* Scroll progress bar */}
+      <div
+        ref={progressBarRef}
+        className="absolute top-0 left-0 h-0.5 bg-brand-blue origin-left scale-x-0 w-full z-[60]"
+        style={{ transformOrigin: "left center" }}
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -62,11 +89,19 @@ export function Navigation() {
             href={isDashboard ? "/dashboard" : "/"}
             className="flex items-center gap-2"
           >
-            <div className="rounded-xl p-2 shadow-inner bg-neutral-200 dark:bg-neutral-800">
-              <Bot className="h-5 w-5 text-neutral-800 dark:text-neutral-100" />
+            <div className="rounded-xl p-2 bg-brand-blue/10 border border-brand-blue/20">
+              <Cpu className="h-5 w-5 text-brand-blue" size="20" />
             </div>
-            <span className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
-              Ausbotics
+            <span className="text-lg font-bold tracking-tight">
+              <span
+                className={clsx(
+                  "transition-colors duration-500",
+                  isScrolled ? "text-cream" : "text-navy dark:text-cream"
+                )}
+              >
+                Aus
+              </span>
+              <span className="text-terracotta">Botics</span>
             </span>
           </Link>
 
@@ -75,23 +110,34 @@ export function Navigation() {
             <NavigationMenu>
               <NavigationMenuList className="flex gap-3">
                 {navItems.map((item) => {
-                  const isActive = pathname === item.href;
+                  const isActive = pathname === item.href
                   return (
                     <NavigationMenuItem key={item.href}>
                       <Link href={item.href} legacyBehavior passHref>
                         <NavigationMenuLink
                           className={clsx(
-                            "relative px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 shadow-inner ",
+                            "relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200",
+                            "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-blue after:transition-all after:duration-300",
                             isActive
-                              ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100"
-                              : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/70 dark:hover:bg-neutral-800/70"
+                              ? clsx(
+                                  "text-brand-blue after:w-full",
+                                  isScrolled
+                                    ? "text-brand-blue"
+                                    : "text-brand-blue"
+                                )
+                              : clsx(
+                                  "after:w-0 hover:after:w-full",
+                                  isScrolled
+                                    ? "text-cream/80 hover:text-brand-blue"
+                                    : "text-steel dark:text-cream/70 hover:text-brand-blue"
+                                )
                           )}
                         >
                           {item.label}
                         </NavigationMenuLink>
                       </Link>
                     </NavigationMenuItem>
-                  );
+                  )
                 })}
               </NavigationMenuList>
             </NavigationMenu>
@@ -110,14 +156,24 @@ export function Navigation() {
                         <>
                           <Button
                             variant="ghost"
-                            className="rounded-full text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200/70 dark:hover:bg-neutral-800/70"
+                            className={clsx(
+                              "rounded-lg transition-colors",
+                              isScrolled
+                                ? "text-cream/80 hover:text-brand-blue hover:bg-cream/10"
+                                : "text-steel dark:text-cream/70 hover:text-brand-blue hover:bg-navy/10 dark:hover:bg-cream/10"
+                            )}
                             asChild
                           >
                             <Link href="/demo">See Demo</Link>
                           </Button>
                           <Button
                             variant="ghost"
-                            className="rounded-full text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200/70 dark:hover:bg-neutral-800/70"
+                            className={clsx(
+                              "rounded-lg transition-colors",
+                              isScrolled
+                                ? "text-cream/80 hover:text-brand-blue hover:bg-cream/10"
+                                : "text-steel dark:text-cream/70 hover:text-brand-blue hover:bg-navy/10 dark:hover:bg-cream/10"
+                            )}
                             asChild
                           >
                             <Link href="/book">Book</Link>
@@ -125,8 +181,8 @@ export function Navigation() {
                         </>
                       )}
                       <Button
-                        variant="outline"
-                        className="rounded-full border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-200/70 dark:hover:bg-neutral-800/70"
+                        variant="outline-brand"
+                        className="rounded-lg"
                         asChild
                       >
                         <Link href="/dashboard">Dashboard</Link>
@@ -140,16 +196,17 @@ export function Navigation() {
                   <>
                     <Button
                       variant="ghost"
-                      className="rounded-full text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200/70 dark:hover:bg-neutral-800/70"
+                      className={clsx(
+                        "rounded-lg transition-colors",
+                        isScrolled
+                          ? "text-cream/80 hover:text-brand-blue hover:bg-cream/10"
+                          : "text-steel dark:text-cream/70 hover:text-brand-blue hover:bg-navy/10 dark:hover:bg-cream/10"
+                      )}
                       asChild
                     >
                       <Link href="/login">Login</Link>
                     </Button>
-                    <Button
-                      variant="outline"
-                      className="rounded-full border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-200/70 dark:hover:bg-neutral-800/70"
-                      asChild
-                    >
+                    <Button variant="brand" className="rounded-lg" asChild>
                       <Link href="/signup">Sign Up</Link>
                     </Button>
                   </>
@@ -164,7 +221,12 @@ export function Navigation() {
               size="icon"
               aria-label="Toggle menu"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="rounded-full text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200/70 dark:hover:bg-neutral-800/70"
+              className={clsx(
+                "rounded-lg transition-colors",
+                isScrolled
+                  ? "text-cream/80 hover:bg-cream/10"
+                  : "text-steel dark:text-cream/70 hover:bg-navy/10 dark:hover:bg-cream/10"
+              )}
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -177,35 +239,32 @@ export function Navigation() {
         </div>
       </div>
 
+      {/* Mobile Menu Panel */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className={clsx(
-              "md:hidden border-t backdrop-blur-lg transition-colors duration-300",
-              "shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]",
-              "dark:bg-neutral-900/95 dark:border-neutral-800",
-              "bg-neutral-100/90 border-neutral-200"
-            )}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden fixed inset-0 top-16 z-40 bg-navy/98 backdrop-blur-sm"
           >
-            <div className="px-4 py-4 space-y-3">
-              {navItems.map((item) => (
-                <Link
+            <div className="px-8 py-12 space-y-2">
+              {navItems.map((item, i) => (
+                <motion.div
                   key={item.href}
-                  href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={clsx(
-                    "block px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 shadow-inner",
-                    pathname === item.href
-                      ? "bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100"
-                      : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/70 dark:hover:bg-neutral-800/70"
-                  )}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.08 }}
                 >
-                  {item.label}
-                </Link>
+                  <Link
+                    href={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block py-4 text-2xl font-bold text-cream/80 hover:text-terracotta transition-colors border-b border-cream/10"
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
               ))}
 
               {!isLoading &&
@@ -213,25 +272,38 @@ export function Navigation() {
                   <>
                     {!isDashboard && (
                       <>
-                        <Button
-                          className="w-full rounded-full bg-neutral-200/70 dark:bg-neutral-800/70 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-200/80 dark:hover:bg-neutral-700/80"
-                          variant="ghost"
-                          asChild
+                        <motion.div
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: navItems.length * 0.08 }}
+                          className="pt-4"
                         >
-                          <Link href="/demo">See Demo</Link>
-                        </Button>
-                        <Button
-                          className="w-full rounded-full border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-200/70 dark:hover:bg-neutral-800/70"
-                          variant="outline"
-                          asChild
+                          <Button
+                            className="w-full rounded-lg"
+                            variant="brand"
+                            asChild
+                          >
+                            <Link href="/demo">See Demo</Link>
+                          </Button>
+                        </motion.div>
+                        <motion.div
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: (navItems.length + 1) * 0.08 }}
                         >
-                          <Link href="/dashboard">Dashboard</Link>
-                        </Button>
+                          <Button
+                            className="w-full rounded-lg"
+                            variant="outline-brand"
+                            asChild
+                          >
+                            <Link href="/dashboard">Dashboard</Link>
+                          </Button>
+                        </motion.div>
                       </>
                     )}
-                    <div className="flex items-center justify-between pt-2 border-t border-neutral-200 dark:border-neutral-800/80">
-                      <span className="text-sm text-neutral-600 dark:text-neutral-400">
-                        Hi, {user.fullName || user.email}
+                    <div className="flex items-center justify-between pt-4 border-t border-cream/10">
+                      <span className="text-sm text-cream/70">
+                        {user.fullName || user.email}
                       </span>
                       <ProfileDropdown />
                     </div>
@@ -239,20 +311,33 @@ export function Navigation() {
                 ) : (
                   !isDashboard && (
                     <>
-                      <Button
-                        className="w-full rounded-full text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200/70 dark:hover:bg-neutral-800/70"
-                        variant="ghost"
-                        asChild
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: navItems.length * 0.08 }}
+                        className="pt-4"
                       >
-                        <Link href="/login">Login</Link>
-                      </Button>
-                      <Button
-                        className="w-full rounded-full border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-200/70 dark:hover:bg-neutral-800/70"
-                        variant="outline"
-                        asChild
+                        <Button
+                          className="w-full rounded-lg"
+                          variant="ghost"
+                          asChild
+                        >
+                          <Link href="/login">Login</Link>
+                        </Button>
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: (navItems.length + 1) * 0.08 }}
                       >
-                        <Link href="/signup">Sign Up</Link>
-                      </Button>
+                        <Button
+                          className="w-full rounded-lg"
+                          variant="brand"
+                          asChild
+                        >
+                          <Link href="/signup">Sign Up</Link>
+                        </Button>
+                      </motion.div>
                     </>
                   )
                 ))}
@@ -261,5 +346,5 @@ export function Navigation() {
         )}
       </AnimatePresence>
     </nav>
-  );
+  )
 }
