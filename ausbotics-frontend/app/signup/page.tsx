@@ -68,7 +68,15 @@ export default function SignupPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-white dark:bg-neutral-900 px-4">
       <div className="w-full max-w-md space-y-8">
-        <Card className="border-none shadow-none max-w-md mx-auto container">
+        {/* Logo */}
+        <div className="flex items-center justify-center space-x-2">
+          <div className="bg-primary rounded-lg p-2 shadow-sm">
+            <Bot className="h-6 w-6 text-primary-foreground" />
+          </div>
+          <span className="text-2xl font-bold text-foreground">Ausbotics</span>
+        </div>
+
+        <Card className="shadow-sm border border-neutral-200 dark:border-neutral-800 backdrop-blur-sm">
           <CardHeader className="space-y-1 text-center">
             <CardTitle className="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">
               Sign Up
@@ -142,8 +150,7 @@ export default function SignupPage() {
 
               <Button
                 type="submit"
-                className="w-full font-medium transition-all duration-200 hover:shadow-md cursor-pointer"
-                variant={"secondary"}
+                className="w-full font-medium transition-all duration-200 hover:shadow-md"
                 disabled={isLoading}
               >
                 {isLoading ? (

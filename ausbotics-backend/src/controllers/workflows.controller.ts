@@ -251,39 +251,28 @@ export const getMyWorkflows = async (
     if (!userId) {
       return next(new AppError("No user Id", 404));
     }
-
     const isUser = await prisma.user.findUnique({
-      where: { id: userId },
-      select: { id: true }
+      where: {
+        id: userId,
+      },
     });
-
     if (!isUser?.id) {
-      return next(new AppError("Couldn't get workflows", 404));
+      return next(new AppError("Could'nt get workflows", 404));
     }
-
     const myWorkflows = await prisma.workflow.findMany({
       where: { subscribedUserId: userId },
-      select: {
-        id: true,
-        name: true,
-        description: true,
-        status: true,
-        progress: true,
-        createdAt: true,
-        googleSheet: true,   
-        googleSheetName: true,    
+      include: {
         subscribedUser: {
           select: { id: true, email: true, fullName: true, role: true },
         },
       },
     });
-
+    const worklowSend = {
+      myWorkflows,
+    };
     return res.status(200).json({ myWorkflows });
-  } catch (error) {
-    next(error);
-  }
+  } catch (error) {}
 };
-
 
 export const updateProgress = async (
   req: AuthRequest,

@@ -252,23 +252,19 @@ export function SuperAdminDashboard() {
         return null;
     }
   };
-  // Neutral subtle color system — identical structure, better UI
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Active":
-        return "bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200 border border-neutral-300 dark:border-neutral-700";
-
+        return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200";
       case "Paused":
-        return "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700";
-
+        return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200";
       case "Done":
-        return "bg-neutral-200 text-neutral-900 dark:bg-neutral-700 dark:text-neutral-100 border border-neutral-300 dark:border-neutral-600";
-
+        return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200";
       case "New":
-        return "bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700";
-
+        return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200";
       default:
-        return "bg-neutral-200 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200";
+        return "bg-gray-100 text-gray-800";
     }
   };
 
@@ -325,82 +321,76 @@ export function SuperAdminDashboard() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-5 mb-8">
-  {/* Total Users */}
-  <Card className="border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 hover:shadow-sm transition-all">
-    <CardContent className="p-6 flex justify-between items-center">
-      <div>
-        <p className="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
-          Total Users
-        </p>
-        <p className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
-          {users.length}
-        </p>
-      </div>
-      <Users className="h-8 w-8 text-neutral-600 dark:text-neutral-300" />
-    </CardContent>
-  </Card>
+          <Card className="border border-border hover:shadow-md transition-shadow duration-200">
+            <CardContent className="p-6 flex justify-between items-center">
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                  Total Users
+                </p>
+                <p className="text-2xl font-bold text-foreground">
+                  {users.length}
+                </p>
+              </div>
+              <Users className="h-8 w-8 text-muted-foreground" />
+            </CardContent>
+          </Card>
 
-  {/* Total Workflows */}
-  <Card className="border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 hover:shadow-sm transition-all">
-    <CardContent className="p-6 flex justify-between items-center">
-      <div>
-        <p className="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
-          Total Workflows
-        </p>
-        <p className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
-          {workflows.length}
-        </p>
-      </div>
-      <Wrkflw className="h-8 w-8 text-neutral-600 dark:text-neutral-300" />
-    </CardContent>
-  </Card>
+          <Card className="border border-border hover:shadow-md transition-shadow duration-200">
+            <CardContent className="p-6 flex justify-between items-center">
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                  Total Workflows
+                </p>
+                <p className="text-2xl font-bold text-foreground">
+                  {workflows.length}
+                </p>
+              </div>
+              <Wrkflw className="h-8 w-8 text-muted-foreground" />
+            </CardContent>
+          </Card>
 
-  {/* Active Workflows */}
-  <Card className="border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 hover:shadow-sm transition-all">
-    <CardContent className="p-6 flex justify-between items-center">
-      <div>
-        <p className="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
-          Active
-        </p>
-        <p className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
-          {workflowsByStatus.Active.length}
-        </p>
-      </div>
-      <Play className="h-8 w-8 text-neutral-600 dark:text-neutral-300" />
-    </CardContent>
-  </Card>
+          <Card className="border border-border hover:shadow-md transition-shadow duration-200">
+            <CardContent className="p-6 flex justify-between items-center">
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                  Active
+                </p>
+                <p className="text-2xl font-bold text-blue-600">
+                  {workflowsByStatus.Active.length}
+                </p>
+              </div>
+              <Play className="h-10 w-10 text-white fill-blue-500" />
+            </CardContent>
+          </Card>
 
-  {/* Completed */}
-  <Card className="border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 hover:shadow-sm transition-all">
-    <CardContent className="p-6 flex justify-between items-center">
-      <div>
-        <p className="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
-          Completed
-        </p>
-        <p className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
-          {workflowsByStatus.Done.length}
-        </p>
-      </div>
-      <CheckCircle2 className="h-8 w-8 text-neutral-600 dark:text-neutral-300" />
-    </CardContent>
-  </Card>
+          <Card className="border border-border hover:shadow-md transition-shadow duration-200">
+            <CardContent className="p-6 flex justify-between items-center">
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                  Completed
+                </p>
+                <p className="text-2xl font-bold text-green-600">
+                  {workflowsByStatus.Done.length}
+                </p>
+              </div>
+              <CheckCircle2 className="h-10 w-10 text-blue-500 fill-green-500 text-white" />
+            </CardContent>
+          </Card>
 
-  {/* Appointments */}
-  <Card className="border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 hover:shadow-sm transition-all">
-    <CardContent className="p-6 flex justify-between items-center">
-      <div>
-        <p className="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
-          Appointments
-        </p>
-        <p className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
-          {appointments.length}
-        </p>
-      </div>
-      <Calendar className="h-8 w-8 text-neutral-600 dark:text-neutral-300" />
-    </CardContent>
-  </Card>
-</div>
-
+          <Card className="border border-border hover:shadow-md transition-shadow duration-200">
+            <CardContent className="p-6 flex justify-between items-center">
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                  Appointments
+                </p>
+                <p className="text-2xl font-bold text-foreground">
+                  {appointments.length}
+                </p>
+              </div>
+              <Calendar className="h-8 w-8 text-muted-foreground" />
+            </CardContent>
+          </Card>
+        </div>
 
         {sheetView ? (
           <div className="space-y-4">

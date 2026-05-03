@@ -146,12 +146,12 @@ export function AppointmentBooking() {
               Book an Appointment
             </h2>
             <p className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              Schedule a personalized appointment to see how our AI calling agents
+              Schedule a personalized meeting to see how our AI calling agents
               can transform your customer communications.
             </p>
           </div>
 
-          <Card className="shadow-none rounded-2xl">
+          <Card className="shadow-md rounded-2xl">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-neutral-900 dark:text-neutral-100">
                 <Calendar className="h-5 w-5" />

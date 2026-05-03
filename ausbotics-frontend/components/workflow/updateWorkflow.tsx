@@ -45,7 +45,6 @@ export function EditWorkflowDialog({
   isOpen,
   setIsOpen,
 }: EditWorkflowDialogProps) {
-  console.log(workflow)
   const [name, setName] = useState(workflow?.name || "");
   const [description, setDescription] = useState(workflow?.description || "");
   const [status, setStatus] = useState<WorkflowStatus>(
@@ -100,10 +99,10 @@ export function EditWorkflowDialog({
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="max-w-lg w-full bg-neutral-100 dark:bg-neutral-900 sm:rounded-2xl p-6">
+      <DialogContent className="max-w-lg w-full bg-neutral-900 sm:rounded-2xl p-6">
         <DialogHeader>
           <DialogTitle className="text-lg sm:text-xl font-semibold">
-             Edit Workflow
+            ✨ Edit Workflow
           </DialogTitle>
         </DialogHeader>
 
