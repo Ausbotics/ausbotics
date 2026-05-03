@@ -1,81 +1,102 @@
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import {
-  ArrowRight,
-  Zap,
-  Shield,
-  Globe,
-  Headphones,
-} from "@/components/simple-icons";
-import Link from "next/link";
+"use client"
+
+import { useEffect, useRef } from "react"
+import { Flash, ShieldTick, Global, Headphone } from "iconsax-reactjs"
+import { Button } from "@/components/ui/button"
+import { gsap, animateSection } from "@/lib/gsap-utils"
+import Link from "next/link"
+
+const features = [
+  {
+    num: "01",
+    Icon: Flash,
+    title: "From Idea to Impact",
+    description:
+      "Share your business problem. We transform it into a tailored AI automation designed, built, and ready to deliver real results.",
+    accent: "bg-ink",          // 30% dark section card
+  },
+  {
+    num: "02",
+    Icon: ShieldTick,
+    title: "Your Workflow, Your Way",
+    description:
+      "Every solution is crafted to match your exact work processes — no cookie-cutter templates, no bloated tools.",
+    accent: "bg-primary",      // 10% accent card
+  },
+  {
+    num: "03",
+    Icon: Global,
+    title: "Built for Every Business",
+    description:
+      "No matter your size, our automations are designed to grow with you — from early-stage to enterprise.",
+    accent: "bg-ink",
+  },
+  {
+    num: "04",
+    Icon: Headphone,
+    title: "Custom Voice Options",
+    description:
+      "Choose from professional voice options that perfectly match your brand identity and communication style.",
+    accent: "bg-primary",
+  },
+]
 
 export function FeaturesPreview() {
-  const features = [
-    {
-      icon: Zap,
-      title: "From Idea to Impact",
-      description:
-        "Share your business problem. We transform it into a tailored AI automation that’s designed, built, and ready to deliver real results.  ",
-    },
-    {
-      icon: Shield,
-      title: "Your Workflow, Your Way ",
-      description: "Every solution is crafted to match your work.",
-    },
-    {
-      icon: Globe,
-      title: "Built for Every Business",
-      description:
-        "No matter the size of your business, our automations are designed to grow with you.",
-    },
-    {
-      icon: Headphones,
-      title: "Custom Voice Options",
-      description: "Choose from professional voice options ",
-    },
-  ];
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    if (sectionRef.current) {
+      animateSection(sectionRef.current, "[data-animate]", 0.1)
+    }
+  }, [])
 
   return (
-    <section className="py-20 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Why Choose Our AI Calling Agents?
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Built for modern businesses that demand efficiency, reliability, and
-            results.
-          </p>
-        </div>
+    <section ref={sectionRef} className="py-24 bg-background relative overflow-hidden">
+      {/* Faint section divider */}
+      <div className="absolute inset-x-0 top-0 h-px bg-border" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {features.map((feature, index) => (
-            <Card
-              key={index}
-              className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-            >
-              <div className="bg-primary/10 rounded-lg p-3 w-fit mb-4">
-                <feature.icon className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-lg font-semibold text-foreground mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {feature.description}
-              </p>
-            </Card>
-          ))}
-        </div>
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
 
-        <div className="text-center">
-          <Button size="lg" variant="outline" asChild>
-            <Link href="/features" className="inline-flex items-center gap-2">
-              View All Features
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+        {/* Section header */}
+        <div data-animate className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
+          <div>
+            <p className="text-primary text-[11px] font-semibold uppercase tracking-[0.25em] mb-3">
+              What We Build
+            </p>
+            <h2 className="text-[clamp(1.9rem,4vw,3rem)] font-extrabold text-foreground leading-tight">
+              Why AusBotics?
+            </h2>
+          </div>
+          <Button variant="outline-brand" size="lg" className="rounded-xl shrink-0" asChild>
+            <Link href="/features">View All Features →</Link>
           </Button>
+        </div>
+
+        {/* Feature cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {features.map(({ num, Icon, title, description, accent }) => (
+            <div
+              key={num}
+              data-animate
+              className={`relative rounded-2xl p-7 overflow-hidden group cursor-default transition-transform duration-300 hover:-translate-y-1 ${accent}`}
+            >
+              {/* Faded number watermark */}
+              <span className="absolute -bottom-3 -right-1 text-[5.5rem] font-black text-white/8 leading-none select-none pointer-events-none">
+                {num}
+              </span>
+
+              {/* Icon */}
+              <div className="relative z-10 w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center mb-6">
+                <Icon size="22" color="white" />
+              </div>
+
+              {/* Text */}
+              <h3 className="relative z-10 text-[15px] font-bold text-white mb-2.5">{title}</h3>
+              <p className="relative z-10 text-[13px] text-white/65 leading-relaxed">{description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
-  );
+  )
 }
