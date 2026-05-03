@@ -2,73 +2,93 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --radius: 0.5rem;
+
+  /* === AusBotics Brand Palette (Light Mode) === */
+  --cream: oklch(0.936 0.018 80);
+  --cream-surface: oklch(0.921 0.020 78);
+  --navy: oklch(0.234 0.058 243);
+  --brand-blue: oklch(0.510 0.120 240);
+  --steel: oklch(0.440 0.050 232);
+  --sage: oklch(0.640 0.060 155);
+  --terracotta: oklch(0.550 0.140 38);
+  --grid-line: oklch(0.234 0.058 243 / 8%);
+
+  /* === Tailwind Semantic Mappings === */
+  --background: var(--cream);
+  --foreground: var(--navy);
+  --card: var(--cream-surface);
+  --card-foreground: var(--navy);
+  --popover: var(--cream);
+  --popover-foreground: var(--navy);
+  --primary: var(--brand-blue);
+  --primary-foreground: var(--cream);
+  --secondary: var(--cream-surface);
+  --secondary-foreground: var(--navy);
+  --muted: var(--cream-surface);
+  --muted-foreground: var(--steel);
+  --accent: var(--terracotta);
+  --accent-foreground: var(--cream);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: var(--grid-line);
+  --input: oklch(0.234 0.058 243 / 12%);
+  --ring: var(--brand-blue);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar: var(--cream-surface);
+  --sidebar-foreground: var(--navy);
+  --sidebar-primary: var(--brand-blue);
+  --sidebar-primary-foreground: var(--cream);
+  --sidebar-accent: var(--cream);
+  --sidebar-accent-foreground: var(--navy);
+  --sidebar-border: var(--grid-line);
+  --sidebar-ring: var(--brand-blue);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.269 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.371 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  /* === Brand Colors Adjusted for Dark Mode === */
+  --cream: oklch(0.936 0.018 80);
+  --navy: oklch(0.234 0.058 243);
+  --brand-blue: oklch(0.600 0.120 240);
+  --terracotta: oklch(0.590 0.140 38);
+  --sage: oklch(0.660 0.060 155);
+  --steel: oklch(0.560 0.040 232);
+
+  /* === Dark Mode Colors === */
+  --background: oklch(0.070 0 0);
+  --foreground: oklch(0.936 0.018 80);
+  --card: oklch(0.140 0 0);
+  --card-foreground: oklch(0.936 0.018 80);
+  --popover: oklch(0.140 0 0);
+  --popover-foreground: oklch(0.936 0.018 80);
+  --primary: var(--brand-blue);
+  --primary-foreground: oklch(0.936 0.018 80);
+  --secondary: oklch(0.180 0 0);
+  --secondary-foreground: oklch(0.936 0.018 80);
+  --muted: oklch(0.180 0 0);
+  --muted-foreground: oklch(0.540 0 0);
+  --accent: var(--terracotta);
+  --accent-foreground: oklch(0.936 0.018 80);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  --border: oklch(1 0 0 / 7%);
+  --input: oklch(1 0 0 / 10%);
+  --ring: var(--brand-blue);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.439 0 0);
+  --sidebar: oklch(0.140 0 0);
+  --sidebar-foreground: oklch(0.936 0.018 80);
+  --sidebar-primary: var(--brand-blue);
+  --sidebar-primary-foreground: oklch(0.936 0.018 80);
+  --sidebar-border: oklch(1 0 0 / 7%);
+  --sidebar-ring: var(--brand-blue);
 }
 
 @theme inline {
@@ -98,7 +118,16 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  --font-sans: var(--font-sans);
+  /* Brand colors */
+  --color-navy: var(--navy);
+  --color-cream: var(--cream);
+  --color-cream-surface: var(--cream-surface);
+  --color-brand-blue: var(--brand-blue);
+  --color-steel: var(--steel);
+  --color-sage: var(--sage);
+  --color-terracotta: var(--terracotta);
+
+  --font-sans: var(--font-arimo);
   --font-serif: var(--font-serif);
   --font-mono: var(--font-mono);
 
@@ -116,6 +145,89 @@
 
 body {
   letter-spacing: var(--tracking-normal);
+}
+
+/* ==========================================
+   Blueprint Grid Dot Pattern
+   ========================================== */
+.bg-grid-blueprint {
+  background-color: var(--cream);
+  background-image: radial-gradient(circle, oklch(0.234 0.058 243 / 12%) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.dark .bg-grid-blueprint {
+  background-color: oklch(0.070 0 0);
+  background-image: radial-gradient(circle, oklch(1 0 0 / 6%) 1px, transparent 1px);
+}
+
+/* Blueprint card corners — + markers in corners */
+.blueprint-corners {
+  position: relative;
+}
+
+.blueprint-corners::before,
+.blueprint-corners::after {
+  content: '+';
+  position: absolute;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  color: oklch(0.234 0.058 243 / 20%);
+  pointer-events: none;
+}
+
+.blueprint-corners::before {
+  top: 6px;
+  left: 8px;
+}
+
+.blueprint-corners::after {
+  bottom: 6px;
+  right: 8px;
+}
+
+.dark .blueprint-corners::before,
+.dark .blueprint-corners::after {
+  color: oklch(1 0 0 / 8%);
+}
+
+/* ==========================================
+   Keyframes
+   ========================================== */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes progress-bar {
+  from {
+    width: 0%;
+  }
 }
 
 @layer base {
