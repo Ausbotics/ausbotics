@@ -71,8 +71,8 @@ export function Navigation() {
         "sticky top-0 z-50 border-b backdrop-blur-xl transition-all duration-500",
         "shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]",
         isScrolled
-          ? "bg-navy/90 border-grid-line dark:bg-[oklch(0.07_0_0)/90] dark:border-[oklch(1_0_0/7%)]"
-          : "bg-cream/90 border-grid-line dark:bg-[oklch(0.07_0_0)/90] dark:border-[oklch(1_0_0/7%)]"
+          ? "bg-ink/90 border-border dark:bg-background/90 dark:border-border"
+          : "bg-background/90 border-border"
       )}
     >
       {/* Scroll progress bar */}
@@ -96,7 +96,7 @@ export function Navigation() {
               <span
                 className={clsx(
                   "transition-colors duration-500",
-                  isScrolled ? "text-cream" : "text-navy dark:text-cream"
+                  isScrolled ? "text-background dark:text-foreground" : "text-foreground"
                 )}
               >
                 Aus

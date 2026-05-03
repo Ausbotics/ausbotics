@@ -2,159 +2,180 @@
 
 import { useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
-import { Flash, Messages1, Chart, Clock } from "iconsax-reactjs"
-import { gsap, animateHeadingChars, animateSection } from "@/lib/gsap-utils"
+import { Flash, Messages1, Chart, Clock, ArrowRight, TickCircle } from "iconsax-reactjs"
+import { gsap } from "@/lib/gsap-utils"
 import Link from "next/link"
 
 export function HeroSection() {
-  const headingRef = useRef<HTMLHeadingElement>(null)
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    if (headingRef.current) {
-      animateHeadingChars(headingRef.current, 0.1)
-    }
-    if (sectionRef.current) {
-      animateSection(sectionRef.current, "[data-animate]", 0.1)
-    }
-    return () => {
-      gsap.killTweensOf("*")
-    }
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        "[data-hero]",
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.75, stagger: 0.11, ease: "power2.out", delay: 0.15 }
+      )
+    }, sectionRef)
+    return () => ctx.revert()
   }, [])
+
+  const metrics = [
+    { label: "Calls Handled Today", value: "1,247", change: "+24%", bar: 82 },
+    { label: "Leads Booked",         value: "89",    change: "+12%", bar: 65 },
+    { label: "Avg Response Time",    value: "0.8s",  change: "−94%", bar: 95 },
+  ]
 
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[90vh] bg-grid-blueprint overflow-hidden flex items-center"
+      className="relative min-h-[92vh] bg-background overflow-hidden flex items-center"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-20 sm:py-28 w-full">
-        <div className="grid lg:grid-cols-[3fr_2fr] gap-16 items-center">
-          {/* Left Column */}
-          <div>
-            {/* Eyebrow Label */}
+      {/* Subtle dot grid */}
+      <div className="absolute inset-0 bg-grid-dots pointer-events-none opacity-100" />
+
+      {/* Soft ambient glow — accent colour, very low opacity */}
+      <div className="absolute -top-40 right-0 w-[520px] h-[520px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 -left-20 w-[400px] h-[400px] rounded-full bg-primary/4 blur-[100px] pointer-events-none" />
+
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-24 w-full">
+        <div className="grid lg:grid-cols-2 gap-16 xl:gap-24 items-center">
+
+          {/* ── Left Column ── */}
+          <div className="max-w-[560px]">
+
+            {/* Eyebrow pill */}
             <div
-              data-animate
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-blue/10 border border-brand-blue/20 text-brand-blue text-xs font-semibold uppercase tracking-widest mb-8"
+              data-hero
+              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/8 text-primary text-[11px] font-semibold uppercase tracking-[0.2em] mb-8"
             >
-              <Flash size="12" />
-              Intelligent Automation Systems
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              Intelligent Automation Platform
             </div>
 
-            {/* Main Heading */}
+            {/* Heading */}
             <h1
-              ref={headingRef}
-              className="text-[clamp(3.5rem,8vw,7rem)] font-extrabold leading-[0.95] tracking-tight text-navy dark:text-cream mb-8"
+              data-hero
+              className="text-[clamp(2.6rem,5vw,4.8rem)] font-extrabold leading-[1.06] tracking-tight text-foreground mb-6"
             >
-              Automate. Grow. Lead.
+              Replace manual work with{" "}
+              <span className="text-primary">AI that runs 24/7.</span>
             </h1>
 
-            {/* Subheading */}
-            <p
-              data-animate
-              className="text-xl text-steel dark:text-cream/70 max-w-xl leading-relaxed mb-10"
-            >
-              <span className="text-brand-blue font-semibold">AusBotics</span>{" "}
-              builds intelligent automation systems — AI calling agents, business
-              dashboards, and custom web platforms for SMBs that want to scale
-              without scaling their headcount.
+            {/* Subtext */}
+            <p data-hero className="text-lg text-muted-foreground leading-relaxed mb-10">
+              AusBotics delivers intelligent calling agents, live business dashboards,
+              and custom web platforms — fully built, integrated, and ready to deploy
+              for service businesses.
             </p>
 
             {/* CTAs */}
-            <div
-              data-animate
-              className="flex flex-col sm:flex-row flex-wrap gap-4 mb-12"
-            >
+            <div data-hero className="flex flex-col sm:flex-row gap-3 mb-12">
               <Button
                 size="lg"
                 variant="brand"
-                className="text-base px-8 py-5 rounded-xl font-bold shadow-lg shadow-terracotta/25 hover:shadow-terracotta/40 transition-shadow"
+                className="rounded-xl font-semibold px-7 h-12 text-[15px] gap-2"
                 asChild
               >
-                <Link href="/demo">See the Demo</Link>
+                <Link href="/demo">
+                  See the Demo
+                  <ArrowRight size="16" color="white" />
+                </Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline-brand"
-                className="text-base px-8 py-5 rounded-xl font-bold"
+                className="rounded-xl font-semibold px-7 h-12 text-[15px]"
                 asChild
               >
                 <Link href="/how-it-works">How It Works</Link>
               </Button>
             </div>
 
-            {/* Floating Stat Badges */}
-            <div data-animate className="flex flex-wrap gap-3">
-              <div className="flex items-center gap-2 px-4 py-2 bg-sage/15 rounded-full border border-sage/30">
-                <Messages1 size="16" className="text-sage" />
-                <span className="text-sm font-semibold text-navy dark:text-cream">
-                  2,000+ Conversations
+            {/* Social proof line */}
+            <div data-hero className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+              {[
+                "2,000+ conversations handled",
+                "Zero missed leads",
+                "Live in days, not months",
+              ].map((t) => (
+                <span key={t} className="flex items-center gap-1.5">
+                  <TickCircle size="14" className="text-sage" variant="Bold" />
+                  {t}
                 </span>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Right Column — Dashboard card ── */}
+          <div data-hero className="hidden lg:block">
+            <div className="relative pl-6 pb-6">
+
+              {/* Main card */}
+              <div className="rounded-2xl overflow-hidden border border-border bg-card shadow-[0_20px_60px_-10px_oklch(0.13_0.045_243/12%)] dark:shadow-[0_20px_60px_-10px_oklch(0_0_0/50%)]">
+
+                {/* Card header — uses ink (30%) for the dark bar */}
+                <div className="flex items-center justify-between px-5 py-3.5 bg-ink dark:bg-bg-subtle">
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-2 h-2 rounded-full bg-sage animate-pulse" />
+                    <span className="text-sm font-semibold text-background dark:text-foreground">
+                      Operations Dashboard
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-medium uppercase tracking-widest text-background/50 dark:text-muted-foreground">
+                    Live
+                  </span>
+                </div>
+
+                {/* Metrics body */}
+                <div className="px-5 py-5 space-y-5 bg-card">
+                  {metrics.map((m, i) => (
+                    <div key={i}>
+                      <div className="flex items-baseline justify-between mb-1.5">
+                        <span className="text-[11px] font-medium text-muted-foreground uppercase tracking-wider">
+                          {m.label}
+                        </span>
+                        <span className="text-[11px] font-semibold text-sage">{m.change}</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <span className="text-[1.6rem] font-bold text-foreground tabular-nums w-20 leading-none">
+                          {m.value}
+                        </span>
+                        <div className="flex-1 h-1.5 rounded-full bg-secondary overflow-hidden">
+                          <div
+                            className="h-full rounded-full bg-primary"
+                            style={{ width: `${m.bar}%` }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Footer */}
+                <div className="px-5 py-3.5 border-t border-border bg-secondary flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Flash size="12" className="text-terracotta" />
+                    <span className="text-xs text-muted-foreground">3 automations active</span>
+                  </div>
+                  <span className="text-xs font-medium text-primary">Today ↑</span>
+                </div>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-navy/8 rounded-full border border-navy/15">
-                <Clock size="16" className="text-brand-blue" />
-                <span className="text-sm font-semibold text-navy dark:text-cream">
-                  24/7 Availability
-                </span>
+
+              {/* Floating chips — positioned relative to the card */}
+              <div className="absolute top-0 right-0 flex items-center gap-2 px-3.5 py-2 rounded-xl bg-terracotta shadow-lg shadow-terracotta/25">
+                <Clock size="12" color="white" />
+                <span className="text-white text-[11px] font-semibold">24 / 7 Active</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-terracotta/10 rounded-full border border-terracotta/25">
-                <Chart size="16" className="text-terracotta" />
-                <span className="text-sm font-semibold text-navy dark:text-cream">
-                  Zero Missed Leads
-                </span>
+              <div className="absolute bottom-0 left-0 flex items-center gap-2 px-3.5 py-2 rounded-xl bg-sage shadow-lg shadow-sage/25">
+                <Messages1 size="12" color="white" />
+                <span className="text-white text-[11px] font-semibold">2,000+ Calls</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column — CSS Isometric Block Diagram */}
-          <div
-            data-animate
-            className="hidden lg:flex justify-center items-center relative"
-          >
-            <div className="relative w-80 h-80">
-              {/* Outer Frame — Blueprint Style */}
-              <div className="absolute inset-0 rounded-2xl border-2 border-navy/15 bg-cream-surface/50 dark:bg-[oklch(0.14_0_0)/50] backdrop-blur-sm">
-                {/* Corner + Markers */}
-                <span className="absolute top-2 left-3 text-navy/30 dark:text-cream/15 text-xs font-bold">
-                  +
-                </span>
-                <span className="absolute top-2 right-3 text-navy/30 dark:text-cream/15 text-xs font-bold">
-                  +
-                </span>
-                <span className="absolute bottom-2 left-3 text-navy/30 dark:text-cream/15 text-xs font-bold">
-                  +
-                </span>
-                <span className="absolute bottom-2 right-3 text-navy/30 dark:text-cream/15 text-xs font-bold">
-                  +
-                </span>
-              </div>
-
-              {/* Central Navy Block */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-navy rounded-xl flex items-center justify-center shadow-2xl transform hover:scale-110 transition-transform duration-300">
-                <Flash size="40" color="var(--cream)" />
-              </div>
-
-              {/* Orbiting Mini-Blocks */}
-              <div className="absolute top-6 right-8 w-16 h-16 bg-terracotta rounded-lg flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300">
-                <Messages1 size="20" color="white" />
-              </div>
-              <div className="absolute bottom-6 left-8 w-16 h-16 bg-brand-blue rounded-lg flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300">
-                <Chart size="20" color="white" />
-              </div>
-              <div className="absolute bottom-8 right-12 w-12 h-12 bg-sage rounded-lg flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300">
-                <Clock size="16" color="white" />
-              </div>
-
-              {/* Connecting Lines */}
-              <div className="absolute top-[calc(50%+0px)] left-[calc(50%+0px)] w-px h-16 bg-navy/20 dark:bg-cream/10 origin-top rotate-45" />
-              <div className="absolute top-[calc(50%+0px)] left-[calc(50%-16px)] w-16 h-px bg-navy/20 dark:bg-cream/10" />
-            </div>
-          </div>
         </div>
       </div>
-
-      {/* Decorative Gradient Blobs */}
-      <div className="absolute -top-40 -right-32 w-96 h-96 bg-brand-blue/8 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-40 -left-32 w-96 h-96 bg-terracotta/6 rounded-full blur-3xl pointer-events-none" />
     </section>
   )
 }

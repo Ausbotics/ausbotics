@@ -3,133 +3,183 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ============================================================
+   60 / 30 / 10 COLOR SYSTEM
+   ─────────────────────────────────────────────────────────────
+   60% — Neutral  : white (light) / near-black (dark)
+   30% — Dominant : dark navy text & dark sections (light)
+                  / off-white text & surfaces (dark)
+   10% — Accent   : navy blue (light) / lighter navy blue (dark)
+   ============================================================ */
+
 :root {
   --radius: 0.5rem;
 
-  /* === AusBotics Brand Palette (Light Mode) === */
-  --cream: oklch(0.936 0.018 80);
-  --cream-surface: oklch(0.921 0.020 78);
-  --navy: oklch(0.234 0.058 243);
-  --brand-blue: oklch(0.510 0.120 240);
-  --steel: oklch(0.440 0.050 232);
-  --sage: oklch(0.640 0.060 155);
-  --terracotta: oklch(0.550 0.140 38);
-  --grid-line: oklch(0.234 0.058 243 / 8%);
+  /* 60% — light neutral base */
+  --bg:          oklch(0.99 0 0);          /* #FAFAFA  */
+  --bg-subtle:   oklch(0.96 0 0);          /* #F5F5F5  */
+  --bg-card:     oklch(1 0 0);             /* #FFFFFF  */
 
-  /* === Tailwind Semantic Mappings === */
-  --background: var(--cream);
-  --foreground: var(--navy);
-  --card: var(--cream-surface);
-  --card-foreground: var(--navy);
-  --popover: var(--cream);
-  --popover-foreground: var(--navy);
-  --primary: var(--brand-blue);
-  --primary-foreground: var(--cream);
-  --secondary: var(--cream-surface);
-  --secondary-foreground: var(--navy);
-  --muted: var(--cream-surface);
-  --muted-foreground: var(--steel);
-  --accent: var(--terracotta);
-  --accent-foreground: var(--cream);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: var(--grid-line);
-  --input: oklch(0.234 0.058 243 / 12%);
-  --ring: var(--brand-blue);
+  /* 30% — dark navy (headings, dark sections, strong text) */
+  --ink:         oklch(0.13 0.045 243);    /* #0E1829  */
+  --ink-muted:   oklch(0.40 0.04 240);     /* mid-tone secondary text */
+
+  /* 10% — navy blue accent */
+  --accent:      oklch(0.42 0.14 243);     /* #1B4E99 navy blue */
+  --accent-fg:   oklch(0.99 0 0);          /* white on accent */
+
+  /* Supporting palette */
+  --sage:        oklch(0.62 0.08 155);     /* success green */
+  --terracotta:  oklch(0.55 0.14 38);      /* CTA orange-red */
+  --border:      oklch(0.91 0 0);          /* #E8E8E8 */
+  --border-subtle: oklch(0.94 0 0);
+
+  /* Legacy aliases (keep for components that still reference them) */
+  --navy:          var(--ink);
+  --brand-blue:    var(--accent);
+  --steel:         var(--ink-muted);
+  --cream:         var(--bg);
+  --cream-surface: var(--bg-subtle);
+  --grid-line:     var(--border-subtle);
+
+  /* === Tailwind Semantic Tokens === */
+  --background:             var(--bg);
+  --foreground:             var(--ink);
+  --card:                   var(--bg-card);
+  --card-foreground:        var(--ink);
+  --popover:                var(--bg-card);
+  --popover-foreground:     var(--ink);
+  --primary:                var(--accent);
+  --primary-foreground:     var(--accent-fg);
+  --secondary:              var(--bg-subtle);
+  --secondary-foreground:   var(--ink);
+  --muted:                  var(--bg-subtle);
+  --muted-foreground:       var(--ink-muted);
+  --accent-color:           var(--terracotta);
+  --accent-color-foreground: var(--bg);
+  --destructive:            oklch(0.577 0.245 27.325);
+  --input:                  var(--border);
+  --ring:                   var(--accent);
   --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-2: oklch(0.600 0.118 184.704);
+  --chart-3: oklch(0.398 0.070 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: var(--cream-surface);
-  --sidebar-foreground: var(--navy);
-  --sidebar-primary: var(--brand-blue);
-  --sidebar-primary-foreground: var(--cream);
-  --sidebar-accent: var(--cream);
-  --sidebar-accent-foreground: var(--navy);
-  --sidebar-border: var(--grid-line);
-  --sidebar-ring: var(--brand-blue);
+  --sidebar:                  var(--bg-card);
+  --sidebar-foreground:       var(--ink);
+  --sidebar-primary:          var(--accent);
+  --sidebar-primary-foreground: var(--accent-fg);
+  --sidebar-accent:           var(--bg-subtle);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border:           var(--border-subtle);
+  --sidebar-ring:             var(--accent);
 }
 
 .dark {
-  /* === Brand Colors Adjusted for Dark Mode === */
-  --cream: oklch(0.936 0.018 80);
-  --navy: oklch(0.234 0.058 243);
-  --brand-blue: oklch(0.600 0.120 240);
-  --terracotta: oklch(0.590 0.140 38);
-  --sage: oklch(0.660 0.060 155);
-  --steel: oklch(0.560 0.040 232);
+  /* 60% — dark neutral base */
+  --bg:          oklch(0.08 0 0);          /* #0A0A0A  */
+  --bg-subtle:   oklch(0.13 0 0);          /* #171717  */
+  --bg-card:     oklch(0.11 0 0);          /* #141414  */
 
-  /* === Dark Mode Colors === */
-  --background: oklch(0.070 0 0);
-  --foreground: oklch(0.936 0.018 80);
-  --card: oklch(0.140 0 0);
-  --card-foreground: oklch(0.936 0.018 80);
-  --popover: oklch(0.140 0 0);
-  --popover-foreground: oklch(0.936 0.018 80);
-  --primary: var(--brand-blue);
-  --primary-foreground: oklch(0.936 0.018 80);
-  --secondary: oklch(0.180 0 0);
-  --secondary-foreground: oklch(0.936 0.018 80);
-  --muted: oklch(0.180 0 0);
-  --muted-foreground: oklch(0.540 0 0);
-  --accent: var(--terracotta);
-  --accent-foreground: oklch(0.936 0.018 80);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 7%);
-  --input: oklch(1 0 0 / 10%);
-  --ring: var(--brand-blue);
+  /* 30% — off-white (text, light surfaces, opposing shade) */
+  --ink:         oklch(0.93 0 0);          /* #EDEDED  */
+  --ink-muted:   oklch(0.55 0 0);          /* medium gray */
+
+  /* 10% — lighter navy blue accent */
+  --accent:      oklch(0.58 0.14 243);     /* #4B80CE lighter navy blue */
+  --accent-fg:   oklch(0.99 0 0);
+
+  /* Supporting */
+  --sage:        oklch(0.65 0.09 155);
+  --terracotta:  oklch(0.60 0.14 38);
+  --border:      oklch(1 0 0 / 8%);
+  --border-subtle: oklch(1 0 0 / 5%);
+
+  /* Legacy aliases */
+  --navy:          var(--ink);
+  --brand-blue:    var(--accent);
+  --steel:         var(--ink-muted);
+  --cream:         var(--bg);
+  --cream-surface: var(--bg-subtle);
+  --grid-line:     var(--border);
+
+  /* === Tailwind Semantic Tokens (dark) === */
+  --background:             var(--bg);
+  --foreground:             var(--ink);
+  --card:                   var(--bg-card);
+  --card-foreground:        var(--ink);
+  --popover:                var(--bg-subtle);
+  --popover-foreground:     var(--ink);
+  --primary:                var(--accent);
+  --primary-foreground:     var(--accent-fg);
+  --secondary:              var(--bg-subtle);
+  --secondary-foreground:   var(--ink);
+  --muted:                  var(--bg-subtle);
+  --muted-foreground:       var(--ink-muted);
+  --accent-color:           var(--terracotta);
+  --accent-color-foreground: var(--bg);
+  --destructive:            oklch(0.704 0.191 22.216);
+  --input:                  var(--border);
+  --ring:                   var(--accent);
   --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-2: oklch(0.696 0.170 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.140 0 0);
-  --sidebar-foreground: oklch(0.936 0.018 80);
-  --sidebar-primary: var(--brand-blue);
-  --sidebar-primary-foreground: oklch(0.936 0.018 80);
-  --sidebar-border: oklch(1 0 0 / 7%);
-  --sidebar-ring: var(--brand-blue);
+  --sidebar:                  var(--bg-card);
+  --sidebar-foreground:       var(--ink);
+  --sidebar-primary:          var(--accent);
+  --sidebar-primary-foreground: var(--accent-fg);
+  --sidebar-accent:           var(--bg-subtle);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border:           var(--border);
+  --sidebar-ring:             var(--accent);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
+  /* Semantic tokens */
+  --color-background:             var(--background);
+  --color-foreground:             var(--foreground);
+  --color-card:                   var(--card);
+  --color-card-foreground:        var(--card-foreground);
+  --color-popover:                var(--popover);
+  --color-popover-foreground:     var(--popover-foreground);
+  --color-primary:                var(--primary);
+  --color-primary-foreground:     var(--primary-foreground);
+  --color-secondary:              var(--secondary);
+  --color-secondary-foreground:   var(--secondary-foreground);
+  --color-muted:                  var(--muted);
+  --color-muted-foreground:       var(--muted-foreground);
+  --color-accent:                 var(--accent-color);
+  --color-accent-foreground:      var(--accent-color-foreground);
+  --color-destructive:            var(--destructive);
+  --color-border:                 var(--border);
+  --color-input:                  var(--input);
+  --color-ring:                   var(--ring);
+  --color-sidebar:                var(--sidebar);
+  --color-sidebar-foreground:     var(--sidebar-foreground);
+  --color-sidebar-accent:         var(--sidebar-accent);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border:         var(--sidebar-border);
+  --color-sidebar-ring:           var(--sidebar-ring);
 
-  /* Brand colors */
-  --color-navy: var(--navy);
-  --color-cream: var(--cream);
-  --color-cream-surface: var(--cream-surface);
-  --color-brand-blue: var(--brand-blue);
-  --color-steel: var(--steel);
-  --color-sage: var(--sage);
-  --color-terracotta: var(--terracotta);
+  /* Named palette — available as bg-ink, text-accent, bg-sage etc. */
+  --color-ink:          var(--ink);
+  --color-ink-muted:    var(--ink-muted);
+  --color-accent-blue:  var(--accent);
+  --color-sage:         var(--sage);
+  --color-terracotta:   var(--terracotta);
 
-  --font-sans: var(--font-arimo);
-  --font-serif: var(--font-serif);
-  --font-mono: var(--font-mono);
+  /* Legacy aliases for components referencing old names */
+  --color-navy:         var(--ink);
+  --color-brand-blue:   var(--accent);
+  --color-steel:        var(--ink-muted);
+  --color-cream:        var(--bg);
+  --color-cream-surface: var(--bg-subtle);
+
+  --font-sans:   var(--font-arimo);
+  --font-serif:  var(--font-serif);
+  --font-mono:   var(--font-mono);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -148,93 +198,55 @@ body {
 }
 
 /* ==========================================
-   Blueprint Grid Dot Pattern
+   Dot-grid background utility
    ========================================== */
-.bg-grid-blueprint {
-  background-color: var(--cream);
-  background-image: radial-gradient(circle, oklch(0.234 0.058 243 / 12%) 1px, transparent 1px);
+/* .bg-grid-dots {
+  background-image: radial-gradient(circle, oklch(0.13 0.045 243 / 10%) 1px, transparent 1px);
   background-size: 28px 28px;
-}
+} */
+/* 
+.dark .bg-grid-dots {
+  background-image: radial-gradient(circle, oklch(1 0 0 / 5%) 1px, transparent 1px);
+} */
 
-.dark .bg-grid-blueprint {
-  background-color: oklch(0.070 0 0);
-  background-image: radial-gradient(circle, oklch(1 0 0 / 6%) 1px, transparent 1px);
-}
+/* Keep old class name working */
+/* .bg-grid-blueprint { }
+.bg-grid-blueprint { @apply bg-grid-dots; } */
 
-/* Blueprint card corners — + markers in corners */
-.blueprint-corners {
-  position: relative;
-}
-
+/* Blueprint card corner markers */
+.blueprint-corners { position: relative; }
 .blueprint-corners::before,
 .blueprint-corners::after {
   content: '+';
   position: absolute;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   line-height: 1;
-  color: oklch(0.234 0.058 243 / 20%);
+  color: oklch(0.13 0.045 243 / 18%);
   pointer-events: none;
 }
-
-.blueprint-corners::before {
-  top: 6px;
-  left: 8px;
-}
-
-.blueprint-corners::after {
-  bottom: 6px;
-  right: 8px;
-}
-
+.blueprint-corners::before { top: 6px; left: 8px; }
+.blueprint-corners::after  { bottom: 6px; right: 8px; }
 .dark .blueprint-corners::before,
-.dark .blueprint-corners::after {
-  color: oklch(1 0 0 / 8%);
-}
+.dark .blueprint-corners::after { color: oklch(1 0 0 / 8%); }
 
 /* ==========================================
    Keyframes
    ========================================== */
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
-
 @keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
-
 @keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(32px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes progress-bar {
-  from {
-    width: 0%;
-  }
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground; }
 }
