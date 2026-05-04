@@ -69,8 +69,7 @@ Every section must answer:
 ```css
 --bg: #0E0E10;
 --surface: #16161A;
---border: rgba(255,255,255,0.06);
-
+--border: rgba(255,255,255,0.06);   
 --text-primary: #EDEDED;
 --text-secondary: #A1A1AA;
 ```
@@ -161,7 +160,7 @@ color: var(--text-secondary);
 
 ---
 
-# 📐 Spacing System
+# 📏 Spacing System
 
 * Base unit: **8px**
 * Section padding: `py-24`
@@ -359,7 +358,7 @@ Option 2 (Recommended):
 
 ---
 
-# 🗏 Implementation Plan
+# 🏗️ Implementation Plan
 
 ## Phase 1 — Reset
 
@@ -420,3 +419,4 @@ If your design feels:
 * Template-like
 
 👉 It still looks AI-generated.
+

@@ -11,9 +11,13 @@ import {
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { User, LogOut, Settings } from "@/components/simple-icons"
 import { useAuth } from "@/contexts/auth-context"
+import { usePathname } from "next/navigation"
+import Link from "next/link"
+import { ChevronRight, User2 } from "lucide-react"
 
-export function ProfileDropdown() {
+export function ProfileDropdown({ showNavItems = false }: { showNavItems?: boolean }) {
   const { user, signOut } = useAuth()
+  const pathname = usePathname()
 
   if (!user) return null
 
@@ -23,6 +27,11 @@ export function ProfileDropdown() {
     .map((n: string) => n[0])
     .join("")
     .toUpperCase()
+
+  const isDashboard = pathname.startsWith("/dashboard")
+  const isRestrictedRole =
+    user?.role?.toLowerCase() === "superadmin" ||
+    user?.role?.toLowerCase() === "admin"
 
   const handleSignOut = async () => {
     await signOut()
@@ -37,7 +46,7 @@ export function ProfileDropdown() {
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56" align="end" forceMount>
+      <DropdownMenuContent className="w-56 bg-neutral-100 dark:bg-neutral-800" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium leading-none">{displayName}</p>
@@ -45,8 +54,38 @@ export function ProfileDropdown() {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
+
+        {/* Show nav items if requested (for mobile/compact view) */}
+        {showNavItems && !isDashboard && (
+          <>
+            {!isRestrictedRole && (
+              <>
+                <DropdownMenuItem asChild>
+                  <Link href="/demo" className="flex items-center justify-between">
+                    <span>See Demo</span>
+                    <ChevronRight className="h-4 w-4 ml-2" />
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/book" className="flex items-center justify-between">
+                    <span>Book</span>
+                    <ChevronRight className="h-4 w-4 ml-2" />
+                  </Link>
+                </DropdownMenuItem>
+              </>
+            )}
+            <DropdownMenuItem asChild>
+              <Link href="/dashboard" className="flex items-center justify-between">
+                <span>Dashboard</span>
+                <ChevronRight className="h-4 w-4 ml-2" />
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+          </>
+        )}
+
         <DropdownMenuItem>
-          <User className="mr-2 h-4 w-4" />
+          <User2 className="" />
           <span>Profile</span>
         </DropdownMenuItem>
         <DropdownMenuItem>

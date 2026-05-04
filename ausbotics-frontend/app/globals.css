@@ -7,179 +7,110 @@
    60 / 30 / 10 COLOR SYSTEM
    ─────────────────────────────────────────────────────────────
    60% — Neutral  : white (light) / near-black (dark)
-   30% — Dominant : dark navy text & dark sections (light)
-                  / off-white text & surfaces (dark)
-   10% — Accent   : navy blue (light) / lighter navy blue (dark)
+   30% — Dominant : dark navy text (light) / off-white text (dark)
+   10% — Accent   : blue (light & dark)
    ============================================================ */
 
 :root {
   --radius: 0.5rem;
 
-  /* 60% — light neutral base */
-  --bg:          oklch(0.99 0 0);          /* #FAFAFA  */
-  --bg-subtle:   oklch(0.96 0 0);          /* #F5F5F5  */
-  --bg-card:     oklch(1 0 0);             /* #FFFFFF  */
+  /* 60% — neutral base */
+  --bg:          oklch(0.99 0 0);
+  --bg-subtle:   oklch(0.96 0 0);
+  --bg-card:     oklch(1 0 0);
 
-  /* 30% — dark navy (headings, dark sections, strong text) */
-  --ink:         oklch(0.13 0.045 243);    /* #0E1829  */
-  --ink-muted:   oklch(0.40 0.04 240);     /* mid-tone secondary text */
+  /* 30% — dominant ink */
+  --ink:         oklch(0.13 0.045 243);
+  --ink-muted:   oklch(0.40 0.04 240);
 
-  /* 10% — navy blue accent */
-  --accent:      oklch(0.42 0.14 243);     /* #1B4E99 navy blue */
-  --accent-fg:   oklch(0.99 0 0);          /* white on accent */
+  /* 10% — accent */
+  --accent:      oklch(0.607 0.197 264);
+  --accent-fg:   oklch(0.99 0 0);
 
-  /* Supporting palette */
-  --sage:        oklch(0.62 0.08 155);     /* success green */
-  --terracotta:  oklch(0.55 0.14 38);      /* CTA orange-red */
-  --border:      oklch(0.91 0 0);          /* #E8E8E8 */
+  /* Borders */
+  --border:        oklch(0.91 0 0);
   --border-subtle: oklch(0.94 0 0);
 
-  /* Legacy aliases (keep for components that still reference them) */
-  --navy:          var(--ink);
-  --brand-blue:    var(--accent);
-  --steel:         var(--ink-muted);
-  --cream:         var(--bg);
-  --cream-surface: var(--bg-subtle);
-  --grid-line:     var(--border-subtle);
-
   /* === Tailwind Semantic Tokens === */
-  --background:             var(--bg);
-  --foreground:             var(--ink);
-  --card:                   var(--bg-card);
-  --card-foreground:        var(--ink);
-  --popover:                var(--bg-card);
-  --popover-foreground:     var(--ink);
-  --primary:                var(--accent);
-  --primary-foreground:     var(--accent-fg);
-  --secondary:              var(--bg-subtle);
-  --secondary-foreground:   var(--ink);
-  --muted:                  var(--bg-subtle);
-  --muted-foreground:       var(--ink-muted);
-  --accent-color:           var(--terracotta);
-  --accent-color-foreground: var(--bg);
-  --destructive:            oklch(0.577 0.245 27.325);
-  --input:                  var(--border);
-  --ring:                   var(--accent);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.600 0.118 184.704);
-  --chart-3: oklch(0.398 0.070 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar:                  var(--bg-card);
-  --sidebar-foreground:       var(--ink);
-  --sidebar-primary:          var(--accent);
-  --sidebar-primary-foreground: var(--accent-fg);
-  --sidebar-accent:           var(--bg-subtle);
-  --sidebar-accent-foreground: var(--ink);
-  --sidebar-border:           var(--border-subtle);
-  --sidebar-ring:             var(--accent);
+  --background:           var(--bg);
+  --foreground:           var(--ink);
+  --card:                 var(--bg-card);
+  --card-foreground:      var(--ink);
+  --popover:              var(--bg-card);
+  --popover-foreground:   var(--ink);
+  --primary:              var(--accent);
+  --primary-foreground:   var(--accent-fg);
+  --secondary:            var(--bg-subtle);
+  --secondary-foreground: var(--ink);
+  --muted:                var(--bg-subtle);
+  --muted-foreground:     var(--ink-muted);
+  --destructive:          oklch(0.577 0.245 27.325);
+  --input:                var(--border);
+  --ring:                 var(--accent);
 }
 
 .dark {
   /* 60% — dark neutral base */
-  --bg:          oklch(0.08 0 0);          /* #0A0A0A  */
-  --bg-subtle:   oklch(0.13 0 0);          /* #171717  */
-  --bg-card:     oklch(0.11 0 0);          /* #141414  */
+  --bg:          oklch(0.073 0 0);
+  --bg-subtle:   oklch(0.100 0 0);
+  --bg-card:     oklch(0.088 0 0);
 
-  /* 30% — off-white (text, light surfaces, opposing shade) */
-  --ink:         oklch(0.93 0 0);          /* #EDEDED  */
-  --ink-muted:   oklch(0.55 0 0);          /* medium gray */
+  /* 30% — off-white ink */
+  --ink:         oklch(0.93 0 0);
+  --ink-muted:   oklch(0.64 0 0);
 
-  /* 10% — lighter navy blue accent */
-  --accent:      oklch(0.58 0.14 243);     /* #4B80CE lighter navy blue */
+  /* 10% — accent */
+  --accent:      oklch(0.607 0.197 264);
   --accent-fg:   oklch(0.99 0 0);
 
-  /* Supporting */
-  --sage:        oklch(0.65 0.09 155);
-  --terracotta:  oklch(0.60 0.14 38);
-  --border:      oklch(1 0 0 / 8%);
+  /* Borders */
+  --border:        oklch(1 0 0 / 8%);
   --border-subtle: oklch(1 0 0 / 5%);
 
-  /* Legacy aliases */
-  --navy:          var(--ink);
-  --brand-blue:    var(--accent);
-  --steel:         var(--ink-muted);
-  --cream:         var(--bg);
-  --cream-surface: var(--bg-subtle);
-  --grid-line:     var(--border);
-
   /* === Tailwind Semantic Tokens (dark) === */
-  --background:             var(--bg);
-  --foreground:             var(--ink);
-  --card:                   var(--bg-card);
-  --card-foreground:        var(--ink);
-  --popover:                var(--bg-subtle);
-  --popover-foreground:     var(--ink);
-  --primary:                var(--accent);
-  --primary-foreground:     var(--accent-fg);
-  --secondary:              var(--bg-subtle);
-  --secondary-foreground:   var(--ink);
-  --muted:                  var(--bg-subtle);
-  --muted-foreground:       var(--ink-muted);
-  --accent-color:           var(--terracotta);
-  --accent-color-foreground: var(--bg);
-  --destructive:            oklch(0.704 0.191 22.216);
-  --input:                  var(--border);
-  --ring:                   var(--accent);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.170 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar:                  var(--bg-card);
-  --sidebar-foreground:       var(--ink);
-  --sidebar-primary:          var(--accent);
-  --sidebar-primary-foreground: var(--accent-fg);
-  --sidebar-accent:           var(--bg-subtle);
-  --sidebar-accent-foreground: var(--ink);
-  --sidebar-border:           var(--border);
-  --sidebar-ring:             var(--accent);
+  --background:           var(--bg);
+  --foreground:           var(--ink);
+  --card:                 var(--bg-card);
+  --card-foreground:      var(--ink);
+  --popover:              var(--bg-subtle);
+  --popover-foreground:   var(--ink);
+  --primary:              var(--accent);
+  --primary-foreground:   var(--accent-fg);
+  --secondary:            var(--bg-subtle);
+  --secondary-foreground: var(--ink);
+  --muted:                var(--bg-subtle);
+  --muted-foreground:     var(--ink-muted);
+  --destructive:          oklch(0.704 0.191 22.216);
+  --input:                var(--border);
+  --ring:                 var(--accent);
 }
 
 @theme inline {
-  /* Semantic tokens */
-  --color-background:             var(--background);
-  --color-foreground:             var(--foreground);
-  --color-card:                   var(--card);
-  --color-card-foreground:        var(--card-foreground);
-  --color-popover:                var(--popover);
-  --color-popover-foreground:     var(--popover-foreground);
-  --color-primary:                var(--primary);
-  --color-primary-foreground:     var(--primary-foreground);
-  --color-secondary:              var(--secondary);
-  --color-secondary-foreground:   var(--secondary-foreground);
-  --color-muted:                  var(--muted);
-  --color-muted-foreground:       var(--muted-foreground);
-  --color-accent:                 var(--accent-color);
-  --color-accent-foreground:      var(--accent-color-foreground);
-  --color-destructive:            var(--destructive);
-  --color-border:                 var(--border);
-  --color-input:                  var(--input);
-  --color-ring:                   var(--ring);
-  --color-sidebar:                var(--sidebar);
-  --color-sidebar-foreground:     var(--sidebar-foreground);
-  --color-sidebar-accent:         var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border:         var(--sidebar-border);
-  --color-sidebar-ring:           var(--sidebar-ring);
+  --color-background:           var(--background);
+  --color-foreground:           var(--foreground);
+  --color-card:                 var(--card);
+  --color-card-foreground:      var(--card-foreground);
+  --color-popover:              var(--popover);
+  --color-popover-foreground:   var(--popover-foreground);
+  --color-primary:              var(--primary);
+  --color-primary-foreground:   var(--primary-foreground);
+  --color-secondary:            var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted:                var(--muted);
+  --color-muted-foreground:     var(--muted-foreground);
+  --color-destructive:          var(--destructive);
+  --color-border:               var(--border);
+  --color-input:                var(--input);
+  --color-ring:                 var(--ring);
 
-  /* Named palette — available as bg-ink, text-accent, bg-sage etc. */
-  --color-ink:          var(--ink);
-  --color-ink-muted:    var(--ink-muted);
-  --color-accent-blue:  var(--accent);
-  --color-sage:         var(--sage);
-  --color-terracotta:   var(--terracotta);
+  /* Named palette */
+  --color-ink:       var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-accent:    var(--accent);
 
-  /* Legacy aliases for components referencing old names */
-  --color-navy:         var(--ink);
-  --color-brand-blue:   var(--accent);
-  --color-steel:        var(--ink-muted);
-  --color-cream:        var(--bg);
-  --color-cream-surface: var(--bg-subtle);
-
-  --font-sans:   var(--font-arimo);
-  --font-serif:  var(--font-serif);
-  --font-mono:   var(--font-mono);
+  --font-sans:  var(--font-arimo);
+  --font-serif: var(--font-serif);
+  --font-mono:  var(--font-mono);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -193,42 +124,20 @@
   --shadow-xl: var(--shadow-xl);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   letter-spacing: var(--tracking-normal);
 }
 
-/* ==========================================
-   Dot-grid background utility
-   ========================================== */
-/* .bg-grid-dots {
-  background-image: radial-gradient(circle, oklch(0.13 0.045 243 / 10%) 1px, transparent 1px);
-  background-size: 28px 28px;
-} */
-/* 
-.dark .bg-grid-dots {
-  background-image: radial-gradient(circle, oklch(1 0 0 / 5%) 1px, transparent 1px);
-} */
-
-/* Keep old class name working */
-/* .bg-grid-blueprint { }
-.bg-grid-blueprint { @apply bg-grid-dots; } */
-
-/* Blueprint card corner markers */
-.blueprint-corners { position: relative; }
-.blueprint-corners::before,
-.blueprint-corners::after {
-  content: '+';
-  position: absolute;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1;
-  color: oklch(0.13 0.045 243 / 18%);
-  pointer-events: none;
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
-.blueprint-corners::before { top: 6px; left: 8px; }
-.blueprint-corners::after  { bottom: 6px; right: 8px; }
-.dark .blueprint-corners::before,
-.dark .blueprint-corners::after { color: oklch(1 0 0 / 8%); }
 
 /* ==========================================
    Keyframes

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
-    "dev": "nodemon --watch src --ext ts --exec ts-node --transpile-only src/server.ts"
+    "dev": "nodemon --watch src --ext ts --exec ts-node --transpile-only --no-warnings src/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -36,3 +36,4 @@
     "typescript": "^5.9.2"
   }
 }
+

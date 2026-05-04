@@ -13,7 +13,6 @@ const features = [
     title: "From Idea to Impact",
     description:
       "Share your business problem. We transform it into a tailored AI automation designed, built, and ready to deliver real results.",
-    accent: "bg-ink",          // 30% dark section card
   },
   {
     num: "02",
@@ -21,7 +20,6 @@ const features = [
     title: "Your Workflow, Your Way",
     description:
       "Every solution is crafted to match your exact work processes — no cookie-cutter templates, no bloated tools.",
-    accent: "bg-primary",      // 10% accent card
   },
   {
     num: "03",
@@ -29,7 +27,6 @@ const features = [
     title: "Built for Every Business",
     description:
       "No matter your size, our automations are designed to grow with you — from early-stage to enterprise.",
-    accent: "bg-ink",
   },
   {
     num: "04",
@@ -37,7 +34,6 @@ const features = [
     title: "Custom Voice Options",
     description:
       "Choose from professional voice options that perfectly match your brand identity and communication style.",
-    accent: "bg-primary",
   },
 ]
 
@@ -74,25 +70,25 @@ export function FeaturesPreview() {
 
         {/* Feature cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {features.map(({ num, Icon, title, description, accent }) => (
+          {features.map(({ num, Icon, title, description }) => (
             <div
               key={num}
               data-animate
-              className={`relative rounded-2xl p-7 overflow-hidden group cursor-default transition-transform duration-300 hover:-translate-y-1 ${accent}`}
+              className="relative rounded-2xl p-7 overflow-hidden group cursor-default transition-all duration-300 hover:-translate-y-1 bg-white/5 border border-white/10 backdrop-blur-md dark:bg-white/[0.03] dark:border-white/[0.08]"
             >
               {/* Faded number watermark */}
-              <span className="absolute -bottom-3 -right-1 text-[5.5rem] font-black text-white/8 leading-none select-none pointer-events-none">
+              <span className="absolute -bottom-3 -right-1 text-[5.5rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">
                 {num}
               </span>
 
               {/* Icon */}
-              <div className="relative z-10 w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center mb-6">
-                <Icon size="22" color="white" />
+              <div className="relative z-10 w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6">
+                <Icon size="22" className="text-primary" />
               </div>
 
               {/* Text */}
-              <h3 className="relative z-10 text-[15px] font-bold text-white mb-2.5">{title}</h3>
-              <p className="relative z-10 text-[13px] text-white/65 leading-relaxed">{description}</p>
+              <h3 className="relative z-10 text-[15px] font-bold text-foreground mb-2.5">{title}</h3>
+              <p className="relative z-10 text-[13px] text-muted-foreground leading-relaxed">{description}</p>
             </div>
           ))}
         </div>
