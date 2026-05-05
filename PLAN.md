@@ -1,422 +1,146 @@
-Here is your **fully updated, structured, clean Markdown plan** — rewritten to enforce **non-AI design quality, proper UX flow, and a premium look**.
+# Hero Section Redesign: Maximalist Trust & Authority
+
+## Context
+The current hero section is functional but understated — a simple centered column with basic GSAP fade-up, minimal background, and a plain checkmark social-proof list. The goal is to elevate it to a maximalist B2B landing-page tier (think Intercom, Clay, Retool) with layered visual depth, a floating product preview panel, richer typography, and trust-forward metrics — for both light and dark mode.
 
 ---
 
-# 🚀 AusBotics Website — Premium Human-Crafted Redesign Plan (Final)
+## Files to Modify
 
-## 📌 Context
-
-The current website suffers from:
-
-* AI-generated feel (random sections, no flow)
-* Weak visual hierarchy
-* Poor CTA clarity
-* Overuse of effects without purpose
-* Lack of brand identity
+1. `ausbotics-frontend/components/hero-section.tsx` — Full rewrite (primary)
+2. `ausbotics-frontend/app/layout.tsx` — Add `${dmSans.variable}` to `<html>` className (1-line fix so DM Sans works)
+3. `ausbotics-frontend/app/globals.css` — Add `@keyframes hero-blob-drift` + `.hero-aurora-animated` class
 
 ---
 
-## 🎯 Objective
+## Implementation Plan
 
-Design a **premium, human-crafted landing page** that is:
-
-* Intentional and structured
-* Visually calm and polished
-* Conversion-focused (strong CTA)
-* Consistent across all pages
-* Based on **60–30–10 color system**
-
----
-
-# 🧠 Core Design Philosophy
-
-## 1. Intentional > Decorative
-
-Every section must answer:
-
-> Why does this exist?
-
----
-
-## 2. Simplicity Wins
-
-* Fewer elements → stronger impact
-* Avoid visual noise
-* Prioritize clarity over creativity
-
----
-
-## 3. Consistency = Quality
-
-* Same spacing system
-* Same card styles
-* Same interaction patterns
-
----
-
-## 4. Subtle > Flashy
-
-* Smooth animations
-* Soft glass effects
-* No aggressive motion
-
----
-
-# 🎨 Color System (STRICT 60–30–10 RULE)
-
-## 🔹 60% — Neutral (Foundation)
-
-```css
---bg: #0E0E10;
---surface: #16161A;
---border: rgba(255,255,255,0.06);
-
---text-primary: #EDEDED;
---text-secondary: #A1A1AA;
+### 1. layout.tsx fix (prerequisite)
+Add `${dmSans.variable}` to `<html>`:
+```tsx
+// Before
+<html suppressHydrationWarning lang="en" className={`${arimo.variable}`}>
+// After
+<html suppressHydrationWarning lang="en" className={`${arimo.variable} ${dmSans.variable}`}>
 ```
 
-Usage:
-
-* Background
-* Base UI
-* Typography
-
----
-
-## 🔹 30% — Contrast Layer
-
+### 2. globals.css additions
 ```css
---surface-soft: rgba(255,255,255,0.03);
---surface-elevated: rgba(255,255,255,0.05);
+@keyframes hero-blob-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(28px, -18px) scale(1.04); }
+  66%       { transform: translate(-16px, 14px) scale(0.97); }
+}
+.hero-aurora-animated {
+  animation: hero-blob-drift 20s ease-in-out infinite;
+}
 ```
 
-Usage:
+### 3. hero-section.tsx — Full Rewrite
 
-* Cards
-* Sections
-* Depth
+#### Layout Change: Two-Column Grid
+Switch from `max-w-4xl` centered text to a `max-w-7xl` two-column grid:
+- Left column: all copy (eyebrow → heading → subtext → CTAs → metrics)
+- Right column: floating dashboard panel (hidden below `lg:`)
+- Mobile: single stacked column, centered
 
----
-
-## 🔹 10% — Accent (Blue ONLY)
-
-```css
---accent: #3B82F6;
---accent-hover: #2563EB;
---accent-glow: rgba(59,130,246,0.15);
+```
+grid lg:grid-cols-[1fr_420px] xl:grid-cols-[1fr_460px] gap-12 lg:gap-16 items-center
 ```
 
-Usage:
+#### Background System (5 Layers, all `absolute inset-0 pointer-events-none`)
+- **Layer 2a/2b**: Dark/light aurora — 4 radial gradients, stronger in dark (38% opacity) vs light (10%)
+  - Dark: `oklch(0.42 0.20 242 / 0.38)` top-center blob + 3 edge blobs
+  - Light: `oklch(0.72 0.12 240 / 0.10)` subtle tints only
+  - Add `.hero-aurora-animated` class for 20s drift on primary blob
+- **Layer 3**: Dot grid — 24px spacing, mode-aware opacity via CSS variable
+- **Layer 4a/4b**: Diagonal SVG line texture — `opacity-0.03` on light, `opacity-0.025` on dark (separate divs via `dark:hidden`/`hidden dark:block`)
+- **Layer 5**: Edge vignette (`radial-gradient` from edges, ~15% opacity) + corner L-bracket accents (`border-t border-l/r border-blue-500/15`, `w-16 h-16`, positioned at all 4 corners)
 
-* Buttons
-* Links
-* Highlights
-* CTA
+#### Typography
+- **Eyebrow badge**: Same pill style but with dual box-shadow ring: `ring-1 ring-blue-500/20 shadow-[0_0_0_3px_oklch(0.55_0.20_242_/_0.08)]`
+- **Heading**: 
+  - Font: `font-[family-name:var(--font-dm-sans)]` (requires layout fix above)
+  - Size: `clamp(3rem,6.5vw,5.8rem)` (up from 2.8rem)
+  - Split into 3 `<span data-hero="h1-line-N">` blocks for per-line GSAP timing
+  - Gradient line 3: `from-blue-500 via-blue-600 to-indigo-600` light / `from-blue-300 via-blue-400 to-indigo-400` dark
+- **Subtext**: `max-w-lg` (left-aligned on lg+)
 
-🚫 Avoid adding random accent colors
+#### CTAs
+- Primary button: add `<svg>` sparkle star icon, stronger outer glow (`shadow-[0_8px_32px_rgba(59,130,246,0.45)]`), hover glow via `absolute -inset-1 rounded-2xl bg-blue-500/20 blur-md opacity-0 group-hover/btn:opacity-100`
+- Add micro-text below: `"No credit card required · Live in 72 hours"` at `text-[11px] text-muted-foreground`
 
----
+#### Social Proof: Avatar Stack + Metric Cards
+Replace plain checkmarks with:
+1. **Avatar stack row** (`data-hero="avatars"`): 4 colored avatar circles with initials + "+8" overflow, inline star SVGs, "40+ businesses trust AusBotics" text
+2. **3-column metric cards** (`data-hero="metric-card"` on each):
+   - `"2,400+"` / Conversations Handled
+   - `"98%"` / Lead Capture Rate  
+   - `"72 hrs"` / Avg. Time to Live
+   - Each card: `bg-neutral-50 dark:bg-neutral-900/80`, `border border-neutral-200 dark:border-neutral-800`, top-`h-px` blue gradient line always-on + `h-[2px]` accent on hover, `hover:-translate-y-1 transition-all duration-300`
 
-# 🧊 Design Language
+#### Floating Dashboard Panel (Right Column)
+A `rounded-2xl` card with heavy box-shadow (`shadow-[0_24px_80px_rgba(0,0,0,0.12)]` light / `rgba(0,0,0,0.60)` dark):
+- **Header bar**: green live dot + "Live Agent Status" label + static time "Today · 9:42 AM"
+- **Stats row** (3-col divide): 24 Active Today / 98% Answer Rate / 3.2m Avg Duration
+- **Activity feed**: 3 mock entries (name, note, relative time) with green/blue icon chips
+- **Progress footer**: "Booking Rate" label + "89% this week" + animated progress bar
 
-## Glassmorphism (Subtle)
+All data is **static strings** (no `new Date()`) for SSR safety.
 
-```css
-background: rgba(255,255,255,0.05);
-backdrop-filter: blur(12px);
-border: 1px solid rgba(255,255,255,0.1);
-```
+#### GSAP Animation Timeline (7 Phases)
+Single `gsap.timeline()` replacing the current `gsap.fromTo`:
 
-Rules:
+| Phase | Target | Start (s) | Duration |
+|-------|--------|-----------|----------|
+| 0 | `gsap.set` initial states (opacity 0, y 32) | — | — |
+| 1 | `.hero-aurora` scale + fade in | 0.0 | 0.9s |
+| 1b | `.hero-corner-accent` fade in stagger | 0.1 | 0.6s |
+| 2 | `[data-hero="eyebrow"]` | 0.3 | 0.6s `back.out(1.5)` |
+| 3 | `[data-hero="h1-line-1/2/3"]` stagger | 0.50/0.65/0.80 | 0.65s each |
+| 4 | `[data-hero="subtext"]` | 0.9 | 0.55s |
+| 5 | `[data-hero="ctas"]` | 1.05 | 0.5s `back.out(1.2)` |
+| 5b | `[data-hero="micro-text"]` | 1.15 | 0.4s |
+| 6 | `[data-hero="avatars"]` | 1.20 | 0.5s |
+| 6b | `[data-hero="metric-card"]` stagger | 1.28 | 0.5s `back.out(1.3)` |
+| 7 | `[data-hero-visual]` (panel) | 0.60 | 0.85s `power4.out` |
 
-* No heavy glow
-* No strong gradients
-* Keep it soft
-
----
-
-## Typography System
-
-### Headings
-
-```css
-font-weight: 700–800;
-letter-spacing: -0.02em;
-```
-
-Sizes:
-
-* Hero: `clamp(3rem, 6vw, 5rem)`
-* Section: `2rem – 2.5rem`
-
----
-
-### Body Text
-
-```css
-font-size: 1rem – 1.125rem;
-line-height: 1.6;
-color: var(--text-secondary);
-```
-
----
-
-# 📐 Spacing System
-
-* Base unit: **8px**
-* Section padding: `py-24`
-* Container: `max-w-7xl mx-auto px-6`
-* Gaps: 16 / 24 / 32
-
----
-
-# ❌ What AI-Generated Design Looks Like (Avoid)
-
-## 1. Random Section Order
-
-* No narrative flow
-* Sections feel disconnected
+Post-entrance continuous animations:
+- Dashboard panel: `gsap.to` float `-8px` yoyo, 3.5s sine.inOut, repeat -1, delay 2.2s
+- Live dot: scale pulse 1→1.15, 1.2s sine.inOut, repeat -1 yoyo
 
 ---
 
-## 2. Color Chaos
+## Light vs Dark Mode Summary
 
-* Multiple accent colors
-* No hierarchy
-
----
-
-## 3. Overuse of Gradients
-
-* Everything glowing
-* Distracting UI
-
----
-
-## 4. Weak CTA
-
-* Too many buttons
-* No focus
+| Element | Light | Dark |
+|---|---|---|
+| Section bg | `bg-background` (white) | `bg-[oklch(0.10_0_0)]` |
+| Aurora | 10% opacity cool tints | 38% saturated blue-indigo |
+| Diagonal lines | `stroke-black opacity-3%` | `stroke-white opacity-2.5%` |
+| Metric cards | `bg-neutral-50 border-neutral-200` | `bg-neutral-900/80 border-neutral-800` |
+| Dashboard | `bg-white` + light borders | `bg-neutral-900` + dark borders |
+| Gradient heading | `blue-500 → indigo-600` | `blue-300 → indigo-400` |
+| Button glow | `rgba(59,130,246,0.35)` | `rgba(59,130,246,0.55)` |
+| Corner accents | `border-blue-500/10` | `border-blue-500/20` |
+| Bottom fade | `from-background` | `from-[oklch(0.10_0_0)]` |
 
 ---
 
-## 5. Inconsistent UI
-
-* Different card styles
-* Different paddings
-* No system
-
----
-
-## 6. Over-animation
-
-* Bouncing elements
-* Distracting motion
+## Design Patterns to Reuse from Codebase
+- `[data-hero]` GSAP context scoped to `sectionRef` — preserved, extended with value variants
+- Card hover pattern: `hover:-translate-y-1 hover:shadow-[...] transition-all duration-200` from `services-section.tsx`
+- 3D button technique (translate-y base div + face div) — preserved, enhanced with outer glow
+- `hidden dark:block` / `dark:hidden` for mode-specific elements — used for aurora and diagonal layers
+- `iconsax-reactjs` TickCircle (Bold variant) for activity feed icons
 
 ---
 
-# ✅ Correct Page Structure (MANDATORY FLOW)
-
-## 1. Hero Section
-
-Purpose: Capture attention instantly
-
-Includes:
-
-* Strong headline
-* Short subtext
-* 1–2 CTAs
-
----
-
-## 2. Trust / Proof
-
-* Metrics OR logos
-* Clean horizontal strip
-
----
-
-## 3. Features (3–4 max)
-
-* Clear and focused
-* Each solves one problem
-
----
-
-## 4. How It Works
-
-* 3 steps maximum
-* Simple layout
-
----
-
-## 5. Benefits / Outcomes
-
-* Why user should care
-* Result-focused
-
----
-
-## 6. Final CTA (CRITICAL)
-
-* Large
-* Centered
-* High contrast
-
----
-
-# 🧱 Component System
-
-## Cards
-
-```css
-bg-white/5
-border border-white/10
-backdrop-blur-md
-rounded-2xl
-```
-
----
-
-## Buttons
-
-### Primary
-
-```css
-background: var(--accent);
-color: white;
-```
-
-Hover:
-
-```css
-background: var(--accent-hover);
-transform: scale(1.03);
-```
-
----
-
-### Secondary
-
-```css
-border: 1px solid rgba(255,255,255,0.2);
-background: transparent;
-```
-
----
-
-## Navbar
-
-* Transparent initially
-* Blur + background on scroll
-* Sticky
-
----
-
-# ⚡ Motion System (Subtle Only)
-
-Allowed:
-
-* Fade in
-* Slight upward movement
-
-```css
-opacity: 0 → 1
-transform: translateY(20px → 0)
-duration: 0.3–0.5s
-```
-
----
-
-Avoid:
-
-* Rotation
-* Bounce
-* Complex timelines
-
----
-
-# 🌊 Smooth Scrolling
-
-Option 1:
-
-```css
-scroll-behavior: smooth;
-```
-
-Option 2 (Recommended):
-
-* Lenis smooth scroll
-
----
-
-# 🧠 UX Rules
-
-* One primary CTA repeated
-* Clear visual hierarchy
-* Easy to scan
-* No clutter
-
----
-
-# 🗏 Implementation Plan
-
-## Phase 1 — Reset
-
-* Remove unnecessary styles
-* Normalize spacing
-* Fix typography
-
----
-
-## Phase 2 — Layout
-
-* Rebuild sections in correct order
-* Apply consistent containers
-
----
-
-## Phase 3 — Components
-
-* Standardize:
-
-  * Buttons
-  * Cards
-  * Navbar
-
----
-
-## Phase 4 — Motion
-
-* Add subtle animations only
-
----
-
-## Phase 5 — Polish
-
-* Align spacing
-* Improve contrast
-* Strengthen CTA visibility
-
----
-
-# 🔥 Final Benchmark
-
-Your site should feel like:
-
-* Linear
-* Stripe
-* Vercel
-
----
-
-# 🚨 Final Reality Check
-
-If your design feels:
-
-* Messy
-* Overdone
-* Confusing
-* Template-like
-
-👉 It still looks AI-generated.
+## Verification
+1. Run `npm run dev` in `ausbotics-frontend`
+2. Visit `http://localhost:3000` — check hero renders with two columns at ≥1024px, single column below
+3. Toggle dark mode — verify distinct aurora treatment and card backgrounds
+4. Watch entrance animation — should be 7-phase sequence, ~2.2s total, dashboard floats in from right
+5. Hover metric cards — verify lift + top accent line reveal
+6. Hover primary CTA — verify outer glow appears
+7. Run `npx tsc --noEmit` from `ausbotics-frontend` — no type errors
