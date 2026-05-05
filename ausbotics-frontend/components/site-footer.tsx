@@ -17,7 +17,7 @@ const services = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-neutral-200 dark:border-neutral-800 bg-background dark:bg-neutral-900">
+    <footer className="border-t border-neutral-200 dark:border-neutral-800 bg-background dark:bg-neutral-950">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 

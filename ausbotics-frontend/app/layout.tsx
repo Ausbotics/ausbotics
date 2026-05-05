@@ -1,24 +1,16 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { DM_Sans, Arimo } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/auth-context";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navigation } from "@/components/navigation";
 import { Toaster } from "sonner";
 
-
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-dm-sans",
-  display: "swap",
-});
-
-const arimo = Arimo({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-arimo",
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -35,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning lang="en" className={`${arimo.variable} ${dmSans.variable}`}>
+    <html suppressHydrationWarning lang="en" className={inter.variable}>
       <body className="font-sans antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <AuthProvider>

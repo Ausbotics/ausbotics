@@ -44,7 +44,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-neutral-900 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-neutral-950 px-4">
       <div className="w-full max-w-md space-y-8">
         <div className="flex items-center justify-center space-x-2">
           <div className="bg-primary rounded-lg p-2">
@@ -85,7 +85,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:ring-2 focus:ring-primary/30 focus:border-primary/40 shadow-inner shadow-neutral-200/60 dark:shadow-neutral-900/40"
+                  className="bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:ring-2 focus:ring-primary/30 focus:border-primary/40 shadow-inner shadow-neutral-200/60 dark:shadow-neutral-900/40"
                 />
               </div>
 
@@ -103,7 +103,7 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:ring-2 focus:ring-primary/30 focus:border-primary/40 shadow-inner shadow-neutral-200/60 dark:shadow-neutral-900/40"
+                  className="bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:ring-2 focus:ring-primary/30 focus:border-primary/40 shadow-inner shadow-neutral-200/60 dark:shadow-neutral-900/40"
                 />
               </div>
 

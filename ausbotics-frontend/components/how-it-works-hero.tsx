@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function HowItWorksHero() {
   return (
-    <section className="py-20 lg:py-32 bg-neutral-50 dark:bg-neutral-900 transition-colors duration-300">
+    <section className="py-20 lg:py-32 bg-neutral-50 dark:bg-neutral-950 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight text-neutral-900 dark:text-neutral-100">

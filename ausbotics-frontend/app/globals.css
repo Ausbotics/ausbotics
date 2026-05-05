@@ -23,8 +23,8 @@
   --ink:         oklch(0.13 0.045 243);
   --ink-muted:   oklch(0.40 0.04 240);
 
-  /* 10% — accent */
-  --accent:      oklch(0.607 0.197 264);
+  /* 10% — accent (blue) */
+  --accent:      oklch(0.55 0.20 242);
   --accent-fg:   oklch(0.99 0 0);
 
   /* Borders */
@@ -59,8 +59,8 @@
   --ink:         oklch(0.93 0 0);
   --ink-muted:   oklch(0.64 0 0);
 
-  /* 10% — accent */
-  --accent:      oklch(0.607 0.197 264);
+  /* 10% — accent (blue) */
+  --accent:      oklch(0.65 0.20 242);
   --accent-fg:   oklch(0.99 0 0);
 
   /* Borders */
@@ -108,7 +108,7 @@
   --color-ink-muted: var(--ink-muted);
   --color-accent:    var(--accent);
 
-  --font-sans:  var(--font-arimo);
+  --font-sans:  var(--font-inter);
   --font-serif: var(--font-serif);
   --font-mono:  var(--font-mono);
 

@@ -70,7 +70,7 @@ export function ProblemSolution() {
   ];
 
   return (
-    <section className="py-20 bg-neutral-50 dark:bg-neutral-900 transition-colors duration-300">
+    <section className="py-20 bg-neutral-50 dark:bg-neutral-950 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
         {/* Problem Section */}
         <div className="text-center mb-16">

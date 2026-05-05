@@ -148,7 +148,7 @@ export function CreateWorkflowDialog({
       <DialogContent
         className="
         max-w-md w-full 
-        bg-white dark:bg-neutral-900 
+        bg-white dark:bg-neutral-950 
         text-neutral-900 dark:text-neutral-100 
         p-6 rounded-lg shadow-lg shadow-black/20 
         overflow-y-auto

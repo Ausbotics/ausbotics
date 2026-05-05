@@ -2,11 +2,13 @@
 
 import { useEffect, useRef } from "react"
 import { animateSection } from "@/lib/gsap-utils"
+import { GlareHover } from "@/components/ui/glare-hover"
+import Image from "next/image"
 import Link from "next/link"
 
 const articles = [
   {
-    accent: "bg-blue-500/10 dark:bg-blue-500/15",
+    image: "https://placehold.co/600x240/1e293b/3b82f6?text=AI+for+Trade",
     date: "May 2026",
     title: "AI Automation for Trade Businesses in Australia",
     excerpt:
@@ -14,7 +16,7 @@ const articles = [
     href: "/features",
   },
   {
-    accent: "bg-primary/10 dark:bg-primary/15",
+    image: "https://placehold.co/600x240/1e293b/6366f1?text=No-Show+Reduction",
     date: "Apr 2026",
     title: "How AI Calling Agents Reduce No-Shows by 60%",
     excerpt:
@@ -22,7 +24,7 @@ const articles = [
     href: "/features",
   },
   {
-    accent: "bg-blue-400/10 dark:bg-blue-400/15",
+    image: "https://placehold.co/600x240/1e293b/06b6d4?text=24%2F7+Business",
     date: "Apr 2026",
     title: "Building a 24/7 Business with Automation",
     excerpt:
@@ -39,13 +41,13 @@ export function InsightsSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-24 bg-background dark:bg-neutral-900 overflow-hidden">
+    <section ref={sectionRef} className="relative py-24 bg-neutral-950 overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-px bg-border" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
 
         <div data-animate className="mb-14">
-          <p className="text-primary text-[11px] font-semibold uppercase tracking-[0.25em] mb-3">
+          <p className="text-primary text-[11px] font-semibold tracking-[0.25em] mb-3">
             Latest Insights
           </p>
           <h2 className="text-[clamp(1.9rem,4vw,3rem)] font-extrabold text-foreground leading-tight">
@@ -54,37 +56,50 @@ export function InsightsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {articles.map(({ accent, date, title, excerpt, href }) => (
-            <article
+          {articles.map(({ image, date, title, excerpt, href }) => (
+            <GlareHover
               key={title}
-              data-animate
-              className="group rounded-2xl overflow-hidden
-                bg-neutral-100/80 dark:bg-neutral-800/80 backdrop-blur-sm
-                border border-neutral-200 dark:border-neutral-700
-                shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_1px_2px_rgba(15,23,42,0.04),0_4px_16px_-4px_rgba(15,23,42,0.06)]
-                dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_1px_2px_rgba(0,0,0,0.4),0_8px_24px_-8px_rgba(0,0,0,0.5)]
-                hover:-translate-y-1 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.65),0_12px_28px_-8px_rgba(15,23,42,0.12)]
-                dark:hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_36px_-10px_rgba(0,0,0,0.6)]
-                transition-all duration-300 ease-out"
+              glareColor="rgba(255,255,255,0.18)"
+              glareSize={260}
+              className="rounded-2xl"
             >
-              <div className={`${accent} h-40 w-full`} />
+              <article
+                data-animate
+                className="group rounded-2xl overflow-hidden
+                  bg-neutral-100/80 dark:bg-neutral-800/80 backdrop-blur-sm
+                  border border-neutral-200 dark:border-neutral-700
+                  shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_1px_2px_rgba(15,23,42,0.04),0_4px_16px_-4px_rgba(15,23,42,0.06)]
+                  dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_1px_2px_rgba(0,0,0,0.4),0_8px_24px_-8px_rgba(0,0,0,0.5)]
+                  hover:-translate-y-1 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.65),0_12px_28px_-8px_rgba(15,23,42,0.12)]
+                  dark:hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_36px_-10px_rgba(0,0,0,0.6)]
+                  transition-all duration-300 ease-out"
+              >
+                <div className="relative h-44 w-full overflow-hidden">
+                  <Image
+                    src={image}
+                    alt={title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
 
-              <div className="p-6">
-                <span className="text-[11px] font-semibold text-primary uppercase tracking-wider">
-                  {date}
-                </span>
-                <h3 className="text-[14px] font-bold text-foreground mt-2 mb-2 leading-snug">
-                  {title}
-                </h3>
-                <p className="text-[13px] text-muted-foreground leading-relaxed mb-4">{excerpt}</p>
-                <Link
-                  href={href}
-                  className="text-[13px] font-semibold text-primary hover:underline underline-offset-2"
-                >
-                  Read More →
-                </Link>
-              </div>
-            </article>
+                <div className="p-6">
+                  <span className="text-[11px] font-semibold text-primary tracking-wider">
+                    {date}
+                  </span>
+                  <h3 className="text-[14px] font-bold text-foreground mt-2 mb-2 leading-snug">
+                    {title}
+                  </h3>
+                  <p className="text-[13px] text-muted-foreground leading-relaxed mb-4">{excerpt}</p>
+                  <Link
+                    href={href}
+                    className="text-[13px] font-semibold text-primary hover:underline underline-offset-2"
+                  >
+                    Read More →
+                  </Link>
+                </div>
+              </article>
+            </GlareHover>
           ))}
         </div>
 

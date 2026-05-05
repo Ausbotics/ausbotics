@@ -77,7 +77,7 @@ Replace plain checkmarks with:
    - `"2,400+"` / Conversations Handled
    - `"98%"` / Lead Capture Rate  
    - `"72 hrs"` / Avg. Time to Live
-   - Each card: `bg-neutral-50 dark:bg-neutral-900/80`, `border border-neutral-200 dark:border-neutral-800`, top-`h-px` blue gradient line always-on + `h-[2px]` accent on hover, `hover:-translate-y-1 transition-all duration-300`
+   - Each card: `bg-neutral-50 dark:bg-neutral-950/80`, `border border-neutral-200 dark:border-neutral-800`, top-`h-px` blue gradient line always-on + `h-[2px]` accent on hover, `hover:-translate-y-1 transition-all duration-300`
 
 #### Floating Dashboard Panel (Right Column)
 A `rounded-2xl` card with heavy box-shadow (`shadow-[0_24px_80px_rgba(0,0,0,0.12)]` light / `rgba(0,0,0,0.60)` dark):
@@ -118,8 +118,8 @@ Post-entrance continuous animations:
 | Section bg | `bg-background` (white) | `bg-[oklch(0.10_0_0)]` |
 | Aurora | 10% opacity cool tints | 38% saturated blue-indigo |
 | Diagonal lines | `stroke-black opacity-3%` | `stroke-white opacity-2.5%` |
-| Metric cards | `bg-neutral-50 border-neutral-200` | `bg-neutral-900/80 border-neutral-800` |
-| Dashboard | `bg-white` + light borders | `bg-neutral-900` + dark borders |
+| Metric cards | `bg-neutral-50 border-neutral-200` | `bg-neutral-950/80 border-neutral-800` |
+| Dashboard | `bg-white` + light borders | `bg-neutral-950` + dark borders |
 | Gradient heading | `blue-500 → indigo-600` | `blue-300 → indigo-400` |
 | Button glow | `rgba(59,130,246,0.35)` | `rgba(59,130,246,0.55)` |
 | Corner accents | `border-blue-500/10` | `border-blue-500/20` |

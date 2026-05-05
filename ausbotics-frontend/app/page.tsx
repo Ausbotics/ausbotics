@@ -2,7 +2,6 @@
 
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/hero-section"
-import { PartnersStrip } from "@/components/partners-strip"
 import { AboutStats } from "@/components/about-stats"
 import { ServicesSection } from "@/components/services-section"
 import { WhyChoose } from "@/components/why-choose"
@@ -18,7 +17,7 @@ export default function HomePage() {
     <main className="min-h-screen">
       <Navigation />
       <HeroSection />
-      <PartnersStrip />
+      
       <AboutStats />
       <ServicesSection />
       <WhyChoose />

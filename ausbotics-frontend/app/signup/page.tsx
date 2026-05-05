@@ -66,7 +66,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-neutral-900 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-neutral-950 px-4">
       <div className="w-full max-w-md space-y-8">
         {/* Logo */}
         <div className="flex items-center justify-center space-x-2">
@@ -108,7 +108,7 @@ export default function SignupPage() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
-                  className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:ring-2 focus:ring-primary/30 focus:border-primary/40 shadow-inner shadow-neutral-200/60 dark:shadow-neutral-900/40 transition-all duration-200"
+                  className="bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:ring-2 focus:ring-primary/30 focus:border-primary/40 shadow-inner shadow-neutral-200/60 dark:shadow-neutral-900/40 transition-all duration-200"
                 />
               </div>
 
@@ -126,7 +126,7 @@ export default function SignupPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:ring-2 focus:ring-primary/30 focus:border-primary/40 shadow-inner shadow-neutral-200/60 dark:shadow-neutral-900/40 transition-all duration-200"
+                  className="bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:ring-2 focus:ring-primary/30 focus:border-primary/40 shadow-inner shadow-neutral-200/60 dark:shadow-neutral-900/40 transition-all duration-200"
                 />
               </div>
 
@@ -144,7 +144,7 @@ export default function SignupPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:ring-2 focus:ring-primary/30 focus:border-primary/40 shadow-inner shadow-neutral-200/60 dark:shadow-neutral-900/40 transition-all duration-200"
+                  className="bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:ring-2 focus:ring-primary/30 focus:border-primary/40 shadow-inner shadow-neutral-200/60 dark:shadow-neutral-900/40 transition-all duration-200"
                 />
               </div>
 

@@ -15,7 +15,7 @@ export function CtaSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 overflow-hidden bg-neutral-900 dark:bg-neutral-900"
+      className="relative py-24 overflow-hidden bg-neutral-950 dark:bg-neutral-950"
     >
       {/* Subtle blue glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-blue-600/[0.10] blur-[100px] pointer-events-none" />
@@ -31,7 +31,7 @@ export function CtaSection() {
       />
 
       <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
-        <p data-animate className="text-blue-400 text-[11px] font-semibold uppercase tracking-[0.25em] mb-4">
+        <p data-animate className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] mb-4">
           Get Started
         </p>
 

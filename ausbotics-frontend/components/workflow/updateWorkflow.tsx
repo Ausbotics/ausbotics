@@ -99,7 +99,7 @@ export function EditWorkflowDialog({
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="max-w-lg w-full bg-neutral-900 sm:rounded-2xl p-6">
+      <DialogContent className="max-w-lg w-full bg-neutral-950 sm:rounded-2xl p-6">
         <DialogHeader>
           <DialogTitle className="text-lg sm:text-xl font-semibold">
             ✨ Edit Workflow

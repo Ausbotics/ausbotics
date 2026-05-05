@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 import { Flash, ShieldTick, Global, Headphone } from "iconsax-reactjs"
 import { Button } from "@/components/ui/button"
 import { gsap, animateSection } from "@/lib/gsap-utils"
+import { GlareHover } from "@/components/ui/glare-hover"
 import Link from "next/link"
 
 const features = [
@@ -47,16 +48,14 @@ export function FeaturesPreview() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-background relative overflow-hidden">
-      {/* Faint section divider */}
+    <section ref={sectionRef} className="py-24 bg-neutral-50 dark:bg-neutral-950 relative overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-px bg-border" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
 
-        {/* Section header */}
         <div data-animate className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
           <div>
-            <p className="text-primary text-[11px] font-semibold uppercase tracking-[0.25em] mb-3">
+            <p className="text-primary text-[11px] font-semibold tracking-[0.25em] mb-3">
               What We Build
             </p>
             <h2 className="text-[clamp(1.9rem,4vw,3rem)] font-extrabold text-foreground leading-tight">
@@ -68,28 +67,38 @@ export function FeaturesPreview() {
           </Button>
         </div>
 
-        {/* Feature cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {features.map(({ num, Icon, title, description }) => (
-            <div
+            <GlareHover
               key={num}
-              data-animate
-              className="relative rounded-2xl p-7 overflow-hidden group cursor-default transition-all duration-300 hover:-translate-y-1 bg-white/5 border border-white/10 backdrop-blur-md dark:bg-white/[0.03] dark:border-white/[0.08]"
+              glareColor="rgba(255,255,255,0.20)"
+              glareSize={240}
+              className="rounded-2xl"
             >
-              {/* Faded number watermark */}
-              <span className="absolute -bottom-3 -right-1 text-[5.5rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">
-                {num}
-              </span>
+              <div
+                data-animate
+                className="relative rounded-2xl p-7 overflow-hidden group cursor-default
+                  bg-white dark:bg-neutral-800
+                  border border-neutral-200 dark:border-neutral-700
+                  shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_1px_2px_rgba(15,23,42,0.04),0_4px_16px_-4px_rgba(15,23,42,0.06)]
+                  dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_24px_-8px_rgba(0,0,0,0.5)]
+                  hover:-translate-y-1
+                  hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.65),0_12px_28px_-8px_rgba(15,23,42,0.12)]
+                  dark:hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_36px_-10px_rgba(0,0,0,0.6)]
+                  transition-all duration-300 ease-out"
+              >
+                <span className="absolute -bottom-3 -right-1 text-[5.5rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">
+                  {num}
+                </span>
 
-              {/* Icon */}
-              <div className="relative z-10 w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6">
-                <Icon size="22" className="text-primary" />
+                <div className="relative z-10 w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6">
+                  <Icon size="22" className="text-primary" />
+                </div>
+
+                <h3 className="relative z-10 text-[15px] font-bold text-foreground mb-2.5">{title}</h3>
+                <p className="relative z-10 text-[13px] text-muted-foreground leading-relaxed">{description}</p>
               </div>
-
-              {/* Text */}
-              <h3 className="relative z-10 text-[15px] font-bold text-foreground mb-2.5">{title}</h3>
-              <p className="relative z-10 text-[13px] text-muted-foreground leading-relaxed">{description}</p>
-            </div>
+            </GlareHover>
           ))}
         </div>
       </div>

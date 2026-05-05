@@ -104,7 +104,7 @@ export function AppointmentBooking() {
     return (
       <>
         <Navigation />
-        <section className="py-20 bg-neutral-50 dark:bg-neutral-900 transition-colors duration-300">
+        <section className="py-20 bg-neutral-50 dark:bg-neutral-950 transition-colors duration-300">
           <div className="max-w-2xl mx-auto px-6 sm:px-8 lg:px-10">
             <Card className="text-center shadow-md rounded-2xl">
               <CardContent className="p-10">
@@ -139,7 +139,7 @@ export function AppointmentBooking() {
   return (
     <>
       <Navigation />
-      <section className="py-20 bg-neutral-50 dark:bg-neutral-900 transition-colors duration-300">
+      <section className="py-20 bg-neutral-50 dark:bg-neutral-950 transition-colors duration-300">
         <div className="max-w-2xl mx-auto px-6 sm:px-8 lg:px-10">
           <div className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 dark:text-neutral-100 mb-4">
