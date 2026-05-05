@@ -37,7 +37,6 @@ export function PartnersStrip() {
     )
 
     return () => {
-      anim1.kill()
       anim2.kill()
     }
   }, [])

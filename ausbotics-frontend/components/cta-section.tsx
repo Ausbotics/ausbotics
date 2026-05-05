@@ -53,15 +53,18 @@ export function CtaSection() {
           >
             <Link href="/demo">Book a Demo</Link>
           </Button>
-          <button
+          <Link
+            href="/contact"
             className="inline-flex items-center justify-center px-8 h-12 rounded-xl
-              font-semibold text-[15px] text-white/80
-              bg-white/[0.07] hover:bg-white/[0.10]
-              border border-white/10
-              transition-colors duration-200"
+              font-semibold text-[15px] text-white/85 select-none
+              bg-white/10 backdrop-blur-xl hover:bg-white/15
+              border border-white/15
+              shadow-[inset_0_1px_0_rgba(255,255,255,0.20),0_8px_32px_rgba(0,0,0,0.30)]
+              hover:-translate-y-[1px] active:translate-y-[2px]
+              transition-all duration-200 ease-out"
           >
-            <Link href="/contact">Contact Us</Link>
-          </button>
+            Contact Us
+          </Link>
         </div>
       </div>
     </section>

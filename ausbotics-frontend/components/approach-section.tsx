@@ -67,12 +67,13 @@ export function ApproachSection() {
                 {/* Icon chip */}
                 <div
                   className="relative z-10 w-[3.25rem] h-[3.25rem] rounded-2xl flex items-center justify-center mb-4
-                    bg-neutral-100 dark:bg-neutral-800
+                    bg-neutral-100/80 dark:bg-neutral-800/80 backdrop-blur-sm
                     border border-neutral-200 dark:border-neutral-700
-                    shadow-[0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)]
-                    group-hover:-translate-y-0.5 transition-transform duration-200"
+                    shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_4px_16px_-4px_rgba(15,23,42,0.08)]
+                    dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_24px_-8px_rgba(0,0,0,0.5)]
+                    group-hover:-translate-y-1 transition-all duration-300 ease-out"
                 >
-                  <Icon size="20" className="text-primary" />
+                  <Icon size={20} variant="Bulk" className="text-primary" />
                 </div>
 
                 <span className="text-[10px] font-bold text-primary/60 uppercase tracking-[0.2em] mb-1">

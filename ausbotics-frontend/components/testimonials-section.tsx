@@ -49,13 +49,15 @@ export function TestimonialsSection() {
               key={name}
               data-animate
               className="rounded-2xl p-8
-                bg-neutral-100 dark:bg-neutral-800
+                bg-neutral-100/80 dark:bg-neutral-800/80 backdrop-blur-sm
                 border border-neutral-200 dark:border-neutral-700
-                shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.25)]"
+                shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_1px_2px_rgba(15,23,42,0.04),0_4px_16px_-4px_rgba(15,23,42,0.06)]
+                dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_1px_2px_rgba(0,0,0,0.4),0_8px_24px_-8px_rgba(0,0,0,0.5)]
+                hover:-translate-y-1 transition-all duration-300 ease-out"
             >
               <div className="flex items-center gap-1 mb-5">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star1 key={i} size="15" variant="Bold" className="text-primary" />
+                  <Star1 key={i} size={15} variant="Bulk" className="text-primary" />
                 ))}
               </div>
 
