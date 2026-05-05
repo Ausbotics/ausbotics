@@ -400,7 +400,7 @@ export function Navigation() {
   const navItems = isDashboard ? dashboardNavItems : marketingNavItems
 
   return (
-    <Navbar>
+    <Navbar className="">
       {/* ── Desktop ── */}
       <NavBody>
         <AusLogo isDashboard={isDashboard} />
@@ -504,8 +504,8 @@ function AusLogo({ isDashboard }: { isDashboard: boolean }) {
         <Cpu className="h-5 w-5 text-blue-500" size="20" />
       </div>
       <span className="text-base font-bold tracking-tight leading-none">
-        <span className="text-foreground dark:text-white">Aus</span>
-        <span className="text-blue-500">Botics</span>
+        <span className="text-foreground dark:text-white">AusBotics</span>
+        
       </span>
     </Link>
   )
