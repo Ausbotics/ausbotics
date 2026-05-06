@@ -3,7 +3,8 @@ import { DemoHero } from "@/components/demo-hero"
 import { DemoVideo } from "@/components/demo-video"
 import { DemoProcess } from "@/components/demo-process"
 import { DemoTestimonials } from "@/components/demo-testimonials"
-import { AppointmentBooking } from "@/components/appointment-booking"
+import { SiteFooter } from "@/components/site-footer"
+
 export default function DemoPage() {
   return (
     <main className="min-h-screen">
@@ -14,6 +15,7 @@ export default function DemoPage() {
         <DemoProcess />
       </div>
       <DemoTestimonials />
+      <SiteFooter />
     </main>
   )
 }
