@@ -383,11 +383,11 @@ export function Navigation() {
     user?.role?.toLowerCase() === "admin"
 
   const marketingNavItems = [
-    { name: "Home",         link: "/" },
-    { name: "About",        link: "/about" },
-    { name: "How It Works", link: "/how-it-works" },
-    { name: "Pricing",      link: "/pricing" },
-    { name: "Contact",      link: "/contact" },
+    { name: "Home",     link: "/" },
+    { name: "About",    link: "/about" },
+    { name: "Services", link: "/features" },
+    { name: "Pricing",  link: "/pricing" },
+    { name: "Contact",  link: "/contact" },
   ]
 
   const dashboardNavItems = [
