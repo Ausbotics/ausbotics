@@ -12,11 +12,12 @@ export function PricingHero() {
             Transparent Pricing
           </Badge>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-            Simple, <span className="text-primary">Transparent Pricing</span>
+            Dual Engagement Models for{" "}
+            <span className="text-primary">Flexible Scaling</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-            Choose the perfect plan for your business. All plans include our core AI calling features with no hidden
-            fees or surprise charges.
+            Choose the model that fits your business — a recurring subscription for ongoing automation support, or a
+            one-time deployment for full ownership from day one.
           </p>
 
           <div className="flex flex-wrap justify-center gap-6 mb-8">
