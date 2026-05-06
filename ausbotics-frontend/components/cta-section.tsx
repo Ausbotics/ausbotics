@@ -51,7 +51,7 @@ export function CtaSection() {
             className="rounded-xl font-semibold px-8 h-12 text-[15px]"
             asChild
           >
-            <Link href="/demo">Book a Demo</Link>
+            <Link href="/demo">Request a Demo</Link>
           </Button>
           <Link
             href="/contact"

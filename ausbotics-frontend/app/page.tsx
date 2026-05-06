@@ -23,7 +23,7 @@ export default function HomePage() {
       <WhyChoose />
       <ApproachSection />
       <WhoWeServe />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       <InsightsSection />
       <CtaSection />
       <SiteFooter />

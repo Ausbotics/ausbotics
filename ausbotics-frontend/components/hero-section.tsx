@@ -39,13 +39,13 @@ function ClaySecondaryButton({ href, children }: { href: string; children: React
 
 export function HeroButtons() {
   return (
-    <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
+    <div className="flex items-center justify-center lg:justify-start gap-2">
       <ClayPrimaryButton href="/demo">
         See the Demo
         <ArrowRight size={15} />
       </ClayPrimaryButton>
-      <ClaySecondaryButton href="/how-it-works">
-        How It Works
+      <ClaySecondaryButton href="/contact">
+        Contact us
         <ArrowRight size={15} />
       </ClaySecondaryButton>
     </div>
@@ -116,17 +116,7 @@ export function HeroSection() {
         {/* Left column */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
 
-          {/* Eyebrow badge */}
-          <div
-            data-hero="eyebrow"
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-7 bg-primary/[0.08] dark:bg-primary/[0.14] border border-primary/25 dark:border-primary/30 text-primary text-[11px] font-semibold uppercase tracking-[0.20em]"
-          >
-            <span className="relative flex w-2 h-2">
-              <span className="absolute inset-0 rounded-full bg-primary/50 animate-ping" />
-              <span className="relative w-2 h-2 rounded-full bg-primary" />
-            </span>
-            Intelligent Automation Platform
-          </div>
+
 
           {/* Heading — each line fades in separately */}
           <h1
@@ -134,10 +124,10 @@ export function HeroSection() {
             style={{ fontSize: "clamp(2.3rem, 5.2vw, 4.4rem)" }}
           >
             <span data-hero="h1-line1" className="block">Replace manual work  with{" "}</span>
-          
-              <span className="bg-gradient-to-br from-blue-500 to-indigo-600 dark:from-blue-300 dark:to-indigo-400 bg-clip-text text-transparent">
-                AI that runs 24/7.
-              
+
+            <span className="bg-gradient-to-br from-blue-500 to-indigo-600 dark:from-blue-300 dark:to-indigo-400 bg-clip-text text-transparent">
+              AI that runs 24/7.
+
             </span>
           </h1>
 
@@ -156,12 +146,8 @@ export function HeroSection() {
             <HeroButtons />
           </div>
 
-          {/* Micro-text */}
-          <p className="mb-10 text-[11px] text-muted-foreground/60 tracking-wide">
-            No credit card required · Live in 72 hours
-          </p>
 
-        
+
         </div>
 
         {/* Right column — AI agent preview */}

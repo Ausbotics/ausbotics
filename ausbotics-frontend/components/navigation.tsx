@@ -471,18 +471,11 @@ export function Navigation() {
                 </div>
               ) : (
                 !isDashboard && (
-                  <>
-                    <Button className="w-full rounded-xl" variant="ghost" asChild>
-                      <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
-                        Login
-                      </Link>
-                    </Button>
-                    <Button className="w-full rounded-xl" variant="brand" asChild>
-                      <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
-                        Sign Up
-                      </Link>
-                    </Button>
-                  </>
+                  <Button className="w-full rounded-xl" variant="brand" asChild>
+                    <Link href="/book" onClick={() => setIsMobileMenuOpen(false)}>
+                      Book Appointment
+                    </Link>
+                  </Button>
                 )
               ))}
           </div>
@@ -540,13 +533,8 @@ function DesktopAuth({
   if (isDashboard) return null
 
   return (
-    <>
-      <Button variant="ghost" className="rounded-lg text-sm" asChild>
-        <Link href="/login">Login</Link>
-      </Button>
-      <Button variant="brand" className="rounded-lg text-sm" asChild>
-        <Link href="/signup">Sign Up</Link>
-      </Button>
-    </>
+    <Button variant="brand" className="rounded-lg text-sm" asChild>
+      <Link href="/book">Book Appointment</Link>
+    </Button>
   )
 }
