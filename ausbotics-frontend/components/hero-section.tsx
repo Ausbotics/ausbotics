@@ -9,12 +9,11 @@ import Link from "next/link"
 
 function ClayPrimaryButton({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <Link href={href} className="inline-block">
+    <Link href={href} className="flex-1 sm:flex-none">
       <span
         role="button"
         tabIndex={0}
-        style={{ padding: "13px 28px", fontSize: "15px" }}
-        className="inline-flex items-center gap-2 cursor-pointer select-none text-white font-bold rounded-2xl bg-gradient-to-b from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600 shadow-[0_4px_0_#1d4ed8,0_8px_24px_rgba(59,130,246,0.40),inset_0_1px_0_rgba(255,255,255,0.40)] dark:shadow-[0_4px_0_#1e40af,0_8px_24px_rgba(96,165,250,0.35),inset_0_1px_0_rgba(255,255,255,0.25)] hover:translate-y-[2px] hover:shadow-[0_2px_0_#1d4ed8,0_4px_12px_rgba(59,130,246,0.30),inset_0_1px_0_rgba(255,255,255,0.40)]  active:translate-y-[4px]  transition-all duration-100"
+        className="flex w-full sm:w-auto items-center justify-center gap-2 cursor-pointer select-none text-white font-bold rounded-2xl px-5 py-3 text-sm sm:px-7 sm:py-[13px] sm:text-[15px] bg-gradient-to-b from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600 shadow-[0_4px_0_#1d4ed8,0_8px_24px_rgba(59,130,246,0.40),inset_0_1px_0_rgba(255,255,255,0.40)] dark:shadow-[0_4px_0_#1e40af,0_8px_24px_rgba(96,165,250,0.35),inset_0_1px_0_rgba(255,255,255,0.25)] hover:translate-y-[2px] hover:shadow-[0_2px_0_#1d4ed8,0_4px_12px_rgba(59,130,246,0.30),inset_0_1px_0_rgba(255,255,255,0.40)] active:translate-y-[4px] transition-all duration-100"
       >
         {children}
       </span>
@@ -24,12 +23,11 @@ function ClayPrimaryButton({ href, children }: { href: string; children: React.R
 
 function ClaySecondaryButton({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <Link href={href} className="inline-block">
+    <Link href={href} className="flex-1 sm:flex-none">
       <span
         role="button"
         tabIndex={0}
-        style={{ padding: "13px 28px", fontSize: "15px" }}
-        className="inline-flex items-center gap-2 cursor-pointer select-none font-bold rounded-2xl text-slate-800 dark:text-white bg-gradient-to-b from-white to-slate-100 dark:from-slate-700 dark:to-slate-800 border border-slate-200 dark:border-slate-500 shadow-[0_4px_0_#cbd5e1,0_6px_18px_rgba(15,23,42,0.10),inset_0_1px_0_white] dark:shadow-[0_4px_0_#1e293b,0_6px_18px_rgba(0,0,0,0.40),inset_0_1px_0_rgba(255,255,255,0.12)] hover:translate-y-[2px] hover:shadow-[0_2px_0_#cbd5e1,0_3px_10px_rgba(15,23,42,0.08),inset_0_1px_0_white] dark:hover:shadow-[0_2px_0_#1e293b,0_3px_10px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.12)] active:translate-y-[4px] active:shadow-[0_0px_0_#cbd5e1,inset_0_1px_0_white] dark:active:shadow-[0_0px_0_#1e293b,inset_0_1px_0_rgba(255,255,255,0.12)] transition-all duration-100"
+        className="flex w-full sm:w-auto items-center justify-center gap-2 cursor-pointer select-none font-bold rounded-2xl px-5 py-3 text-sm sm:px-7 sm:py-[13px] sm:text-[15px] text-slate-800 dark:text-white bg-gradient-to-b from-white to-slate-100 dark:from-slate-700 dark:to-slate-800 border border-slate-200 dark:border-slate-500 shadow-[0_4px_0_#cbd5e1,0_6px_18px_rgba(15,23,42,0.10),inset_0_1px_0_white] dark:shadow-[0_4px_0_#1e293b,0_6px_18px_rgba(0,0,0,0.40),inset_0_1px_0_rgba(255,255,255,0.12)] hover:translate-y-[2px] hover:shadow-[0_2px_0_#cbd5e1,0_3px_10px_rgba(15,23,42,0.08),inset_0_1px_0_white] dark:hover:shadow-[0_2px_0_#1e293b,0_3px_10px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.12)] active:translate-y-[4px] active:shadow-[0_0px_0_#cbd5e1,inset_0_1px_0_white] dark:active:shadow-[0_0px_0_#1e293b,inset_0_1px_0_rgba(255,255,255,0.12)] transition-all duration-100"
       >
         {children}
       </span>
@@ -39,7 +37,7 @@ function ClaySecondaryButton({ href, children }: { href: string; children: React
 
 export function HeroButtons() {
   return (
-    <div className="flex items-center justify-center lg:justify-start gap-2">
+    <div className="flex w-full items-center justify-center lg:justify-start gap-2 sm:w-auto sm:flex-none">
       <ClayPrimaryButton href="/demo">
         See the Demo
         <ArrowRight size={15} />

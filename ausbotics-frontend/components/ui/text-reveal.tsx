@@ -21,21 +21,20 @@ export function TextReveal({ text, className, textClassName }: TextRevealProps) 
     const spans = el.querySelectorAll<HTMLSpanElement>(".tr-word")
 
     const ctx = gsap.context(() => {
-      // Each word lights up as it scrolls into the scrub range
       gsap.fromTo(
         spans,
-        { opacity: 0.12, filter: "blur(4px)", y: 6 },
+        { opacity: 0.12, filter: "blur(5px)", y: 6 },
         {
           opacity: 1,
           filter: "blur(0px)",
           y: 0,
-          ease: "none",
-          stagger: { each: 0.15, from: "start" },
+          duration: 0.5,
+          ease: "power2.out",
+          stagger: { each: 0.055, from: "start" },
           scrollTrigger: {
             trigger: el,
             start: "top 80%",
-            end: "bottom 30%",
-            scrub: 1.2,
+            toggleActions: "play none none none",
           },
         }
       )

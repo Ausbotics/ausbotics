@@ -48,7 +48,7 @@ export function ServicesSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-20 sm:py-24 bg-neutral-950 overflow-hidden">
+    <section ref={sectionRef} className="relative py-20 sm:py-24 bg-neutral-50 dark:bg-neutral-950 overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-px bg-border" />
 
       <div className="absolute top-0 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl -z-10 pointer-events-none" />

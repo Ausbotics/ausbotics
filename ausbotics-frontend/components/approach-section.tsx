@@ -79,7 +79,7 @@ export function ApproachSection() {
 
           <div className="relative">
             {/* Connector line — desktop */}
-            <div className="hidden lg:block absolute top-[2.6rem] left-[calc(12.5%+2.5rem)] right-[calc(12.5%+2.5rem)] h-px bg-neutral-800 pointer-events-none" />
+            <div className="hidden lg:block absolute top-[2.6rem] left-[calc(12.5%+2.5rem)] right-[calc(12.5%+2.5rem)] h-px bg-border pointer-events-none" />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {steps.map(({ num, Icon, title, description }) => (
@@ -93,17 +93,19 @@ export function ApproachSection() {
                     data-animate
                     className="h-full flex flex-col items-center text-center group
                       rounded-2xl p-5 sm:p-6
-                      bg-neutral-800
-                      border border-neutral-700
-                      shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_24px_-8px_rgba(0,0,0,0.5)]
-                      hover:-translate-y-1 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_36px_-10px_rgba(0,0,0,0.6)]
+                      bg-neutral-100/80 dark:bg-neutral-800/80 backdrop-blur-sm
+                      border border-neutral-200 dark:border-neutral-700
+                      shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_1px_2px_rgba(15,23,42,0.04),0_4px_16px_-4px_rgba(15,23,42,0.06)]
+                      dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_24px_-8px_rgba(0,0,0,0.5)]
+                      hover:-translate-y-1
+                      hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.65),0_12px_28px_-8px_rgba(15,23,42,0.12)]
+                      dark:hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_36px_-10px_rgba(0,0,0,0.6)]
                       transition-all duration-300 ease-out"
                   >
                     <div
-                      className="relative z-10 w-[3.25rem] h-[3.25rem] rounded-2xl flex items-center justify-center mb-4
-                        bg-neutral-700
-                        border border-neutral-600
-                        shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_4px_16px_-4px_rgba(0,0,0,0.4)]"
+                      className="relative z-10 w-10 h-10 rounded-xl flex items-center justify-center mb-4
+                        bg-primary/10 border border-primary/15
+                        shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]"
                     >
                       <Icon size={20} variant="Bulk" className="text-primary" />
                     </div>
