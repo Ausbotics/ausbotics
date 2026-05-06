@@ -1,42 +1,29 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { Call, Setting4, Chart, Monitor, Link21, Teacher } from "iconsax-reactjs"
+import { Setting4, Chart, Monitor } from "iconsax-reactjs"
 import { animateSection } from "@/lib/gsap-utils"
-import Link from "next/link"
 import { TextAnimate } from "@/components/ui/text-animate"
 import { GlareHover } from "@/components/ui/glare-hover"
 
 const services = [
   {
-    Icon: Call,
-    title: "AI Calling Agents",
-    description: "Intelligent voice agents that handle inbound and outbound calls 24/7.",
-  },
-  {
     Icon: Setting4,
-    title: "Workflow Automation",
-    description: "End-to-end automation of repetitive tasks across your entire business.",
+    title: "Automation",
+    description:
+      "Deploy intelligent agents that take repetitive, time-consuming tasks off your team's plate. From data entry and follow-ups to complex multi-step workflows, our automation solutions run quietly in the background, working around the clock so your team can focus on what truly drives growth.",
   },
   {
     Icon: Chart,
-    title: "Business Dashboards",
-    description: "Live operations dashboards that surface the metrics that matter most.",
+    title: "Dashboards",
+    description:
+      "Custom-built dashboards designed for businesses of every size, from lean startups to established enterprises. Track your customers, monitor key metrics, and manage relationships seamlessly with built-in CRM features that turn raw data into clear, actionable insights you can act on instantly.",
   },
   {
     Icon: Monitor,
-    title: "Custom Web Platforms",
-    description: "Fully custom websites and client portals built to your exact specifications.",
-  },
-  {
-    Icon: Link21,
-    title: "CRM Integration",
-    description: "Seamless connections to your existing CRM, scheduling, and billing tools.",
-  },
-  {
-    Icon: Teacher,
-    title: "Training & Support",
-    description: "Ongoing agent refinement, team training, and dedicated support throughout.",
+    title: "Web Development",
+    description:
+      "End-to-end website development tailored to your brand and business goals. From the first wireframe and design mockup to deployment and ongoing maintenance, we craft fast, responsive, and scalable websites that look stunning, perform flawlessly, and grow alongside your business.",
   },
 ]
 
@@ -62,7 +49,7 @@ export function ServicesSection() {
           </p>
           <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-extrabold text-foreground leading-tight">
             <TextAnimate variant="blur-in" stagger={0.055}>
-              Professional AI Solutions for Every Business
+              Smart Solutions That Power Your Business
             </TextAnimate>
           </h2>
         </div>
@@ -89,14 +76,8 @@ export function ServicesSection() {
                 <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center mb-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]">
                   <Icon size={20} variant="Bulk" className="text-primary" />
                 </div>
-                <h3 className="text-[15px] font-bold text-foreground mb-2">{title}</h3>
-                <p className="text-[13px] text-muted-foreground leading-relaxed mb-4">{description}</p>
-                <Link
-                  href="/features"
-                  className="text-[13px] font-semibold text-primary hover:underline underline-offset-2"
-                >
-                  Learn more →
-                </Link>
+                <h3 className="text-[15px] font-bold text-foreground mb-3">{title}</h3>
+                <p className="text-[13px] text-muted-foreground leading-relaxed">{description}</p>
               </div>
             </GlareHover>
           ))}

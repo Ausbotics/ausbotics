@@ -84,7 +84,7 @@ export function PricingTiers() {
 
               <div className="space-y-3">
                 <Button className="w-full" variant={tier.popular ? "default" : "outline"} asChild>
-                  <Link href="/demo">Get Started</Link>
+                  <Link href="/contact">Get Started</Link>
                 </Button>
                 <Button variant="ghost" className="w-full text-sm" asChild>
                   <Link href="/contact">Contact Sales</Link>
@@ -94,20 +94,9 @@ export function PricingTiers() {
           ))}
         </div>
 
-        <div className="text-center mt-12 p-6 rounded-xl bg-muted/30 border border-border max-w-xl mx-auto">
-          <p className="text-sm text-muted-foreground uppercase tracking-wide font-semibold mb-1">Projected ARR</p>
-          <p className="text-2xl font-bold text-foreground">$60k – $180k</p>
-          <p className="text-muted-foreground text-sm mt-1">based on 10 clients</p>
-        </div>
+        
 
-        <div className="text-center mt-8">
-          <p className="text-muted-foreground mb-4">
-            Need a custom solution? We offer enterprise packages tailored to your specific requirements.
-          </p>
-          <Button variant="outline" asChild>
-            <Link href="/contact">Contact for Enterprise Pricing</Link>
-          </Button>
-        </div>
+        
       </div>
     </section>
   )

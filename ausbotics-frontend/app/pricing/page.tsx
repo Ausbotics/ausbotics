@@ -4,6 +4,7 @@ import { PricingTiers } from "@/components/pricing-tiers"
 import { PricingComparison } from "@/components/pricing-comparison"
 import { PricingFAQ } from "@/components/pricing-faq"
 import { PricingCTA } from "@/components/pricing-cta"
+import { SiteFooter } from "@/components/site-footer";
 
 export default function PricingPage() {
   return (
@@ -11,9 +12,10 @@ export default function PricingPage() {
       <Navigation />
       <PricingHero />
       <PricingTiers />
-      <PricingComparison />
-      <PricingFAQ />
-      <PricingCTA />
+      {/* <PricingComparison /> */}
+      {/* <PricingFAQ /> */}
+      {/* <PricingCTA /> */}
+      <SiteFooter />
     </main>
   )
 }

@@ -24,7 +24,7 @@ export function ContactHero() {
             transform your business communication.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactStats.map((stat, index) => (
               <div key={index} className="flex flex-col items-center gap-3">
                 <div className="bg-primary/10 rounded-full p-3">
@@ -33,7 +33,7 @@ export function ContactHero() {
                 <span className="text-muted-foreground text-sm text-center">{stat.text}</span>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

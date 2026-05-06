@@ -3,7 +3,7 @@ import { ContactHero } from "@/components/contact-hero";
 import { ContactForm } from "@/components/contact-form";
 import { ContactMethods } from "@/components/contact-methods";
 import { ContactFAQ } from "@/components/contact-faq";
-
+import { SiteFooter } from "@/components/site-footer";
 export default function ContactPage() {
   return (
     <main className="min-h-screen">
@@ -13,6 +13,7 @@ export default function ContactPage() {
         <ContactMethods />
       </div>
       <ContactFAQ />
+      <SiteFooter />
     </main>
   );
 }

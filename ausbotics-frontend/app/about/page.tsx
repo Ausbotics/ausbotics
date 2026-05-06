@@ -3,7 +3,7 @@ import { AboutHero } from "@/components/about-hero";
 import { ProblemSolution } from "@/components/problem-solution";
 
 import { CompanyValues } from "@/components/company-values";
-
+import { SiteFooter } from "@/components/site-footer";
 export default function AboutPage() {
   return (
     <main className="min-h-screen">
@@ -11,6 +11,7 @@ export default function AboutPage() {
       <AboutHero />
       <ProblemSolution />
     <CompanyValues />
+    <SiteFooter />
     </main>
   );
 }

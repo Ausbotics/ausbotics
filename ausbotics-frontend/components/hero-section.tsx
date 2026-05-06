@@ -38,8 +38,8 @@ function ClaySecondaryButton({ href, children }: { href: string; children: React
 export function HeroButtons() {
   return (
     <div className="flex w-full items-center justify-center lg:justify-start gap-2 sm:w-auto sm:flex-none">
-      <ClayPrimaryButton href="/demo">
-        See the Demo
+      <ClayPrimaryButton href="/book">
+        Request for Demo
         <ArrowRight size={15} />
       </ClayPrimaryButton>
       <ClaySecondaryButton href="/contact">

@@ -104,7 +104,7 @@ export function CompanyValues() {
               className="bg-primary hover:bg-primary/80 text-foreground rounded-2xl shadow-inner transition-all duration-300"
               asChild
             >
-              <Link href="/demo">See a Demo</Link>
+              <Link href="/contact">Request for Demo</Link>
             </Button>
             <Button
               size="lg"

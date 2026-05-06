@@ -20,14 +20,14 @@ export function PricingHero() {
             one-time deployment for full ownership from day one.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-6 mb-8">
+          {/* <div className="flex flex-wrap justify-center gap-6 mb-8">
             {benefits.map((benefit, index) => (
               <div key={index} className="flex items-center gap-2">
                 <CheckCircle className="h-5 w-5 text-primary" />
                 <span className="text-muted-foreground">{benefit}</span>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
