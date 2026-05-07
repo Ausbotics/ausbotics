@@ -156,7 +156,7 @@ export function CalBooking() {
             <div className="h-[600px] lg:h-[680px]">
               <Cal
                 namespace="30min"
-                calLink="YOUR_CAL_USERNAME/30min"
+                calLink="ashish-mehta-03lvry/30min"
                 style={{ width: "100%", height: "100%", overflow: "auto" }}
                 config={{
                   layout: "month_view",
