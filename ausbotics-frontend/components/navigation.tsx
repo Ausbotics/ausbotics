@@ -358,7 +358,7 @@ import { Button } from "@/components/ui/button"
 import { useAuth } from "@/contexts/auth-context"
 import { ProfileDropdown } from "@/components/profile-dropdown"
 import { ModeToggle } from "./Modetoggle"
-import { Cpu } from "iconsax-reactjs"
+import Image from "next/image"
 import clsx from "clsx"
 
 import {
@@ -411,7 +411,7 @@ export function Navigation() {
           onItemClick={() => setIsMobileMenuOpen(false)}
         />
 
-        <div className="relative z-20 flex items-center gap-2">
+        <div className="relative z-30 flex items-center gap-2 shrink-0">
           <ModeToggle />
           <DesktopAuth
             user={user}
@@ -493,12 +493,17 @@ function AusLogo({ isDashboard }: { isDashboard: boolean }) {
       href={isDashboard ? "/dashboard" : "/"}
       className="relative z-20 flex shrink-0 items-center gap-2.5"
     >
-      <div className="rounded-xl border border-blue-500/25 bg-blue-500/10 p-1.5 transition-colors hover:bg-blue-500/20">
-        <Cpu className="h-5 w-5 text-blue-500" size="20" />
+      <div className="rounded-xl overflow-hidden w-9 h-9 shrink-0 ring-1 ring-blue-500/20">
+        <Image
+          src="/logo.jpeg"
+          alt="AusBotics"
+          width={36}
+          height={36}
+          className="w-full h-full object-cover"
+        />
       </div>
       <span className="text-base font-bold tracking-tight leading-none">
         <span className="text-foreground dark:text-white">AusBotics</span>
-        
       </span>
     </Link>
   )

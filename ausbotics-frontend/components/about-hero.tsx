@@ -1,62 +1,103 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react"
+import { ArrowRight } from "iconsax-reactjs"
+import Link from "next/link"
+import { gsap } from "@/lib/gsap-utils"
 
 export function AboutHero() {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const items = [
+        "[data-about='eyebrow']",
+        "[data-about='heading']",
+        "[data-about='sub']",
+        "[data-about='cta']",
+      ]
+      gsap.set(items, { opacity: 0, y: 24, filter: "blur(8px)" })
+      const tl = gsap.timeline({ delay: 0.1 })
+      items.forEach((sel, i) => {
+        tl.to(sel, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.65, ease: "power3.out" }, i === 0 ? 0 : "-=0.4")
+      })
+    }, sectionRef)
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <section className="relative py-20 lg:py-32 bg-background overflow-hidden">
-      {/* Decorative background shapes */}
-      <motion.div
-        className="absolute top-0 left-0 w-72 h-72 bg-primary/20 rounded-full blur-3xl -z-10"
-        animate={{ y: [0, 20, 0] }}
-        transition={{ duration: 6, repeat: Infinity, repeatType: "mirror" }}
+    <section
+      ref={sectionRef}
+      className="relative min-h-[62vh] bg-background overflow-hidden flex items-center justify-center"
+    >
+      {/* Blobs */}
+      <div className="absolute -top-20 -left-20 w-96 h-96 rounded-full bg-primary/15 blur-3xl -z-10 pointer-events-none animate-[blobFloat1_8s_ease-in-out_infinite]" />
+      <div className="absolute bottom-0 -right-16 w-80 h-80 rounded-full bg-blue-400/15 dark:bg-blue-500/20 blur-3xl -z-10 pointer-events-none animate-[blobFloat2_10s_ease-in-out_infinite]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[32rem] h-[22rem] rounded-full bg-indigo-300/10 dark:bg-indigo-500/10 blur-3xl -z-10 pointer-events-none" />
+
+      {/* Top rule */}
+      <div
+        className="absolute inset-x-0 top-0 h-px pointer-events-none"
+        style={{ background: "linear-gradient(to right, transparent, oklch(0.60 0.15 240 / 0.20), transparent)" }}
       />
-      <motion.div
-        className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/20 rounded-full blur-3xl -z-10"
-        animate={{ y: [0, -20, 0] }}
-        transition={{ duration: 8, repeat: Infinity, repeatType: "mirror" }}
-      />
+      {/* Bottom fade */}
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h1
-            className="text-4xl sm:text-5xl  font-extrabold  lg:text-6xl font-bold text-foreground mb-6 leading-tight"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            Bringing the Power of{" "}
-            <span className="text-primary">AI Automation</span> to Everyone
-          </motion.h1>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 text-center">
+        <p
+          data-about="eyebrow"
+          className="text-[11px] font-semibold tracking-[0.28em] uppercase text-primary mb-5"
+        >
+          Our Story
+        </p>
 
-          <motion.p
-            className="text-xl text-muted-foreground mb-8 leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            At Ausbotics, we're on a mission to bring the power of AI automation
-            to everyone—from growing startups to everyday businesses. We believe
-            technology should make life easier, not harder.
-          </motion.p>
+        <h1
+          data-about="heading"
+          className="font-extrabold leading-[1.06] tracking-tight mb-6 text-foreground"
+          style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)" }}
+        >
+          Bringing the Power of{" "}
+          <span className="bg-gradient-to-br from-blue-500 to-indigo-600 dark:from-blue-300 dark:to-indigo-400 bg-clip-text text-transparent">
+            AI Automation
+          </span>{" "}
+          to Everyone
+        </h1>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+        <p
+          data-about="sub"
+          className="max-w-2xl mx-auto text-base md:text-lg text-muted-foreground leading-relaxed mb-10"
+        >
+          At Ausbotics, we're on a mission to bring the power of AI automation to everyone — from
+          growing startups to everyday businesses. We believe technology should make life easier, not harder.
+        </p>
+
+        <div data-about="cta" className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Link
+            href="/book"
+            className="inline-flex items-center justify-center gap-2 cursor-pointer text-white font-bold rounded-2xl px-7 py-3.5 text-[15px] bg-gradient-to-b from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600 shadow-[0_4px_0_#1d4ed8,0_8px_24px_rgba(59,130,246,0.40),inset_0_1px_0_rgba(255,255,255,0.40)] hover:translate-y-[2px] hover:shadow-[0_2px_0_#1d4ed8,0_4px_12px_rgba(59,130,246,0.30),inset_0_1px_0_rgba(255,255,255,0.40)] active:translate-y-[4px] transition-all duration-100"
           >
-            <Button size="lg" asChild className=" transition-transform">
-              <Link href="/demo" className="inline-flex items-center gap-2">
-                See Our Technology in Action
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-          </motion.div>
+            See Our Technology in Action
+            <ArrowRight size={16} />
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center gap-2 cursor-pointer font-bold rounded-2xl px-7 py-3.5 text-[15px] text-slate-800 dark:text-white bg-gradient-to-b from-white to-slate-100 dark:from-slate-700 dark:to-slate-800 border border-slate-200 dark:border-slate-500 shadow-[0_4px_0_#cbd5e1,0_6px_18px_rgba(15,23,42,0.10),inset_0_1px_0_white] dark:shadow-[0_4px_0_#1e293b,0_6px_18px_rgba(0,0,0,0.40),inset_0_1px_0_rgba(255,255,255,0.12)] hover:translate-y-[2px] active:translate-y-[4px] transition-all duration-100"
+          >
+            Contact Us
+          </Link>
         </div>
       </div>
+
+      <style jsx global>{`
+        @keyframes blobFloat1 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50%       { transform: translate(18px, 22px) scale(1.04); }
+        }
+        @keyframes blobFloat2 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50%       { transform: translate(-20px, -16px) scale(1.05); }
+        }
+      `}</style>
     </section>
-  );
+  )
 }

@@ -1,50 +1,111 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
-import { Play, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { useEffect, useRef } from "react"
+import { gsap } from "@/lib/gsap-utils"
+import Link from "next/link"
+import { Play, ArrowRight } from "iconsax-reactjs"
 
 export function HowItWorksHero() {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const items = [
+        "[data-hiw='eyebrow']",
+        "[data-hiw='heading']",
+        "[data-hiw='sub']",
+        "[data-hiw='ctas']",
+      ]
+      gsap.set(items, { opacity: 0, y: 24, filter: "blur(8px)" })
+      const tl = gsap.timeline({ delay: 0.1 })
+      items.forEach((sel, i) => {
+        tl.to(sel, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.65, ease: "power3.out" }, i === 0 ? 0 : "-=0.4")
+      })
+    }, sectionRef)
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <section className="py-20 lg:py-32 bg-neutral-50 dark:bg-neutral-950 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight text-neutral-900 dark:text-neutral-100">
-            How Our <span className="text-primary">AI Calling Agents</span> Work
-          </h1>
+    <section
+      ref={sectionRef}
+      className="relative min-h-[62vh] bg-background overflow-hidden flex items-center justify-center"
+    >
+      {/* Blobs */}
+      <div className="absolute -top-16 -left-16 w-96 h-96 rounded-full bg-primary/15 blur-3xl -z-10 pointer-events-none animate-[blobFloat1_8s_ease-in-out_infinite]" />
+      <div className="absolute bottom-0 -right-16 w-80 h-80 rounded-full bg-blue-400/12 dark:bg-blue-500/18 blur-3xl -z-10 pointer-events-none animate-[blobFloat2_11s_ease-in-out_infinite]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[32rem] h-[22rem] rounded-full bg-indigo-300/8 dark:bg-indigo-500/10 blur-3xl -z-10 pointer-events-none" />
 
-          <p className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed">
-            From setup to success in just 4 simple steps. Our streamlined
-            process gets your AI agents up and running quickly, so you can start
-            seeing results immediately.
-          </p>
+      <div
+        className="absolute inset-x-0 top-0 h-px pointer-events-none"
+        style={{ background: "linear-gradient(to right, transparent, oklch(0.60 0.15 240 / 0.20), transparent)" }}
+      />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="bg-primary text-white rounded-2xl shadow-inner hover:bg-primary/80 hover:shadow-lg transition-all duration-300"
-              asChild
-            >
-              <Link href="/demo" className="inline-flex items-center gap-2">
-                <Play className="h-4 w-4" />
-                Watch Demo
-              </Link>
-            </Button>
+      {/* Live badge */}
+      <div className="absolute top-8 right-8 hidden lg:flex items-center gap-2 rounded-full px-4 py-2 bg-white/60 dark:bg-white/5 border border-white/50 dark:border-white/10 backdrop-blur-sm">
+        <span className="relative flex w-2 h-2">
+          <span className="absolute inset-0 rounded-full bg-emerald-500/60 animate-ping" />
+          <span className="relative w-2 h-2 rounded-full bg-emerald-500" />
+        </span>
+        <span className="text-[11px] font-semibold text-foreground/70">4 simple steps to launch</span>
+      </div>
 
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-primary text-primary rounded-2xl shadow-inner hover:bg-primary/10 hover:shadow-lg transition-all duration-300"
-              asChild
-            >
-              <Link href="/contact" className="inline-flex items-center gap-2">
-                Get Started Today
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 text-center">
+        <p
+          data-hiw="eyebrow"
+          className="text-[11px] font-semibold tracking-[0.28em] uppercase text-primary mb-5"
+        >
+          The Process
+        </p>
+
+        <h1
+          data-hiw="heading"
+          className="font-extrabold leading-[1.06] tracking-tight mb-6 text-foreground"
+          style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)" }}
+        >
+          How Our{" "}
+          <span className="bg-gradient-to-br from-blue-500 to-indigo-600 dark:from-blue-300 dark:to-indigo-400 bg-clip-text text-transparent">
+            AI Calling Agents
+          </span>{" "}
+          Work
+        </h1>
+
+        <p
+          data-hiw="sub"
+          className="max-w-2xl mx-auto text-base md:text-lg text-muted-foreground leading-relaxed mb-10"
+        >
+          From setup to success in just 4 simple steps. Our streamlined process gets your AI agents
+          up and running quickly, so you can start seeing results immediately.
+        </p>
+
+        <div data-hiw="ctas" className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Link
+            href="/book"
+            className="inline-flex items-center justify-center gap-2 cursor-pointer text-white font-bold rounded-2xl px-7 py-3.5 text-[15px] bg-gradient-to-b from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600 shadow-[0_4px_0_#1d4ed8,0_8px_24px_rgba(59,130,246,0.40),inset_0_1px_0_rgba(255,255,255,0.40)] hover:translate-y-[2px] hover:shadow-[0_2px_0_#1d4ed8,0_4px_12px_rgba(59,130,246,0.30),inset_0_1px_0_rgba(255,255,255,0.40)] active:translate-y-[4px] transition-all duration-100"
+          >
+            <Play size={16} />
+            Watch Demo
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center gap-2 cursor-pointer font-bold rounded-2xl px-7 py-3.5 text-[15px] text-slate-800 dark:text-white bg-gradient-to-b from-white to-slate-100 dark:from-slate-700 dark:to-slate-800 border border-slate-200 dark:border-slate-500 shadow-[0_4px_0_#cbd5e1,0_6px_18px_rgba(15,23,42,0.10),inset_0_1px_0_white] dark:shadow-[0_4px_0_#1e293b,0_6px_18px_rgba(0,0,0,0.40),inset_0_1px_0_rgba(255,255,255,0.12)] hover:translate-y-[2px] active:translate-y-[4px] transition-all duration-100"
+          >
+            Get Started Today
+            <ArrowRight size={16} />
+          </Link>
         </div>
       </div>
+
+      <style jsx global>{`
+        @keyframes blobFloat1 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50%       { transform: translate(18px, 22px) scale(1.04); }
+        }
+        @keyframes blobFloat2 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50%       { transform: translate(-20px, -16px) scale(1.05); }
+        }
+      `}</style>
     </section>
-  );
+  )
 }
