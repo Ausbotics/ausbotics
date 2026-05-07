@@ -125,14 +125,7 @@ export function ServicesSection() {
             >
               <div
                 data-animate
-                className="group h-full rounded-2xl p-6 sm:p-7 flex flex-col
-                  bg-neutral-100/80 dark:bg-neutral-800/80 backdrop-blur-sm
-                  border border-neutral-200 dark:border-neutral-700
-                  shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_1px_2px_rgba(15,23,42,0.04),0_4px_16px_-4px_rgba(15,23,42,0.06)]
-                  dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_1px_2px_rgba(0,0,0,0.4),0_8px_24px_-8px_rgba(0,0,0,0.5)]
-                  hover:-translate-y-1.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.65),0_12px_28px_-8px_rgba(15,23,42,0.12)]
-                  dark:hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_36px_-10px_rgba(0,0,0,0.6)]
-                  transition-all duration-300 ease-out overflow-hidden"
+                className="group h-full rounded-2xl p-6 sm:p-7 flex flex-col bg-neutral-100/80 dark:bg-neutral-800/80 backdrop-blur-sm border border-neutral-200 dark:border-neutral-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_1px_2px_rgba(15,23,42,0.04),0_4px_16px_-4px_rgba(15,23,42,0.06)] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_1px_2px_rgba(0,0,0,0.4),0_8px_24px_-8px_rgba(0,0,0,0.5)] hover:-translate-y-1.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.65),0_12px_28px_-8px_rgba(15,23,42,0.12)] dark:hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_36px_-10px_rgba(0,0,0,0.6)] transition-all duration-300 ease-out overflow-hidden"
               >
                 {/* Subtle accent gradient top */}
                 <div className={`absolute inset-x-0 top-0 h-20 bg-gradient-to-b ${accentFrom} ${accentTo} opacity-60 rounded-t-2xl pointer-events-none`} />
