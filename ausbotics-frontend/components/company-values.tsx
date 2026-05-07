@@ -1,6 +1,6 @@
 "use client";
 
-import { Flash, TaskSquare, Lamp1, People, ArrowRight } from "iconsax-reactjs";
+import { Flash, TaskSquare, Lamp, People, ArrowRight } from "iconsax-reactjs";
 import Link from "next/link";
 
 const values = [
@@ -17,7 +17,7 @@ const values = [
       "Bots that deliver consistent results, saving time and boosting productivity.",
   },
   {
-    icon: Lamp1,
+    icon: Lamp,
     title: "Innovation Made Easy",
     description:
       "Startup creativity meets cutting-edge AI to make technology accessible for all.",
