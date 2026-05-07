@@ -37,7 +37,7 @@ function ClaySecondaryButton({ href, children }: { href: string; children: React
 
 export function HeroButtons() {
   return (
-    <div className="flex flex-col sm:flex-row w-full items-stretch sm:items-center justify-center lg:justify-start gap-3 sm:gap-2">
+    <div className="flex flex-row w-full items-stretch sm:items-center justify-center lg:justify-start gap-3 sm:gap-2">
       <ClayPrimaryButton href="/book">
         <span className="text-sm sm:text-[15px]">Request a Demo</span>
         <span className="inline-flex transition-transform duration-150 group-hover:translate-x-1">
@@ -189,7 +189,7 @@ export function HeroSection() {
 function HeroAgentPreview() {
   return (
     <div className="relative">
-      <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-blue-400/20 via-indigo-400/15 to-transparent blur-2xl pointer-events-none" />
+      <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-blue-400/10 via-indigo-400/8 to-transparent blur-2xl pointer-events-none" />
 
       <div className="relative rounded-2xl p-5 md:p-6 backdrop-blur-xl bg-white/50 dark:bg-white/[0.05] border border-white/50  ">
 
