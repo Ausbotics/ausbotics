@@ -157,3 +157,87 @@ export function initScrollProgressBar(barEl: HTMLElement): void {
     },
   })
 }
+
+/**
+ * Fade + blur entrance for section children. More polished than plain y-offset.
+ */
+export function animateSectionBlur(
+  container: Element | string,
+  childSelector: string = '[data-animate]',
+  stagger: number = 0.1
+): gsap.core.Tween {
+  return gsap.fromTo(
+    typeof container === 'string'
+      ? `${container} ${childSelector}`
+      : container.querySelectorAll(childSelector),
+    { opacity: 0, y: 28, filter: 'blur(8px)' },
+    {
+      opacity: 1,
+      y: 0,
+      filter: 'blur(0px)',
+      duration: 0.85,
+      stagger,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: container,
+        start: 'top 82%',
+        once: true,
+      },
+    }
+  )
+}
+
+/**
+ * Slide in from left with blur — for sticky/hero left columns.
+ */
+export function animateFromLeft(
+  el: Element | string,
+  triggerEl?: Element | string
+): gsap.core.Tween {
+  return gsap.fromTo(
+    el,
+    { opacity: 0, x: -56, filter: 'blur(8px)' },
+    {
+      opacity: 1,
+      x: 0,
+      filter: 'blur(0px)',
+      duration: 1.0,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: triggerEl ?? el,
+        start: 'top 82%',
+        once: true,
+      },
+    }
+  )
+}
+
+/**
+ * Scale + fade entrance — great for card grids.
+ * Each card pops into view with a subtle spring.
+ */
+export function animateScaleIn(
+  container: Element | string,
+  childSelector: string = '[data-animate]',
+  stagger: number = 0.09
+): gsap.core.Tween {
+  return gsap.fromTo(
+    typeof container === 'string'
+      ? `${container} ${childSelector}`
+      : container.querySelectorAll(childSelector),
+    { opacity: 0, scale: 0.88, y: 22 },
+    {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      duration: 0.7,
+      stagger,
+      ease: 'back.out(1.5)',
+      scrollTrigger: {
+        trigger: container,
+        start: 'top 80%',
+        once: true,
+      },
+    }
+  )
+}

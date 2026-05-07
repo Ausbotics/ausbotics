@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import { Setting4, Chart, Monitor, ArrowRight } from "iconsax-reactjs"
-import { animateSection } from "@/lib/gsap-utils"
+import { gsap, animateSectionBlur, animateScaleIn } from "@/lib/gsap-utils"
 import { TextAnimate } from "@/components/ui/text-animate"
 import { GlareHover } from "@/components/ui/glare-hover"
 import Link from "next/link"
@@ -68,7 +68,13 @@ export function ServicesSection() {
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    if (sectionRef.current) animateSection(sectionRef.current, "[data-animate]", 0.08)
+    if (!sectionRef.current) return
+    const ctx = gsap.context(() => {
+      animateSectionBlur(sectionRef.current!, "[data-animate='header']", 0)
+      animateSectionBlur(sectionRef.current!, "[data-animate='metrics']", 0)
+      animateScaleIn(sectionRef.current!, "[data-animate='card']", 0.1)
+    }, sectionRef)
+    return () => ctx.revert()
   }, [])
 
   return (
@@ -85,7 +91,7 @@ export function ServicesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
 
         {/* Section header */}
-        <div data-animate className="mb-4">
+        <div data-animate="header" className="mb-4">
           <p className="text-primary text-[11px] font-semibold tracking-[0.25em] mb-3 uppercase">
             What We Build
           </p>
@@ -102,7 +108,7 @@ export function ServicesSection() {
         </div>
 
         {/* Metrics strip */}
-        <div data-animate className="flex flex-wrap gap-px bg-border rounded-2xl overflow-hidden mb-10 sm:mb-12 border border-border">
+        <div data-animate="metrics" className="flex flex-wrap gap-px bg-border rounded-2xl overflow-hidden mb-10 sm:mb-12 border border-border">
           {metrics.map(({ value, label }) => (
             <div
               key={label}
@@ -124,7 +130,7 @@ export function ServicesSection() {
               className="rounded-2xl"
             >
               <div
-                data-animate
+                data-animate="card"
                 className="group h-full rounded-2xl p-6 sm:p-7 flex flex-col bg-neutral-100/80 dark:bg-neutral-800/80 backdrop-blur-sm border border-neutral-200 dark:border-neutral-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_1px_2px_rgba(15,23,42,0.04),0_4px_16px_-4px_rgba(15,23,42,0.06)] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_1px_2px_rgba(0,0,0,0.4),0_8px_24px_-8px_rgba(0,0,0,0.5)] hover:-translate-y-1.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.65),0_12px_28px_-8px_rgba(15,23,42,0.12)] dark:hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_36px_-10px_rgba(0,0,0,0.6)] transition-all duration-300 ease-out overflow-hidden"
               >
                 {/* Subtle accent gradient top */}

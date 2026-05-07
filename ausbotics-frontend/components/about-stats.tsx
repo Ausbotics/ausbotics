@@ -1,8 +1,10 @@
 "use client"
 
+import { useEffect, useRef } from "react"
 import Link from "next/link"
 import { ArrowRight, Flash, Clock, Global, People } from "iconsax-reactjs"
 import { GlareHover } from "@/components/ui/glare-hover"
+import { gsap, ScrollTrigger } from "@/lib/gsap-utils"
 
 const pillars = [
   {
@@ -28,14 +30,43 @@ const pillars = [
 ]
 
 export function AboutStats() {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    if (!sectionRef.current) return
+    const ctx = gsap.context(() => {
+      // Left column: slide in from the left with blur
+      gsap.fromTo(
+        "[data-about='left']",
+        { opacity: 0, x: -64, filter: "blur(10px)" },
+        {
+          opacity: 1, x: 0, filter: "blur(0px)",
+          duration: 1.05, ease: "power3.out",
+          scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true },
+        }
+      )
+      // Cards: scale-pop in with stagger
+      gsap.fromTo(
+        "[data-about='card']",
+        { opacity: 0, scale: 0.86, y: 28, filter: "blur(6px)" },
+        {
+          opacity: 1, scale: 1, y: 0, filter: "blur(0px)",
+          duration: 0.72, stagger: 0.11, ease: "back.out(1.6)",
+          scrollTrigger: { trigger: sectionRef.current, start: "top 76%", once: true },
+        }
+      )
+    }, sectionRef)
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <section className="relative bg-neutral-50 dark:bg-neutral-950 py-24 sm:py-28 overflow-hidden">
+    <section ref={sectionRef} className="relative bg-neutral-50 dark:bg-neutral-950 py-24 sm:py-28 overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-px bg-border" />
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-blue-500/6 to-transparent" />
 
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20 items-start">
-          <div className="lg:sticky lg:top-28">
+          <div data-about="left" className="lg:sticky lg:top-28">
             <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.3em] text-primary">
               About AusBotics
             </p>
@@ -74,6 +105,7 @@ export function AboutStats() {
                 className="rounded-2xl"
               >
                 <article
+                  data-about="card"
                   className="group relative overflow-hidden rounded-2xl
                     bg-neutral-100/80 dark:bg-white/[0.03] backdrop-blur-sm
                     border border-neutral-200 dark:border-white/8

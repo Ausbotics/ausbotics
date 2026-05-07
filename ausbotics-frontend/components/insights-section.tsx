@@ -1,14 +1,14 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { animateSection } from "@/lib/gsap-utils"
+import { gsap, animateScaleIn, animateSectionBlur } from "@/lib/gsap-utils"
 import { GlareHover } from "@/components/ui/glare-hover"
 import Image from "next/image"
 import Link from "next/link"
 
 const articles = [
   {
-    image: "https://placehold.co/600x240/1e293b/3b82f6?text=AI+for+Trade",
+    image: "https://placehold.co/600x240/dbeafe/3b82f6?text=AI+for+Trade",
     date: "May 2026",
     title: "AI Automation for Trade Businesses in Australia",
     excerpt:
@@ -16,7 +16,7 @@ const articles = [
     href: "/features",
   },
   {
-    image: "https://placehold.co/600x240/1e293b/6366f1?text=No-Show+Reduction",
+    image: "https://placehold.co/600x240/ede9fe/6366f1?text=No-Show+Reduction",
     date: "Apr 2026",
     title: "How AI Calling Agents Reduce No-Shows by 60%",
     excerpt:
@@ -24,7 +24,7 @@ const articles = [
     href: "/features",
   },
   {
-    image: "https://placehold.co/600x240/1e293b/06b6d4?text=24%2F7+Business",
+    image: "https://placehold.co/600x240/cffafe/06b6d4?text=24%2F7+Business",
     date: "Apr 2026",
     title: "Building a 24/7 Business with Automation",
     excerpt:
@@ -37,16 +37,21 @@ export function InsightsSection() {
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    if (sectionRef.current) animateSection(sectionRef.current, "[data-animate]", 0.1)
+    if (!sectionRef.current) return
+    const ctx = gsap.context(() => {
+      animateSectionBlur(sectionRef.current!, "[data-animate='header']", 0)
+      animateScaleIn(sectionRef.current!, "[data-animate='card']", 0.1)
+    }, sectionRef)
+    return () => ctx.revert()
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-24 bg-neutral-950 overflow-hidden">
+    <section ref={sectionRef} className="relative py-24 bg-neutral-50 dark:bg-neutral-950 overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-px bg-border" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
 
-        <div data-animate className="mb-14">
+        <div data-animate="header" className="mb-14">
           <p className="text-primary text-[11px] font-semibold tracking-[0.25em] mb-3">
             Latest Insights
           </p>
@@ -64,7 +69,7 @@ export function InsightsSection() {
               className="rounded-2xl"
             >
               <article
-                data-animate
+                data-animate="card"
                 className="group rounded-2xl overflow-hidden
                   bg-neutral-100/80 dark:bg-neutral-800/80 backdrop-blur-sm
                   border border-neutral-200 dark:border-neutral-700

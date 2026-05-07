@@ -2,14 +2,18 @@
 
 import { useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
-import { animateSection } from "@/lib/gsap-utils"
+import { gsap, animateSectionBlur } from "@/lib/gsap-utils"
 import Link from "next/link"
 
 export function CtaSection() {
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    if (sectionRef.current) animateSection(sectionRef.current, "[data-animate]", 0.12)
+    if (!sectionRef.current) return
+    const ctx = gsap.context(() => {
+      animateSectionBlur(sectionRef.current!, "[data-animate]", 0.13)
+    }, sectionRef)
+    return () => ctx.revert()
   }, [])
 
   return (
@@ -17,18 +21,26 @@ export function CtaSection() {
       ref={sectionRef}
       className="relative py-24 overflow-hidden bg-neutral-950 dark:bg-neutral-950"
     >
-      {/* Subtle blue glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-blue-600/[0.10] blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] rounded-full bg-blue-500/[0.07] blur-[80px] pointer-events-none" />
+      {/* Animated pulsing glow rings */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] rounded-full bg-blue-600/[0.12] blur-[100px] pointer-events-none animate-[ctaGlow_4s_ease-in-out_infinite]" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] rounded-full bg-indigo-500/[0.10] blur-[80px] pointer-events-none animate-[ctaGlow_4s_ease-in-out_1.5s_infinite]" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] rounded-full bg-blue-400/[0.06] blur-[90px] pointer-events-none" />
 
       {/* Dot grid */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)",
           backgroundSize: "28px 28px",
         }}
       />
+
+      <style jsx global>{`
+        @keyframes ctaGlow {
+          0%, 100% { opacity: 0.12; transform: translateX(-50%) scale(1); }
+          50%       { opacity: 0.22; transform: translateX(-50%) scale(1.12); }
+        }
+      `}</style>
 
       <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
         <p data-animate className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] mb-4">

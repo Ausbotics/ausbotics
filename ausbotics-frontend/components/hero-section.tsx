@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import { ArrowRight2 } from "iconsax-reactjs"
-import { gsap } from "@/lib/gsap-utils"
+import { gsap, ScrollTrigger } from "@/lib/gsap-utils"
 import Link from "next/link"
 
 // ── Clay buttons ─────────────────────────────────────────────────────────────
@@ -13,7 +13,7 @@ function ClayPrimaryButton({ href, children }: { href: string; children: React.R
       <span
         role="button"
         tabIndex={0}
-        className="group flex w-full sm:w-auto items-center justify-center gap-2 cursor-pointer select-none text-white font-bold rounded-2xl px-5 py-3 text-sm sm:px-7 sm:py-[13px] sm:text-[15px] bg-gradient-to-b from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-600 shadow-[0_4px_0_#1d4ed8,0_6px_16px_rgba(59,130,246,0.18),inset_0_1px_0_rgba(255,255,255,0.35)] dark:shadow-[0_4px_0_#1e40af,0_6px_16px_rgba(96,165,250,0.15),inset_0_1px_0_rgba(255,255,255,0.20)] hover:translate-y-[2px] hover:shadow-[0_2px_0_#1d4ed8,0_3px_8px_rgba(59,130,246,0.14),inset_0_1px_0_rgba(255,255,255,0.35)] dark:hover:shadow-[0_2px_0_#1e40af,0_3px_8px_rgba(96,165,250,0.12),inset_0_1px_0_rgba(255,255,255,0.20)] active:translate-y-[4px] active:shadow-[0_0px_0_#1d4ed8,inset_0_1px_0_rgba(255,255,255,0.35)] transition-all duration-100"
+        className="group flex w-full sm:w-auto items-center justify-center gap-1.5 cursor-pointer select-none text-white font-bold rounded-xl px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm bg-gradient-to-b from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-600 shadow-[0_4px_0_#1d4ed8,0_6px_16px_rgba(59,130,246,0.18),inset_0_1px_0_rgba(255,255,255,0.35)] dark:shadow-[0_4px_0_#1e40af,0_6px_16px_rgba(96,165,250,0.15),inset_0_1px_0_rgba(255,255,255,0.20)] hover:translate-y-[2px] hover:shadow-[0_2px_0_#1d4ed8,0_3px_8px_rgba(59,130,246,0.14),inset_0_1px_0_rgba(255,255,255,0.35)] dark:hover:shadow-[0_2px_0_#1e40af,0_3px_8px_rgba(96,165,250,0.12),inset_0_1px_0_rgba(255,255,255,0.20)] active:translate-y-[4px] active:shadow-[0_0px_0_#1d4ed8,inset_0_1px_0_rgba(255,255,255,0.35)] transition-all duration-100"
       >
         {children}
       </span>
@@ -27,7 +27,7 @@ function ClaySecondaryButton({ href, children }: { href: string; children: React
       <span
         role="button"
         tabIndex={0}
-        className="group flex w-full sm:w-auto items-center justify-center gap-2 cursor-pointer select-none font-bold rounded-2xl px-5 py-3 text-sm sm:px-7 sm:py-[13px] sm:text-[15px] text-slate-800 dark:text-white bg-gradient-to-b from-white to-slate-100 dark:from-slate-700 dark:to-slate-800 border border-slate-200 dark:border-slate-500 shadow-[0_4px_0_#cbd5e1,0_6px_18px_rgba(15,23,42,0.10),inset_0_1px_0_white] dark:shadow-[0_4px_0_#1e293b,0_6px_18px_rgba(0,0,0,0.40),inset_0_1px_0_rgba(255,255,255,0.12)] hover:translate-y-[2px] hover:shadow-[0_2px_0_#cbd5e1,0_3px_10px_rgba(15,23,42,0.08),inset_0_1px_0_white] dark:hover:shadow-[0_2px_0_#1e293b,0_3px_10px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.12)] active:translate-y-[4px] active:shadow-[0_0px_0_#cbd5e1,inset_0_1px_0_white] dark:active:shadow-[0_0px_0_#1e293b,inset_0_1px_0_rgba(255,255,255,0.12)] transition-all duration-100"
+        className="group flex w-full sm:w-auto items-center justify-center gap-1.5 cursor-pointer select-none font-bold rounded-xl px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm text-slate-800 dark:text-white bg-gradient-to-b from-white to-slate-100 dark:from-slate-700 dark:to-slate-800 border border-slate-200 dark:border-slate-500 shadow-[0_4px_0_#cbd5e1,0_6px_18px_rgba(15,23,42,0.10),inset_0_1px_0_white] dark:shadow-[0_4px_0_#1e293b,0_6px_18px_rgba(0,0,0,0.40),inset_0_1px_0_rgba(255,255,255,0.12)] hover:translate-y-[2px] hover:shadow-[0_2px_0_#cbd5e1,0_3px_10px_rgba(15,23,42,0.08),inset_0_1px_0_white] dark:hover:shadow-[0_2px_0_#1e293b,0_3px_10px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.12)] active:translate-y-[4px] active:shadow-[0_0px_0_#cbd5e1,inset_0_1px_0_white] dark:active:shadow-[0_0px_0_#1e293b,inset_0_1px_0_rgba(255,255,255,0.12)] transition-all duration-100"
       >
         {children}
       </span>
@@ -39,17 +39,17 @@ export function HeroButtons() {
   return (
     <div className="flex flex-row w-full items-stretch sm:items-center justify-center lg:justify-start gap-3 sm:gap-2">
       <ClayPrimaryButton href="/book">
-        <span className="text-sm sm:text-[15px]">Request a Demo</span>
+        <span className="text-xs sm:text-sm">Request a Demo</span>
         <span className="inline-flex transition-transform duration-150 group-hover:translate-x-1">
-          <ArrowRight2 size={15} className="sm:hidden" />
-          <ArrowRight2 size={16} className="hidden sm:block" />
+          <ArrowRight2 size={12} className="sm:hidden" />
+          <ArrowRight2 size={13} className="hidden sm:block" />
         </span>
       </ClayPrimaryButton>
       <ClaySecondaryButton href="/contact">
-        <span className="text-sm sm:text-[15px]">Contact us</span>
+        <span className="text-xs sm:text-sm">Contact us</span>
         <span className="inline-flex transition-transform duration-150 group-hover:translate-x-1">
-          <ArrowRight2 size={15} className="sm:hidden" />
-          <ArrowRight2 size={16} className="hidden sm:block" />
+          <ArrowRight2 size={12} className="sm:hidden" />
+          <ArrowRight2 size={13} className="hidden sm:block" />
         </span>
       </ClaySecondaryButton>
     </div>
@@ -73,17 +73,34 @@ export function HeroSection() {
         "[data-hero='visual']",
       ]
 
-      gsap.set(items, { opacity: 0, y: 20, filter: "blur(8px)" })
+      gsap.set(items, { opacity: 0, y: 24, filter: "blur(10px)" })
 
-      const tl = gsap.timeline({ delay: 0.1 })
-
+      const tl = gsap.timeline({ delay: 0.15 })
       items.forEach((sel, i) => {
         tl.to(
           sel,
-          { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "power3.out" },
-          i === 0 ? 0 : "-=0.38",
+          { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.65, ease: "power3.out" },
+          i === 0 ? 0 : "-=0.40",
         )
       })
+
+      // Blob parallax on scroll
+      const section = sectionRef.current
+      if (section) {
+        gsap.to(section.querySelector(".blob-1"), {
+          y: -90,
+          scrollTrigger: { trigger: section, start: "top top", end: "bottom top", scrub: 1.8 },
+        })
+        gsap.to(section.querySelector(".blob-2"), {
+          y: 70,
+          scrollTrigger: { trigger: section, start: "top top", end: "bottom top", scrub: 1.5 },
+        })
+        gsap.to(section.querySelector(".blob-3"), {
+          y: -50,
+          x: 30,
+          scrollTrigger: { trigger: section, start: "top top", end: "bottom top", scrub: 2.0 },
+        })
+      }
     }, sectionRef)
 
     return () => ctx.revert()
@@ -125,7 +142,7 @@ export function HeroSection() {
           {/* Heading — each line fades in separately */}
           <h1
             className="font-extrabold leading-[1.06] tracking-tight mb-5 text-foreground"
-            style={{ fontSize: "clamp(2.3rem, 5.2vw, 4.4rem)" }}
+            style={{ fontSize: "clamp(1.7rem, 3.8vw, 3.2rem)" }}
           >
             <span data-hero="h1-line1" className="block">Replace manual work  with{" "}</span>
 
@@ -138,7 +155,7 @@ export function HeroSection() {
           {/* Subtext */}
           <p
             data-hero="subtext"
-            className="max-w-lg mb-10 text-muted-foreground text-base md:text-lg leading-relaxed"
+            className="max-w-lg mb-10 text-muted-foreground text-sm md:text-base leading-relaxed"
           >
             AusBotics delivers intelligent calling agents, live business dashboards,
             and custom web platforms — fully built, integrated, and ready to deploy

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import { Setting2, Health, Buildings2, Briefcase } from "iconsax-reactjs"
-import { animateSection } from "@/lib/gsap-utils"
+import { gsap, animateSectionBlur, animateScaleIn } from "@/lib/gsap-utils"
 import { GlareHover } from "@/components/ui/glare-hover"
 
 const segments = [
@@ -32,7 +32,12 @@ export function WhoWeServe() {
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    if (sectionRef.current) animateSection(sectionRef.current, "[data-animate]", 0.1)
+    if (!sectionRef.current) return
+    const ctx = gsap.context(() => {
+      animateSectionBlur(sectionRef.current!, "[data-animate='header']", 0)
+      animateScaleIn(sectionRef.current!, "[data-animate='card']", 0.1)
+    }, sectionRef)
+    return () => ctx.revert()
   }, [])
 
   return (
@@ -41,7 +46,7 @@ export function WhoWeServe() {
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
 
-        <div data-animate className="text-center mb-14">
+        <div data-animate="header" className="text-center mb-14">
           <p className="text-primary text-[11px] font-semibold tracking-[0.25em] mb-3">
             Who We Serve
           </p>
@@ -59,7 +64,7 @@ export function WhoWeServe() {
               className="rounded-2xl"
             >
               <div
-                data-animate
+                data-animate="card"
                 className="rounded-2xl p-6
                   bg-neutral-100/80 dark:bg-neutral-800/80 backdrop-blur-sm
                   border border-neutral-200 dark:border-neutral-700
