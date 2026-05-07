@@ -3,27 +3,27 @@
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
 import { useTheme } from "next-themes";
-import { CheckCircle2, Clock, Shield, Star, Video, MessageSquare } from "lucide-react";
+import { Eye, Monitor, Routing, ShieldTick, Star1, Clock } from "iconsax-reactjs";
 import { Navigation } from "./navigation";
 
 const BENEFITS = [
   {
-    icon: Clock,
-    title: "30-Minute Deep Dive",
+    icon: Eye,
+    title: "Strategy Deep Dive",
     desc: "No fluff — walk through your exact workflow and see live results.",
   },
   {
-    icon: Video,
+    icon: Monitor,
     title: "Live AI Demo",
     desc: "Watch our calling agents handle real scenarios tailored to your industry.",
   },
   {
-    icon: MessageSquare,
+    icon: Routing,
     title: "Custom Strategy",
     desc: "Leave with a concrete automation blueprint specific to your business.",
   },
   {
-    icon: Shield,
+    icon: ShieldTick,
     title: "Zero Commitment",
     desc: "Completely free session. No sales pressure, ever.",
   },
@@ -55,7 +55,6 @@ export function CalBooking() {
       <Navigation />
 
       <div className="grid lg:grid-cols-[1fr_1.1fr] min-h-screen pt-16">
-        {/* ── Left Panel ─────────────────────────────────────────── */}
         <div className="relative flex flex-col justify-center px-8 py-16 lg:px-14 xl:px-20 overflow-hidden">
           {/* Background glow */}
           <div
@@ -66,7 +65,7 @@ export function CalBooking() {
 
           {/* Badge */}
           <span className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-[oklch(0.55_0.20_242/0.35)] bg-[oklch(0.55_0.20_242/0.08)] px-4 py-1.5 text-xs font-semibold tracking-widest uppercase text-[oklch(0.55_0.20_242)] dark:text-[oklch(0.70_0.18_242)]">
-            <Star className="h-3 w-3 fill-current" />
+            <Star1 size={12} variant="Bold" className="fill-current" />
             Free Strategy Session
           </span>
 
@@ -79,7 +78,7 @@ export function CalBooking() {
                   "linear-gradient(135deg, oklch(0.55 0.20 242), oklch(0.65 0.22 220))",
               }}
             >
-              30-Min Discovery Call
+              Free Strategy Session
             </span>
           </h1>
 
@@ -92,8 +91,8 @@ export function CalBooking() {
           <ul className="mt-10 space-y-5">
             {BENEFITS.map(({ icon: Icon, title, desc }) => (
               <li key={title} className="flex items-start gap-4">
-                <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[oklch(0.55_0.20_242/0.10)] dark:bg-[oklch(0.55_0.20_242/0.18)]">
-                  <Icon className="h-4 w-4 text-[oklch(0.55_0.20_242)] dark:text-[oklch(0.70_0.18_242)]" />
+                <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[oklch(0.55_0.20_242/0.10)] dark:bg-[oklch(0.55_0.20_242/0.18)]">
+                  <Icon size={18} variant="Bulk" className="text-[oklch(0.55_0.20_242)] dark:text-[oklch(0.70_0.18_242)]" />
                 </span>
                 <div>
                   <p className="text-sm font-semibold">{title}</p>
@@ -122,12 +121,6 @@ export function CalBooking() {
               ))}
             </ol>
           </div>
-
-          {/* Trust line */}
-          <p className="mt-8 flex items-center gap-2 text-xs opacity-45">
-            <CheckCircle2 className="h-3.5 w-3.5" />
-            Trusted by 200+ businesses across AU, UK &amp; US
-          </p>
         </div>
 
         {/* ── Right Panel — Cal.com Embed ─────────────────────────── */}
@@ -143,10 +136,10 @@ export function CalBooking() {
             >
               <div className="flex items-center gap-3">
                 <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/20">
-                  <Clock className="h-4 w-4 text-white" />
+                  <Clock size={18} variant="Bulk" className="text-white" />
                 </span>
                 <div>
-                  <p className="text-sm font-bold text-white">30-Min Discovery Call</p>
+                  <p className="text-sm font-bold text-white">Free Strategy Session</p>
                   <p className="text-xs text-white/70">AusBotics · Video call via Zoom</p>
                 </div>
               </div>

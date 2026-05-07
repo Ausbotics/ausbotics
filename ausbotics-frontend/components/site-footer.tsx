@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 
 const company = [
   { label: "Home",         href: "/" },
@@ -23,9 +24,18 @@ export function SiteFooter() {
 
           {/* Col 1 — Brand */}
           <div>
-            <Link href="/" className="inline-flex items-center gap-2 mb-4">
-              <span className="text-xl font-extrabold tracking-tight text-foreground">
-                Aus<span className="text-primary">Botics</span>
+            <Link href="/" className="inline-flex items-center gap-2.5 mb-5">
+              <div className="rounded-xl overflow-hidden w-9 h-9 shrink-0 ring-1 ring-blue-500/20">
+                <Image
+                  src="/logo.jpeg"
+                  alt="AusBotics"
+                  width={36}
+                  height={36}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <span className="text-base font-bold tracking-tight text-foreground dark:text-white">
+                AusBotics
               </span>
             </Link>
             <p className="text-[13px] text-muted-foreground leading-relaxed max-w-[200px]">

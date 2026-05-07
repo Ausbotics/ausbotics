@@ -33,7 +33,7 @@ export function AboutHero() {
       {/* Blobs */}
       <div className="absolute -top-20 -left-20 w-96 h-96 rounded-full bg-primary/15 blur-3xl -z-10 pointer-events-none animate-[blobFloat1_8s_ease-in-out_infinite]" />
       <div className="absolute bottom-0 -right-16 w-80 h-80 rounded-full bg-blue-400/15 dark:bg-blue-500/20 blur-3xl -z-10 pointer-events-none animate-[blobFloat2_10s_ease-in-out_infinite]" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[32rem] h-[22rem] rounded-full bg-indigo-300/10 dark:bg-indigo-500/10 blur-3xl -z-10 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[32rem] h-[22rem] rounded-full bg-blue-300/10 dark:bg-blue-500/10 blur-3xl -z-10 pointer-events-none" />
 
       {/* Top rule */}
       <div
@@ -57,7 +57,7 @@ export function AboutHero() {
           style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)" }}
         >
           Bringing the Power of{" "}
-          <span className="bg-gradient-to-br from-blue-500 to-indigo-600 dark:from-blue-300 dark:to-indigo-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-br from-blue-500 to-blue-700 dark:from-blue-300 dark:to-blue-500 bg-clip-text text-transparent">
             AI Automation
           </span>{" "}
           to Everyone

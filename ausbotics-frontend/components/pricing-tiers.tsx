@@ -35,7 +35,7 @@ const tiers = [
     ],
     popular: false,
     cta: "Talk to Sales",
-    accentBlob: "bg-indigo-500/8",
+    accentBlob: "bg-blue-500/6",
   },
 ]
 
@@ -78,7 +78,7 @@ export function PricingTiers() {
             <div
               key={name}
               data-animate
-              className={`relative flex flex-col rounded-2xl p-9 sm:p-11 overflow-hidden min-h-[540px]
+              className={`relative flex flex-col rounded-2xl overflow-hidden
                 bg-white dark:bg-neutral-900
                 border ${popular ? "border-primary/30" : "border-neutral-200 dark:border-neutral-800"}
                 shadow-sm hover:shadow-md
@@ -86,7 +86,7 @@ export function PricingTiers() {
                 transition-all duration-300 ease-out`}
             >
               {/* Subtle top accent */}
-              <div className={`absolute inset-x-0 top-0 h-32 bg-gradient-to-b ${accentBlob} to-transparent rounded-t-2xl pointer-events-none`} />
+              <div className={`absolute inset-x-0 top-0 h-40 bg-gradient-to-b ${accentBlob} to-transparent rounded-t-2xl pointer-events-none`} />
 
               {/* Popular badge */}
               {popular && (
@@ -96,48 +96,54 @@ export function PricingTiers() {
                 </div>
               )}
 
-              <div className="relative z-10 text-center mb-8">
-                <h3 className="text-[18px] font-bold text-foreground mb-2">{name}</h3>
-                <p className="text-[13px] text-muted-foreground mb-6 leading-relaxed">{description}</p>
+              {/* Content wrapper — grows to fill */}
+              <div className="relative z-10 flex flex-col flex-1 p-9 sm:p-11 pt-12">
 
-                <div className="text-[2.4rem] font-extrabold text-primary leading-none mb-1.5">{priceRange}</div>
-                <div className="text-[12px] text-muted-foreground">{priceSuffix}</div>
-              </div>
+                {/* Header */}
+                <div className="text-center mb-8">
+                  <h3 className="text-[18px] font-bold text-foreground mb-2">{name}</h3>
+                  <p className="text-[13px] text-muted-foreground mb-6 leading-relaxed">{description}</p>
 
-              <div className="h-px bg-border mb-7" />
+                  <div className="text-[2.4rem] font-extrabold text-primary leading-none mb-1.5">{priceRange}</div>
+                  <div className="text-[12px] text-muted-foreground">{priceSuffix}</div>
+                </div>
 
-              <div className="relative z-10 flex-1 space-y-4 mb-9">
-                <p className="text-[11px] font-semibold tracking-wider uppercase text-muted-foreground mb-4">
-                  What&apos;s included
-                </p>
-                {features.map((f) => (
-                  <div key={f} className="flex items-start gap-3 text-[13px] text-muted-foreground leading-relaxed">
-                    <div className="w-4 h-4 rounded-full bg-primary/10 border border-primary/15 flex items-center justify-center shrink-0 mt-0.5">
-                      <TickCircle size={11} variant="Bold" className="text-primary" />
+                <div className="h-px bg-border mb-7" />
+
+                {/* Features — flex-1 so it fills remaining height */}
+                <div className="flex-1 space-y-4 mb-10">
+                  <p className="text-[11px] font-semibold tracking-wider uppercase text-muted-foreground mb-5">
+                    What&apos;s included
+                  </p>
+                  {features.map((f) => (
+                    <div key={f} className="flex items-start gap-3 text-[13px] text-muted-foreground leading-relaxed">
+                      <div className="w-5 h-5 rounded-full bg-primary/10 border border-primary/15 flex items-center justify-center shrink-0 mt-0.5">
+                        <TickCircle size={12} variant="Bulk" className="text-primary" />
+                      </div>
+                      {f}
                     </div>
-                    {f}
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
 
-              {/* CTA */}
-              <div className="relative z-10 space-y-2 mt-auto">
-                <Link
-                  href="/contact"
-                  className={`flex w-full items-center justify-center gap-2 rounded-xl py-3.5 text-[13px] font-bold transition-all duration-150 ${
-                    popular
-                      ? "text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 shadow-sm active:scale-[0.98]"
-                      : "text-foreground bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-700 active:scale-[0.98]"
-                  }`}
-                >
-                  {cta}
-                </Link>
-                <Link
-                  href="/contact"
-                  className="flex w-full items-center justify-center text-[11px] font-medium text-muted-foreground hover:text-primary transition-colors py-1.5"
-                >
-                  Contact Sales
-                </Link>
+                {/* CTA — pinned to bottom */}
+                <div className="space-y-2 mt-auto pt-4">
+                  <Link
+                    href="/contact"
+                    className={`flex w-full items-center justify-center gap-2 rounded-xl py-4 text-[13px] font-bold transition-all duration-150 ${
+                      popular
+                        ? "text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 shadow-sm active:scale-[0.98]"
+                        : "text-foreground bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-700 active:scale-[0.98]"
+                    }`}
+                  >
+                    {cta}
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="flex w-full items-center justify-center text-[11px] font-medium text-muted-foreground hover:text-primary transition-colors py-1.5"
+                  >
+                    Contact Sales
+                  </Link>
+                </div>
               </div>
             </div>
           ))}

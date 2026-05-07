@@ -33,7 +33,7 @@ export function PricingHero() {
       {/* Blobs */}
       <div className="absolute -top-16 -right-16 w-96 h-96 rounded-full bg-primary/15 blur-3xl -z-10 pointer-events-none animate-[blobFloat1_9s_ease-in-out_infinite]" />
       <div className="absolute bottom-0 -left-20 w-80 h-80 rounded-full bg-blue-400/12 dark:bg-blue-500/18 blur-3xl -z-10 pointer-events-none animate-[blobFloat2_11s_ease-in-out_infinite]" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[28rem] h-[20rem] rounded-full bg-indigo-300/8 dark:bg-indigo-500/10 blur-3xl -z-10 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[28rem] h-[20rem] rounded-full bg-blue-300/8 dark:bg-blue-500/10 blur-3xl -z-10 pointer-events-none" />
 
       <div
         className="absolute inset-x-0 top-0 h-px pointer-events-none"
@@ -55,7 +55,7 @@ export function PricingHero() {
           style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)" }}
         >
           Dual Engagement Models for{" "}
-          <span className="bg-gradient-to-br from-blue-500 to-indigo-600 dark:from-blue-300 dark:to-indigo-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-br from-blue-500 to-blue-700 dark:from-blue-300 dark:to-blue-500 bg-clip-text text-transparent">
             Flexible Scaling
           </span>
         </h1>
