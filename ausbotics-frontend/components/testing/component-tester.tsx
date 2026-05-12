@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { CheckCircle, XCircle, AlertTriangle, Play, Eye, Settings, Users, Calendar, Workflow } from "lucide-react"
+import { BluePremiumButton } from "@/components/ui/blue-premium-button"
 
 interface TestResult {
   component: string
@@ -270,6 +271,25 @@ export function ComponentTester() {
               </AlertDescription>
             </Alert>
           )}
+        </CardContent>
+      </Card>
+
+      {/* Blue Premium Button Demo */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center space-x-2">
+            <span>Blue Premium Button</span>
+          </CardTitle>
+          <CardDescription>Premium button component with blue gradient, inset border, and shadow effects</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div className="space-y-4">
+            <div className="flex gap-4 flex-wrap">
+              <BluePremiumButton onClick={() => alert("Primary clicked!")}>Primary Button</BluePremiumButton>
+              <BluePremiumButton disabled>Disabled Button</BluePremiumButton>
+            </div>
+            <p className="text-sm text-muted-foreground">Features: Blue gradient background, inset border, inner shadow, pressable state</p>
+          </div>
         </CardContent>
       </Card>
 

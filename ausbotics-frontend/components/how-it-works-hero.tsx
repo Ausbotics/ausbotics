@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 import { gsap } from "@/lib/gsap-utils"
 import Link from "next/link"
 import { Play, ArrowRight } from "iconsax-reactjs"
+import { Button } from "@/components/ui/button"
 
 export function HowItWorksHero() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -79,20 +80,18 @@ export function HowItWorksHero() {
         </p>
 
         <div data-hiw="ctas" className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Link
-            href="/book"
-            className="inline-flex items-center justify-center gap-2 cursor-pointer text-white font-bold rounded-2xl px-7 py-3.5 text-[15px] bg-gradient-to-b from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600 shadow-[0_4px_0_#1d4ed8,0_8px_24px_rgba(59,130,246,0.40),inset_0_1px_0_rgba(255,255,255,0.40)] hover:translate-y-[2px] hover:shadow-[0_2px_0_#1d4ed8,0_4px_12px_rgba(59,130,246,0.30),inset_0_1px_0_rgba(255,255,255,0.40)] active:translate-y-[4px] transition-all duration-100"
-          >
-            <Play size={16} />
-            Watch Demo
-          </Link>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center gap-2 cursor-pointer font-bold rounded-2xl px-7 py-3.5 text-[15px] text-slate-800 dark:text-white bg-gradient-to-b from-white to-slate-100 dark:from-slate-700 dark:to-slate-800 border border-slate-200 dark:border-slate-500 shadow-[0_4px_0_#cbd5e1,0_6px_18px_rgba(15,23,42,0.10),inset_0_1px_0_white] dark:shadow-[0_4px_0_#1e293b,0_6px_18px_rgba(0,0,0,0.40),inset_0_1px_0_rgba(255,255,255,0.12)] hover:translate-y-[2px] active:translate-y-[4px] transition-all duration-100"
-          >
-            Get Started Today
-            <ArrowRight size={16} />
-          </Link>
+          <Button asChild variant="default" size="lg">
+            <Link href="/book">
+              <Play size={16} />
+              Watch Demo
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link href="/contact">
+              Get Started Today
+              <ArrowRight size={16} />
+            </Link>
+          </Button>
         </div>
       </div>
 

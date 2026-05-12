@@ -471,7 +471,7 @@ export function Navigation() {
                 </div>
               ) : (
                 !isDashboard && (
-                  <Button className="w-full rounded-xl" variant="brand" asChild>
+                  <Button className="rounded-lg text-sm" variant="brand" asChild>
                     <Link href="/book" onClick={() => setIsMobileMenuOpen(false)}>
                       Book Appointment
                     </Link>

@@ -2,6 +2,7 @@
 
 import { Flash, TaskSquare, Lamp, People, ArrowRight } from "iconsax-reactjs";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const values = [
   {
@@ -109,19 +110,17 @@ export function CompanyValues() {
               Join businesses that have revolutionised their operations with our intelligent AI automation.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link
-                href="/book"
-                className="inline-flex items-center justify-center gap-2 cursor-pointer text-white font-bold rounded-2xl px-7 py-3.5 text-[14px] bg-gradient-to-b from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600 shadow-[0_4px_0_#1d4ed8,0_8px_24px_rgba(59,130,246,0.35),inset_0_1px_0_rgba(255,255,255,0.40)] hover:translate-y-[2px] hover:shadow-[0_2px_0_#1d4ed8,0_4px_12px_rgba(59,130,246,0.25)] active:translate-y-[4px] transition-all duration-100"
-              >
-                Request a Demo
-                <ArrowRight size={15} variant="Bulk" />
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 cursor-pointer font-bold rounded-2xl px-7 py-3.5 text-[14px] text-slate-800 dark:text-white bg-gradient-to-b from-white to-slate-100 dark:from-slate-700 dark:to-slate-800 border border-slate-200 dark:border-slate-600 shadow-[0_4px_0_#cbd5e1,0_6px_18px_rgba(15,23,42,0.08)] dark:shadow-[0_4px_0_#1e293b,0_6px_18px_rgba(0,0,0,0.35)] hover:translate-y-[2px] active:translate-y-[4px] transition-all duration-100"
-              >
-                Contact Our Team
-              </Link>
+              <Button asChild variant="default" size="lg">
+                <Link href="/book">
+                  Request a Demo
+                  <ArrowRight size={15} variant="Bulk" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href="/contact">
+                  Contact Our Team
+                </Link>
+              </Button>
             </div>
           </div>
         </div>

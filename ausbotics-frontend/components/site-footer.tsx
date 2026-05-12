@@ -1,18 +1,19 @@
+
 import Link from "next/link"
 import Image from "next/image"
 
 const company = [
-  { label: "Home",         href: "/" },
-  { label: "Features",     href: "/features" },
-  { label: "Pricing",      href: "/pricing" },
+  { label: "Home", href: "/" },
+  { label: "Features", href: "/features" },
+  { label: "Pricing", href: "/pricing" },
   { label: "How It Works", href: "/how-it-works" },
-  { label: "Contact",      href: "/contact" },
+  { label: "Contact", href: "/contact" },
 ]
 
 const services = [
-  { label: "AI Calling Agents",    href: "/features" },
-  { label: "Workflow Automation",  href: "/features" },
-  { label: "Business Dashboards",  href: "/features" },
+  { label: "AI Calling Agents", href: "/features" },
+  { label: "Workflow Automation", href: "/features" },
+  { label: "Business Dashboards", href: "/features" },
   { label: "Custom Web Platforms", href: "/features" },
 ]
 
@@ -96,13 +97,7 @@ export function SiteFooter() {
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-neutral-200 dark:border-neutral-800">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[12px] text-muted-foreground">© 2025 AusBotics. All rights reserved.</p>
-          <p className="text-[12px] text-muted-foreground">Built with ❤️ in Melbourne</p>
-        </div>
-      </div>
+
     </footer>
   )
 }

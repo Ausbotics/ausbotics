@@ -5,14 +5,9 @@ import { cn } from "@/lib/utils"
 const base =
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium transition-all duration-200 ease-out disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive h-9 px-4 py-2 has-[>svg]:px-3 select-none"
 
-// Shared 3D press feedback
-const press =
-  "hover:-translate-y-[1px] active:translate-y-[2px] active:shadow-[0_2px_8px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.2)]"
-
 const buttonVariants = {
   default: cn(
     base,
-    press,
     "bg-primary/85 text-primary-foreground backdrop-blur-xl",
     "border border-white/25 dark:border-white/10",
     "shadow-[0_8px_32px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.30)]",
@@ -20,7 +15,6 @@ const buttonVariants = {
   ),
   destructive: cn(
     base,
-    press,
     "bg-destructive/85 text-white backdrop-blur-xl",
     "border border-white/20",
     "shadow-[0_8px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.25)]",
@@ -28,7 +22,6 @@ const buttonVariants = {
   ),
   outline: cn(
     base,
-    press,
     "backdrop-blur-xl bg-white/10 dark:bg-white/5",
     "border border-white/20 dark:border-white/10",
     "text-foreground",
@@ -37,7 +30,6 @@ const buttonVariants = {
   ),
   secondary: cn(
     base,
-    press,
     "backdrop-blur-xl bg-secondary/70",
     "text-secondary-foreground",
     "border border-white/20 dark:border-white/10",
@@ -52,7 +44,6 @@ const buttonVariants = {
   link: cn(base, "text-primary underline-offset-4 hover:underline"),
   brand: cn(
     base,
-    press,
     "bg-primary/80 text-primary-foreground backdrop-blur-xl",
     "border border-white/25",
     "shadow-[0_8px_32px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.30)]",
@@ -60,7 +51,6 @@ const buttonVariants = {
   ),
   navy: cn(
     base,
-    press,
     "bg-foreground/90 text-background backdrop-blur-xl",
     "border border-white/15",
     "shadow-[0_8px_32px_rgba(0,0,0,0.20),inset_0_1px_0_rgba(255,255,255,0.18)]",
@@ -68,7 +58,6 @@ const buttonVariants = {
   ),
   "outline-brand": cn(
     base,
-    press,
     "backdrop-blur-xl bg-primary/5",
     "border border-primary/30",
     "text-primary",
