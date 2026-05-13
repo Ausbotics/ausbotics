@@ -92,7 +92,7 @@ export function ContactFAQ() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="outline" asChild>
-              <Link href="mailto:sales@aicallingagents.com">
+              <Link href="mailto:ausbotics3@gmail.com">
                 Email Us Directly
               </Link>
             </Button>

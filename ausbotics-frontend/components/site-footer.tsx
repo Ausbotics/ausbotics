@@ -88,8 +88,9 @@ export function SiteFooter() {
               Contact
             </h4>
             <ul className="space-y-2.5">
-              <li className="text-[13px] text-muted-foreground">hello@ausbotics.com.au</li>
-              <li className="text-[13px] text-muted-foreground">+61 400 000 000</li>
+              <li className="text-[13px] text-muted-foreground">ausbotics3@gmail.com</li>
+              <li className="text-[13px] text-muted-foreground">+61 432 571 365</li>
+              <li className="text-[13px] text-muted-foreground">+61 414 004 386</li>
               <li className="text-[13px] text-muted-foreground">Melbourne, Australia</li>
             </ul>
           </div>
