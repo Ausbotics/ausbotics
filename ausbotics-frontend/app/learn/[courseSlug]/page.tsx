@@ -5,7 +5,7 @@ import { Navigation } from "@/components/navigation"
 import { SiteFooter } from "@/components/site-footer"
 import { getCourse } from "@/lib/courses"
 import { ChevronRight, Clock } from "lucide-react"
-import * as Icon from "iconsax-react"
+import * as Icon from "iconsax-reactjs"
 
 export default function CoursePage({
   params,
