@@ -34,6 +34,7 @@ export function Navigation() {
     { name: "Home", link: "/" },
     { name: "About", link: "/about" },
     { name: "Services", link: "/features" },
+    { name: "Learn", link: "/learn" },
     { name: "Pricing", link: "/pricing" },
     { name: "Contact", link: "/contact" },
   ];
