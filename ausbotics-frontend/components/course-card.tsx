@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Card } from "@/components/ui/card"
 import { type Course } from "@/lib/courses"
-import * as Icon from "iconsax-react"
+import * as Icon from "iconsax-reactjs"
 
 const CATEGORY_COLORS: Record<string, { bg: string; text: string }> = {
   "Prompt Engineering": { bg: "bg-blue-100 dark:bg-blue-950", text: "text-blue-700 dark:text-blue-300" },

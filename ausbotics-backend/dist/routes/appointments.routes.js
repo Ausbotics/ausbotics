@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const appointment_controller_1 = require("../controllers/appointment.controller");
+const auth_middleware_1 = require("../middlewares/auth.middleware");
+const client_1 = require("@prisma/client");
+const appointmentRouter = (0, express_1.Router)();
+appointmentRouter.post("/", appointment_controller_1.bookAppointment);
+appointmentRouter.use(auth_middleware_1.authenticate);
+appointmentRouter.get("/user/:email", appointment_controller_1.getUserAppointments);
+appointmentRouter.use((0, auth_middleware_1.restrictTo)(client_1.Role.SUPERADMIN, client_1.Role.ADMIN));
+appointmentRouter.get("/", appointment_controller_1.getAllAppointments);
+appointmentRouter.get("/:id", appointment_controller_1.getAppointment);
+appointmentRouter.patch("/:id/status", appointment_controller_1.updateAppointmentStatus);
+appointmentRouter.delete("/:id", appointment_controller_1.deleteAppointment);
+exports.default = appointmentRouter;

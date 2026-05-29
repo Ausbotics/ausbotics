@@ -1,0 +1,18 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const users_controller_1 = require("../controllers/users.controller");
+const auth_middleware_1 = require("../middlewares/auth.middleware");
+const role_middleware_1 = require("../middlewares/role.middleware");
+const client_1 = require("@prisma/client");
+const auth_middleware_2 = require("../middlewares/auth.middleware");
+const router = (0, express_1.Router)();
+router.get("/", auth_middleware_1.authenticate, (0, role_middleware_1.authorize)(["ADMIN", "SUPERADMIN"]), users_controller_1.getAllUsers);
+router.use(auth_middleware_1.authenticate);
+router.route("/me").get(users_controller_1.getMe).patch(users_controller_1.updateMe).delete(users_controller_1.deleteMe);
+router.use((0, auth_middleware_2.restrictTo)(client_1.Role.ADMIN, client_1.Role.SUPERADMIN));
+router.get("/", users_controller_1.getAllUsers);
+router.get("/:id", users_controller_1.getUserbyId);
+router.patch("/:id/role", (0, auth_middleware_2.restrictTo)(client_1.Role.SUPERADMIN), users_controller_1.updateUserRole);
+router.delete("/:id", users_controller_1.deleteUser);
+exports.default = router;
