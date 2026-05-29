@@ -1,16 +1,23 @@
-"use client";
+﻿"use client";
 
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
 import { useTheme } from "next-themes";
-import { Eye, Monitor, Routing, ShieldTick, Star1, Clock } from "iconsax-reactjs";
+import {
+  Eye,
+  Monitor,
+  Routing,
+  ShieldTick,
+  Star1,
+  Clock,
+} from "iconsax-reactjs";
 import { Navigation } from "./navigation";
 
 const BENEFITS = [
   {
     icon: Eye,
     title: "Strategy Deep Dive",
-    desc: "No fluff — walk through your exact workflow and see live results.",
+    desc: "No fluff  walk through your exact workflow and see live results.",
   },
   {
     icon: Monitor,
@@ -32,7 +39,7 @@ const BENEFITS = [
 const STEPS = [
   { step: "01", label: "Pick a time that works for you" },
   { step: "02", label: "Get a calendar invite with Zoom link" },
-  { step: "03", label: "We show up prepared — you get answers" },
+  { step: "03", label: "We show up prepared you get answers" },
 ];
 
 export function CalBooking() {
@@ -60,12 +67,19 @@ export function CalBooking() {
           <div
             aria-hidden
             className="pointer-events-none absolute -top-32 -left-32 h-[500px] w-[500px] rounded-full opacity-[0.08] dark:opacity-[0.12]"
-            style={{ background: "radial-gradient(circle, oklch(0.55 0.20 242), transparent 70%)" }}
+            style={{
+              background:
+                "radial-gradient(circle, oklch(0.55 0.20 242), transparent 70%)",
+            }}
           />
 
           {/* Badge */}
           <span className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-[oklch(0.55_0.20_242/0.35)] bg-[oklch(0.55_0.20_242/0.08)] px-4 py-1.5 text-xs font-semibold tracking-widest uppercase text-[oklch(0.55_0.20_242)] dark:text-[oklch(0.70_0.18_242)]">
-            <Star1 size={12} variant="Bold" className="fill-current" />
+            <Star1
+              size={12}
+              color="var(--icon-neutral)"
+              className="fill-current"
+            />
             Free Strategy Session
           </span>
 
@@ -83,8 +97,8 @@ export function CalBooking() {
           </h1>
 
           <p className="mt-4 max-w-md text-base leading-relaxed text-[var(--ink)] opacity-65 lg:text-lg">
-            See exactly how AusBotics AI calling agents can automate your outreach,
-            qualify leads, and book appointments — hands-free.
+            See exactly how AusBotics AI calling agents can automate your
+            outreach, qualify leads, and book appointments hands-free.
           </p>
 
           {/* Benefits */}
@@ -92,7 +106,7 @@ export function CalBooking() {
             {BENEFITS.map(({ icon: Icon, title, desc }) => (
               <li key={title} className="flex items-start gap-4">
                 <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[oklch(0.55_0.20_242/0.10)] dark:bg-[oklch(0.55_0.20_242/0.18)]">
-                  <Icon size={18} variant="Bulk" className="text-[oklch(0.55_0.20_242)] dark:text-[oklch(0.70_0.18_242)]" />
+                  <Icon size={18} color="var(--icon-neutral)" />
                 </span>
                 <div>
                   <p className="text-sm font-semibold">{title}</p>
@@ -123,7 +137,6 @@ export function CalBooking() {
           </div>
         </div>
 
-        {/* ── Right Panel — Cal.com Embed ─────────────────────────── */}
         <div className="flex flex-col justify-center bg-[var(--ink)]/[0.025] dark:bg-[var(--ink)]/[0.04] px-4 py-12 lg:px-8 xl:px-12">
           <div className="mx-auto w-full max-w-2xl overflow-hidden rounded-3xl border border-[var(--ink)]/[0.08] bg-[var(--bg)] shadow-xl shadow-[oklch(0.55_0.20_242/0.06)] dark:shadow-[oklch(0.55_0.20_242/0.10)]">
             {/* Card header */}
@@ -136,11 +149,15 @@ export function CalBooking() {
             >
               <div className="flex items-center gap-3">
                 <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/20">
-                  <Clock size={18} variant="Bulk" className="text-white" />
+                  <Clock size={18} color="var(--icon-neutral)" />
                 </span>
                 <div>
-                  <p className="text-sm font-bold text-white">Free Strategy Session</p>
-                  <p className="text-xs text-white/70">AusBotics · Video call via Zoom</p>
+                  <p className="text-sm font-bold text-white">
+                    Free Strategy Session
+                  </p>
+                  <p className="text-xs text-white/70">
+                    AusBotics Â· Video call via Zoom
+                  </p>
                 </div>
               </div>
             </div>

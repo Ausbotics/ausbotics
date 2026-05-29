@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import { gsap } from "@/lib/gsap-utils"
-import Link from "next/link"
-import { Sms, Call, Messages2 } from "iconsax-reactjs"
-import { Button } from "@/components/ui/button"
+import { useEffect, useRef } from "react";
+import { gsap } from "@/lib/gsap-utils";
+import Link from "next/link";
+import { Sms, Call, Messages2 } from "iconsax-reactjs";
+import { Button } from "@/components/ui/button";
 
 const channels = [
   { Icon: Messages2, label: "24/7 Support" },
   { Icon: Call, label: "2-min response" },
   { Icon: Sms, label: "Same-day booking" },
-]
+];
 
 export function ContactHero() {
-  const sectionRef = useRef<HTMLElement>(null)
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -22,15 +22,25 @@ export function ContactHero() {
         "[data-contact='heading']",
         "[data-contact='sub']",
         "[data-contact='channels']",
-      ]
-      gsap.set(items, { opacity: 0, y: 24, filter: "blur(8px)" })
-      const tl = gsap.timeline({ delay: 0.1 })
+      ];
+      gsap.set(items, { opacity: 0, y: 24, filter: "blur(8px)" });
+      const tl = gsap.timeline({ delay: 0.1 });
       items.forEach((sel, i) => {
-        tl.to(sel, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.65, ease: "power3.out" }, i === 0 ? 0 : "-=0.4")
-      })
-    }, sectionRef)
-    return () => ctx.revert()
-  }, [])
+        tl.to(
+          sel,
+          {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: 0.65,
+            ease: "power3.out",
+          },
+          i === 0 ? 0 : "-=0.4",
+        );
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
@@ -44,7 +54,10 @@ export function ContactHero() {
 
       <div
         className="absolute inset-x-0 top-0 h-px pointer-events-none"
-        style={{ background: "linear-gradient(to right, transparent, oklch(0.60 0.15 240 / 0.20), transparent)" }}
+        style={{
+          background:
+            "linear-gradient(to right, transparent, oklch(0.60 0.15 240 / 0.20), transparent)",
+        }}
       />
       <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
 
@@ -71,16 +84,20 @@ export function ContactHero() {
           data-contact="sub"
           className="max-w-2xl mx-auto text-base md:text-lg text-muted-foreground leading-relaxed mb-10"
         >
-          Have questions about AI calling agents? Need a custom solution? Our team of experts is ready
-          to help you transform your business communication — reach out anytime.
+          Have questions about AI calling agents? Need a custom solution? Our
+          team of experts is ready to help you transform your business
+          communication reach out anytime.
         </p>
 
         {/* Channel chips */}
-        <div data-contact="channels" className="flex flex-wrap items-center justify-center gap-3 mb-8">
+        <div
+          data-contact="channels"
+          className="flex flex-wrap items-center justify-center gap-3 mb-8"
+        >
           {channels.map(({ Icon, label }) => (
             <div
               key={label}
-              className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[12px] font-semibold bg-white/60 dark:bg-white/5 border border-white/50 dark:border-white/10 backdrop-blur-sm text-foreground/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]"
+              className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[12px] font-semibold bg-white/60 dark:bg-white/5 border border-white/50 dark:border-white/10 backdrop-blur-sm text-foreground/80 "
             >
               <Icon size={14} className="text-primary" />
               {label}
@@ -89,22 +106,30 @@ export function ContactHero() {
         </div>
 
         <Button asChild variant="default" size="lg">
-          <Link href="/book">
-            Book a Consultation
-          </Link>
+          <Link href="/book">Book a Consultation</Link>
         </Button>
       </div>
 
       <style jsx global>{`
         @keyframes blobFloat1 {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          50%       { transform: translate(18px, 22px) scale(1.04); }
+          0%,
+          100% {
+            transform: translate(0, 0) scale(1);
+          }
+          50% {
+            transform: translate(18px, 22px) scale(1.04);
+          }
         }
         @keyframes blobFloat2 {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          50%       { transform: translate(-20px, -16px) scale(1.05); }
+          0%,
+          100% {
+            transform: translate(0, 0) scale(1);
+          }
+          50% {
+            transform: translate(-20px, -16px) scale(1.05);
+          }
         }
       `}</style>
     </section>
-  )
+  );
 }

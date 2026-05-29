@@ -1,13 +1,13 @@
-"use client"
+﻿"use client";
 
-import { useEffect, useRef } from "react"
-import { ArrowRight } from "iconsax-reactjs"
-import Link from "next/link"
-import { gsap } from "@/lib/gsap-utils"
-import { Button } from "@/components/ui/button"
+import { useEffect, useRef } from "react";
+import { ArrowRight } from "iconsax-reactjs";
+import Link from "next/link";
+import { gsap } from "@/lib/gsap-utils";
+import { Button } from "@/components/ui/button";
 
 export function AboutHero() {
-  const sectionRef = useRef<HTMLElement>(null)
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -16,20 +16,30 @@ export function AboutHero() {
         "[data-about='heading']",
         "[data-about='sub']",
         "[data-about='cta']",
-      ]
-      gsap.set(items, { opacity: 0, y: 24, filter: "blur(8px)" })
-      const tl = gsap.timeline({ delay: 0.1 })
+      ];
+      gsap.set(items, { opacity: 0, y: 24, filter: "blur(8px)" });
+      const tl = gsap.timeline({ delay: 0.1 });
       items.forEach((sel, i) => {
-        tl.to(sel, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.65, ease: "power3.out" }, i === 0 ? 0 : "-=0.4")
-      })
-    }, sectionRef)
-    return () => ctx.revert()
-  }, [])
+        tl.to(
+          sel,
+          {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: 0.65,
+            ease: "power3.out",
+          },
+          i === 0 ? 0 : "-=0.4",
+        );
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[62vh] bg-background overflow-hidden flex items-center justify-center"
+      className="relative min-h-[62vh] max-w-4xl  mx-auto bg-background overflow-hidden flex items-center justify-center"
     >
       {/* Blobs */}
       <div className="absolute -top-20 -left-20 w-96 h-96 rounded-full bg-primary/15 blur-3xl -z-10 pointer-events-none animate-[blobFloat1_8s_ease-in-out_infinite]" />
@@ -39,7 +49,10 @@ export function AboutHero() {
       {/* Top rule */}
       <div
         className="absolute inset-x-0 top-0 h-px pointer-events-none"
-        style={{ background: "linear-gradient(to right, transparent, oklch(0.60 0.15 240 / 0.20), transparent)" }}
+        style={{
+          background:
+            "linear-gradient(to right, transparent, oklch(0.60 0.15 240 / 0.20), transparent)",
+        }}
       />
       {/* Bottom fade */}
       <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
@@ -68,35 +81,51 @@ export function AboutHero() {
           data-about="sub"
           className="max-w-2xl mx-auto text-base md:text-lg text-muted-foreground leading-relaxed mb-10"
         >
-          At Ausbotics, we're on a mission to bring the power of AI automation to everyone — from
-          growing startups to everyday businesses. We believe technology should make life easier, not harder.
+          At Ausbotics, we're on a mission to bring the power of AI automation
+          to everyone from growing startups to everyday businesses. We believe
+          technology should make life easier, not harder.
         </p>
 
-        <div data-about="cta" className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Button asChild variant="default" size="lg">
+        <div
+          data-about="cta"
+          className="flex flex-col sm:flex-row gap-3 justify-center"
+        >
+          <Button asChild variant="default" className="group" size="lg">
             <Link href="/book">
               See Our Technology in Action
-              <ArrowRight size={16} />
+              <ArrowRight
+                size={16}
+                color="var(--icon-neutral)"
+                className="group-hover:translate-x-2 transition-all "
+              />
             </Link>
           </Button>
           <Button asChild variant="outline" size="lg">
-            <Link href="/contact">
-              Contact Us
-            </Link>
+            <Link href="/contact">Contact Us</Link>
           </Button>
         </div>
       </div>
 
       <style jsx global>{`
         @keyframes blobFloat1 {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          50%       { transform: translate(18px, 22px) scale(1.04); }
+          0%,
+          100% {
+            transform: translate(0, 0) scale(1);
+          }
+          50% {
+            transform: translate(18px, 22px) scale(1.04);
+          }
         }
         @keyframes blobFloat2 {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          50%       { transform: translate(-20px, -16px) scale(1.05); }
+          0%,
+          100% {
+            transform: translate(0, 0) scale(1);
+          }
+          50% {
+            transform: translate(-20px, -16px) scale(1.05);
+          }
         }
       `}</style>
     </section>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import { Star1, MessageText } from "iconsax-reactjs"
+﻿import { Star1, MessageText } from "iconsax-reactjs"
 
 const testimonials = [
   {
@@ -53,13 +53,13 @@ export function DemoTestimonials() {
               {/* Stars */}
               <div className="flex items-center gap-1 mb-5">
                 {[...Array(t.rating)].map((_, i) => (
-                  <Star1 key={i} size={15} variant="Bold" className="text-amber-400" />
+                  <Star1 key={i} size={15} color="var(--icon-neutral)" />
                 ))}
               </div>
 
               {/* Quote icon */}
               <div className="mb-3">
-                <MessageText size={28} variant="Bulk" className="text-primary/20" />
+                <MessageText size={28} color="var(--icon-neutral)" />
               </div>
 
               <p className="text-[13px] text-muted-foreground leading-relaxed flex-1 mb-6">{t.content}</p>
@@ -77,3 +77,4 @@ export function DemoTestimonials() {
     </section>
   )
 }
+

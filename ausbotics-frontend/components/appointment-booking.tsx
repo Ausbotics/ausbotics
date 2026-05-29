@@ -16,7 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useAuth } from "@/contexts/auth-context";
+import { bookAppointmentAction } from "@/app/actions/appointments";
 import { Calendar, Clock, CheckCircle, AlertCircle } from "lucide-react";
 import { Navigation } from "./navigation";
 
@@ -37,7 +37,6 @@ const appointmentSchema = z.object({
 type AppointmentFormData = z.infer<typeof appointmentSchema>;
 
 export function AppointmentBooking() {
-  const { bookAppointment } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -87,9 +86,8 @@ export function AppointmentBooking() {
     setIsSubmitting(true);
     setError("");
     try {
-      //@ts-ignore
-      const success = await bookAppointment(data);
-      if (success) {
+      const result = await bookAppointmentAction(data);
+      if (result.success) {
         setIsSubmitted(true);
         reset();
       } else setError("Failed to book appointment. Please try again.");

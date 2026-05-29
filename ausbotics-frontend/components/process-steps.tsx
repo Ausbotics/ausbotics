@@ -103,7 +103,7 @@ export function ProcessSteps() {
 
                 <div className="flex shrink-0 items-center gap-4 lg:flex-col lg:items-center lg:gap-3 lg:w-20">
                   <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]">
-                    <Icon size={22} variant="Bulk" className="text-primary" />
+                    <Icon size={22} color="var(--icon-neutral)" />
                   </div>
                   <span className="text-[11px] font-bold tracking-widest text-primary/60 uppercase">{number}</span>
                 </div>

@@ -1,11 +1,12 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import { Call, Sms, Messages2, Calendar } from "iconsax-reactjs"
-import Link from "next/link"
-import { animateSection } from "@/lib/gsap-utils"
-import { GlareHover } from "@/components/ui/glare-hover"
-import { TextAnimate } from "@/components/ui/text-animate"
+import { useEffect, useRef } from "react";
+import { Call, Sms, Messages2, Calendar } from "iconsax-reactjs";
+import Link from "next/link";
+import { animateSection } from "@/lib/gsap-utils";
+import { GlareHover } from "@/components/ui/glare-hover";
+import { TextAnimate } from "@/components/ui/text-animate";
+import { Button } from "@/components/ui/button";
 
 const contactMethods = [
   {
@@ -44,14 +45,15 @@ const contactMethods = [
     href: "/book",
     availability: "Available 7 days a week",
   },
-]
+];
 
 export function ContactMethods() {
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (sectionRef.current) animateSection(sectionRef.current, "[data-animate]", 0.1)
-  }, [])
+    if (sectionRef.current)
+      animateSection(sectionRef.current, "[data-animate]", 0.1);
+  }, []);
 
   return (
     <div ref={sectionRef} className="space-y-8">
@@ -65,18 +67,22 @@ export function ContactMethods() {
           </TextAnimate>
         </h2>
         <p className="text-[13px] text-muted-foreground leading-relaxed">
-          Choose the contact method that works best for you. We're here to help in whatever way is most convenient.
+          Choose the contact method that works best for you. We're here to help
+          in whatever way is most convenient.
         </p>
       </div>
 
       <div className="space-y-3">
-        {contactMethods.map(({ Icon, title, description, contact, action, href, availability }) => (
-          <GlareHover
-            key={title}
-            glareColor="rgba(255,255,255,0.18)"
-            glareSize={260}
-            className="rounded-2xl"
-          >
+        {contactMethods.map(
+          ({
+            Icon,
+            title,
+            description,
+            contact,
+            action,
+            href,
+            availability,
+          }) => (
             <div
               data-animate
               className="group flex items-start gap-4 p-5 rounded-2xl
@@ -88,30 +94,40 @@ export function ContactMethods() {
                 dark:hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_36px_-10px_rgba(0,0,0,0.6)]
                 transition-all duration-300 ease-out"
             >
-              <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center shrink-0 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]">
-                <Icon size={18} variant="Bulk" className="text-primary" />
+              <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center shrink-0 ">
+                <Icon size={18} color="var(--icon-neutral)" />
               </div>
 
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <h3 className="text-[14px] font-bold text-foreground">{title}</h3>
-                    <p className="text-[12px] text-muted-foreground mt-0.5">{description}</p>
-                    <p className="text-[13px] font-semibold text-foreground mt-1">{contact}</p>
-                    <p className="text-[11px] text-muted-foreground mt-0.5">{availability}</p>
+                    <h3 className="text-[14px] font-bold text-foreground">
+                      {title}
+                    </h3>
+                    <p className="text-[12px] text-muted-foreground mt-0.5">
+                      {description}
+                    </p>
+                    <p className="text-[13px] font-semibold text-foreground mt-1">
+                      {contact}
+                    </p>
+                    <p className="text-[11px] text-muted-foreground mt-0.5">
+                      {availability}
+                    </p>
                   </div>
-                  <Link
-                    href={href}
-                    className="shrink-0 inline-flex items-center justify-center gap-1.5 text-[11px] font-bold text-white rounded-xl px-3.5 py-2 bg-gradient-to-b from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600 shadow-[0_3px_0_#1d4ed8,0_6px_16px_rgba(59,130,246,0.35),inset_0_1px_0_rgba(255,255,255,0.40)] hover:translate-y-[1px] hover:shadow-[0_2px_0_#1d4ed8,0_3px_10px_rgba(59,130,246,0.25),inset_0_1px_0_rgba(255,255,255,0.40)] active:translate-y-[2px] transition-all duration-100 whitespace-nowrap"
-                  >
-                    {action}
-                  </Link>
+                  <Button asChild variant="brand">
+                    <Link
+                      href={href}
+                      className="shrink-0 inline-flex items-center justify-center gap-1.5 text-[11px] font-bold text-white rounded-xl px-3.5 py-2 "
+                    >
+                      {action}
+                    </Link>
+                  </Button>
                 </div>
               </div>
             </div>
-          </GlareHover>
-        ))}
+          ),
+        )}
       </div>
     </div>
-  )
+  );
 }

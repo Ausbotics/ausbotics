@@ -63,7 +63,7 @@ export function TestimonialsSection() {
               >
                 <div className="flex items-center gap-1 mb-5">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <Star1 key={i} size={15} variant="Bulk" className="text-primary" />
+                    <Star1 key={i} size={15} color="var(--icon-neutral)" />
                   ))}
                 </div>
 

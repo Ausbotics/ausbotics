@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useEffect, useRef } from "react"
 import { PlayCircle, Calendar, Call } from "iconsax-reactjs"
@@ -68,7 +68,7 @@ export function DemoHero() {
           {benefits.map(({ icon: Icon, text }) => (
             <div key={text} className="flex items-center gap-3 bg-white/60 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/8 rounded-2xl px-5 py-3 shadow-sm backdrop-blur-sm">
               <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center shrink-0">
-                <Icon size={18} variant="Bulk" className="text-primary" />
+                <Icon size={18} color="var(--icon-neutral)" />
               </div>
               <span className="text-[13px] font-medium text-foreground">{text}</span>
             </div>
@@ -78,3 +78,4 @@ export function DemoHero() {
     </section>
   )
 }
+

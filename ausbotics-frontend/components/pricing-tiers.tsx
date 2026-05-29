@@ -91,7 +91,7 @@ export function PricingTiers() {
               {/* Popular badge */}
               {popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 rounded-full px-3.5 py-1 text-[10px] font-bold tracking-wide uppercase bg-primary text-white shadow-sm">
-                  <Star1 size={11} variant="Bold" />
+                  <Star1 size={11} color="var(--icon-neutral)" />
                   Most Popular
                 </div>
               )}
@@ -118,7 +118,7 @@ export function PricingTiers() {
                   {features.map((f) => (
                     <div key={f} className="flex items-start gap-3 text-[13px] text-muted-foreground leading-relaxed">
                       <div className="w-5 h-5 rounded-full bg-primary/10 border border-primary/15 flex items-center justify-center shrink-0 mt-0.5">
-                        <TickCircle size={12} variant="Bulk" className="text-primary" />
+                        <TickCircle size={12} color="var(--icon-neutral)" />
                       </div>
                       {f}
                     </div>

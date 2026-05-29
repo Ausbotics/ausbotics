@@ -36,36 +36,36 @@ export function CompanyValues() {
     <section className="py-24 bg-background">
       <div className="absolute inset-x-0 h-px bg-border" />
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
-
         {/* ── Our Mission ─────────────────────────────────────────── */}
         <div className="mb-24">
           <div className="text-center mb-12">
             <p className="text-[11px] font-semibold tracking-[0.28em] uppercase text-primary mb-3">
               Our Purpose
             </p>
-            <h2 className="font-extrabold text-foreground" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+            <h2
+              className="font-extrabold text-foreground"
+              style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}
+            >
               Our Mission
             </h2>
           </div>
 
           <div className="relative max-w-3xl mx-auto">
-            {/* Decorative left border line */}
-            <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent" />
-
             <div className="pl-8 sm:pl-10 space-y-5">
               <p className="text-[16px] sm:text-[17px] text-foreground/80 leading-[1.8] font-light">
-                At Ausbotics, we&apos;re on a mission to bring the power of AI automation
-                to everyone — from growing startups to everyday businesses. Our bots reduce
-                manual effort, handle tasks independently, and deliver consistent results.
+                At Ausbotics, we&apos;re on a mission to bring the power of AI
+                automation to everyone from growing startups to everyday
+                businesses. Our bots reduce manual effort, handle tasks
+                independently, and deliver consistent results.
               </p>
               <p className="text-[16px] sm:text-[17px] text-foreground/80 leading-[1.8] font-light">
-                We combine creativity and cutting-edge AI to design bots that are simple,
-                smart, and scalable. Ausbotics helps businesses save time, boost
-                productivity, and focus on what matters most.
+                We combine creativity and cutting-edge AI to design bots that
+                are simple, smart, and scalable. Ausbotics helps businesses save
+                time, boost productivity, and focus on what matters most.
               </p>
               <p className="text-[15px] font-semibold text-primary leading-relaxed">
-                We believe the future of work is smarter, not harder — and our bots
-                make that future a reality.
+                We believe the future of work is smarter, not harder and our
+                bots make that future a reality.
               </p>
             </div>
           </div>
@@ -76,11 +76,15 @@ export function CompanyValues() {
           <p className="text-[11px] font-semibold tracking-[0.28em] uppercase text-primary mb-3">
             What We Stand For
           </p>
-          <h2 className="font-extrabold text-foreground mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+          <h2
+            className="font-extrabold text-foreground mb-4"
+            style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}
+          >
             Our Core Values
           </h2>
           <p className="text-[15px] text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            These principles guide everything we do and shape how we build intelligent automation solutions.
+            These principles guide everything we do and shape how we build
+            intelligent automation solutions.
           </p>
         </div>
 
@@ -91,40 +95,48 @@ export function CompanyValues() {
               className="relative flex flex-col rounded-2xl p-7 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300"
             >
               <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center mb-5">
-                <Icon size={22} variant="Bulk" className="text-primary" />
+                <Icon size={22} color="var(--icon-neutral)" />
               </div>
-              <h3 className="text-[15px] font-semibold text-foreground mb-2">{title}</h3>
-              <p className="text-[13px] text-muted-foreground leading-relaxed">{description}</p>
+              <h3 className="text-[15px] font-semibold text-foreground mb-2">
+                {title}
+              </h3>
+              <p className="text-[13px] text-muted-foreground leading-relaxed">
+                {description}
+              </p>
             </div>
           ))}
         </div>
 
         {/* ── CTA Banner ──────────────────────────────────────────── */}
-        <div className="relative overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 p-10 lg:p-14 text-center">
-          <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-primary/8 blur-3xl pointer-events-none" />
+        <div className="relative overflow-hidden rounded-2xl  p-10 lg:p-14 text-center">
           <div className="relative z-10">
-            <h3 className="font-extrabold text-foreground mb-4" style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)" }}>
+            <h3
+              className="font-extrabold text-foreground mb-4"
+              style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)" }}
+            >
               Ready to Transform Your Business?
             </h3>
             <p className="text-[15px] text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">
-              Join businesses that have revolutionised their operations with our intelligent AI automation.
+              Join businesses that have revolutionised their operations with our
+              intelligent AI automation.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button asChild variant="default" size="lg">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center  ">
+              <Button className="group" asChild variant="default" size="lg">
                 <Link href="/book">
                   Request a Demo
-                  <ArrowRight size={15} variant="Bulk" />
+                  <ArrowRight
+                    size={15}
+                    color="var(--icon-neutral)"
+                    className="group-hover:translate-x-1 transition-translate duration-200"
+                  />
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href="/contact">
-                  Contact Our Team
-                </Link>
+                <Link href="/contact">Contact Our Team</Link>
               </Button>
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

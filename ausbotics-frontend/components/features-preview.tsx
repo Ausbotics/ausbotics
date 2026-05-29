@@ -92,7 +92,7 @@ export function FeaturesPreview() {
                 </span>
 
                 <div className="relative z-10 w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6">
-                  <Icon size="22" className="text-primary" />
+                  <Icon size="22" color="var(--icon-neutral)" />
                 </div>
 
                 <h3 className="relative z-10 text-[15px] font-bold text-foreground mb-2.5">{title}</h3>

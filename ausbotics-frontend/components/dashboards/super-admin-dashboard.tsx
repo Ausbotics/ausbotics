@@ -55,6 +55,7 @@ import {
   deleteWorkflow,
   updateWorkflowProgress,
 } from "@/lib/super-admin/workflowUpdates";
+import { getAllAppointmentsAction } from "@/app/actions/appointments";
 import { authApi, Role } from "@/lib/api";
 import { AppointmentDto, WorkflowDto } from "@/lib/types";
 import { UserViewModal } from "@/components/user-view-modal";
@@ -100,8 +101,7 @@ function Draggable({
 }
 
 export function SuperAdminDashboard() {
-  const { user, signOut, promoteUser, getAllWorkflows, getAllAppointments } =
-    useAuth();
+  const { user, signOut, promoteUser, getAllWorkflows } = useAuth();
 
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [users, setUsers] = useState<any[]>([]);
@@ -126,10 +126,10 @@ export function SuperAdminDashboard() {
     const loadData = async () => {
       const [wrkfls, appnts] = await Promise.all([
         getAllWorkflows(),
-        getAllAppointments(),
+        getAllAppointmentsAction(),
       ]);
       setWorkflows(wrkfls);
-      setAppointments(appnts.data.appointments || []);
+      setAppointments(appnts);
     };
     loadData();
 

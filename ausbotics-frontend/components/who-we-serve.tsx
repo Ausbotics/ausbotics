@@ -1,15 +1,16 @@
-"use client"
+﻿"use client";
 
-import { useEffect, useRef } from "react"
-import { Setting2, Health, Buildings2, Briefcase } from "iconsax-reactjs"
-import { gsap, animateSectionBlur, animateScaleIn } from "@/lib/gsap-utils"
-import { GlareHover } from "@/components/ui/glare-hover"
+import { useEffect, useRef } from "react";
+import { Setting2, Health, Buildings2, Briefcase } from "iconsax-reactjs";
+import { gsap, animateSectionBlur, animateScaleIn } from "@/lib/gsap-utils";
+import { GlareHover } from "@/components/ui/glare-hover";
 
 const segments = [
   {
     Icon: Setting2,
     name: "Trade & Home Services",
-    value: "Plumbers, electricians, HVAC, cleaners — automate bookings and follow-ups.",
+    value:
+      "Plumbers, electricians, HVAC, cleaners automate bookings and follow-ups.",
   },
   {
     Icon: Health,
@@ -19,33 +20,37 @@ const segments = [
   {
     Icon: Buildings2,
     name: "Real Estate",
-    value: "Agencies that never miss an inquiry, inspection, or lead follow-up.",
+    value:
+      "Agencies that never miss an inquiry, inspection, or lead follow-up.",
   },
   {
     Icon: Briefcase,
     name: "Professional Services",
-    value: "Law firms, accountants, and consultants streamlining intake and admin.",
+    value:
+      "Law firms, accountants, and consultants streamlining intake and admin.",
   },
-]
+];
 
 export function WhoWeServe() {
-  const sectionRef = useRef<HTMLElement>(null)
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current) return
+    if (!sectionRef.current) return;
     const ctx = gsap.context(() => {
-      animateSectionBlur(sectionRef.current!, "[data-animate='header']", 0)
-      animateScaleIn(sectionRef.current!, "[data-animate='card']", 0.1)
-    }, sectionRef)
-    return () => ctx.revert()
-  }, [])
+      animateSectionBlur(sectionRef.current!, "[data-animate='header']", 0);
+      animateScaleIn(sectionRef.current!, "[data-animate='card']", 0.1);
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-24 bg-neutral-50 dark:bg-neutral-950 overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative py-24 bg-neutral-50 dark:bg-neutral-950 overflow-hidden"
+    >
       <div className="absolute inset-x-0 top-0 h-px bg-border" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
-
         <div data-animate="header" className="text-center mb-14">
           <p className="text-primary text-[11px] font-semibold tracking-[0.25em] mb-3">
             Who We Serve
@@ -74,17 +79,20 @@ export function WhoWeServe() {
                   dark:hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_36px_-10px_rgba(0,0,0,0.6)]
                   transition-all duration-300 ease-out"
               >
-                <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center mb-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]">
-                  <Icon size={20} variant="Bulk" className="text-primary" />
+                <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center mb-4 ">
+                  <Icon size={20} color="var(--icon-neutral)" />
                 </div>
-                <h3 className="text-[14px] font-bold text-foreground mb-1.5">{name}</h3>
-                <p className="text-[12px] text-muted-foreground leading-relaxed">{value}</p>
+                <h3 className="text-[14px] font-bold text-foreground mb-1.5">
+                  {name}
+                </h3>
+                <p className="text-[12px] text-muted-foreground leading-relaxed">
+                  {value}
+                </p>
               </div>
             </GlareHover>
           ))}
         </div>
-
       </div>
     </section>
-  )
+  );
 }

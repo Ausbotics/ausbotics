@@ -82,14 +82,14 @@ export function HowItWorksHero() {
         <div data-hiw="ctas" className="flex flex-col sm:flex-row gap-3 justify-center">
           <Button asChild variant="default" size="lg">
             <Link href="/book">
-              <Play size={16} />
+              <Play size={16} color="var(--icon-neutral)" />
               Watch Demo
             </Link>
           </Button>
           <Button asChild variant="outline" size="lg">
             <Link href="/contact">
               Get Started Today
-              <ArrowRight size={16} />
+              <ArrowRight size={16} color="var(--icon-neutral)" />
             </Link>
           </Button>
         </div>

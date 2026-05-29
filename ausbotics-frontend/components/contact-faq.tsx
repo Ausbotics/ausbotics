@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import Link from "next/link";
 
 export function ContactFAQ() {
@@ -81,24 +82,55 @@ export function ContactFAQ() {
             </Card>
           ))}
         </div>
-
-        <Card className="bg-gradient-to-r from-primary/5 to-secondary/5 p-8 text-center">
-          <h3 className="text-2xl font-bold text-foreground mb-4">
-            Still Have Questions?
-          </h3>
-          <p className="text-muted-foreground mb-6">
-            Can't find what you're looking for? Our team is here to help with
-            any questions about AI calling agents.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="outline" asChild>
-              <Link href="mailto:ausbotics3@gmail.com">
-                Email Us Directly
-              </Link>
-            </Button>
-          </div>
-        </Card>
       </div>
+      <StillHaveQuestions />
     </section>
+  );
+}
+
+import { useTheme } from "next-themes";
+import { useEffect } from "react";
+
+export function StillHaveQuestions() {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const maxOpacity = mounted && resolvedTheme === "dark" ? 0.3 : 0.5;
+
+  return (
+    <Card className="relative overflow-hidden p-8 min-h-[500px] flex items-center justify-center text-center border border-border/50 shadow-lg">
+      {/* FlickeringGrid as background */}
+      <FlickeringGrid
+        className="absolute inset-0 z-0 size-full"
+        squareSize={4}
+        gridGap={6}
+        color="#6B7280"
+        maxOpacity={maxOpacity}
+        flickerChance={0.1}
+      />
+
+      {/* Subtle radial fade overlay so content stays readable */}
+      <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_center,transparent_30%,hsl(var(--background))_100%)]" />
+
+      {/* Content on top */}
+      <div className="relative z-10 flex flex-col items-center gap-2">
+        <h3 className="text-3xl font-bold text-foreground mb-3 drop-shadow-sm">
+          Still Have Questions?
+        </h3>
+        <p className="text-muted-foreground max-w-md mb-8 leading-relaxed drop-shadow-sm">
+          Can't find what you're looking for? Our team is here to help with any
+          questions about AI calling agents.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Button className=" transition-all duration-200" asChild>
+            <Link href="mailto:ausbotics3@gmail.com">Email Us Directly</Link>
+          </Button>
+        </div>
+      </div>
+    </Card>
   );
 }

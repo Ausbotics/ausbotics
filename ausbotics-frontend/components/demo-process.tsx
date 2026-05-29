@@ -37,7 +37,7 @@ export function DemoProcess() {
       <div className="rounded-2xl border border-neutral-200 dark:border-white/8 bg-white/60 dark:bg-white/[0.03] backdrop-blur-sm p-6 shadow-sm">
         <div className="flex items-center gap-3 mb-7">
           <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center shrink-0">
-            <Clock size={18} variant="Bulk" className="text-primary" />
+            <Clock size={18} color="var(--icon-neutral)" />
           </div>
           <span className="text-[15px] font-semibold text-foreground">Sessions with Experts</span>
         </div>
@@ -46,7 +46,7 @@ export function DemoProcess() {
           {steps.map((step, index) => (
             <div key={index} className="flex gap-4">
               <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center shrink-0 mt-0.5">
-                <step.icon size={18} variant="Bulk" className="text-primary" />
+                <step.icon size={18} color="var(--icon-neutral)" />
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1.5">

@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import Link from "next/link"
-import { ArrowRight, Flash, Clock, Global, People } from "iconsax-reactjs"
-import { GlareHover } from "@/components/ui/glare-hover"
-import { gsap, ScrollTrigger } from "@/lib/gsap-utils"
+import { useEffect, useRef } from "react";
+import Link from "next/link";
+import { ArrowRight, Flash, Clock, Global, People } from "iconsax-reactjs";
+import { GlareHover } from "@/components/ui/glare-hover";
+import { gsap, ScrollTrigger } from "@/lib/gsap-utils";
 
 const pillars = [
   {
@@ -27,41 +27,59 @@ const pillars = [
     title: "Built around your team",
     body: "Reduce repetitive work so your people can spend more time on the work that matters.",
   },
-]
+];
 
 export function AboutStats() {
-  const sectionRef = useRef<HTMLElement>(null)
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current) return
+    if (!sectionRef.current) return;
     const ctx = gsap.context(() => {
       // Left column: slide in from the left with blur
       gsap.fromTo(
         "[data-about='left']",
         { opacity: 0, x: -64, filter: "blur(10px)" },
         {
-          opacity: 1, x: 0, filter: "blur(0px)",
-          duration: 1.05, ease: "power3.out",
-          scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true },
-        }
-      )
+          opacity: 1,
+          x: 0,
+          filter: "blur(0px)",
+          duration: 1.05,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            once: true,
+          },
+        },
+      );
       // Cards: scale-pop in with stagger
       gsap.fromTo(
         "[data-about='card']",
         { opacity: 0, scale: 0.86, y: 28, filter: "blur(6px)" },
         {
-          opacity: 1, scale: 1, y: 0, filter: "blur(0px)",
-          duration: 0.72, stagger: 0.11, ease: "back.out(1.6)",
-          scrollTrigger: { trigger: sectionRef.current, start: "top 76%", once: true },
-        }
-      )
-    }, sectionRef)
-    return () => ctx.revert()
-  }, [])
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.72,
+          stagger: 0.11,
+          ease: "back.out(1.6)",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 76%",
+            once: true,
+          },
+        },
+      );
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-neutral-50 dark:bg-neutral-950 py-24 sm:py-28 overflow-hidden">
-      <div className="absolute inset-x-0 top-0 h-px bg-border" />
+    <section
+      ref={sectionRef}
+      className="relative bg-neutral-50 dark:bg-neutral-950 py-24 sm:py-28 overflow-hidden"
+    >
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-blue-500/6 to-transparent" />
 
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
@@ -76,13 +94,15 @@ export function AboutStats() {
             </h2>
 
             <p className="mt-6 max-w-xl text-[15px] leading-8 text-muted-foreground">
-              AusBotics builds AI calling agents, workflow automations, and live dashboards that
-              help service teams respond faster, stay organised, and run more smoothly.
+              AusBotics builds AI calling agents, workflow automations, and live
+              dashboards that help service teams respond faster, stay organised,
+              and run more smoothly.
             </p>
 
             <p className="mt-4 max-w-xl text-[15px] leading-8 text-muted-foreground">
-              From trade services and health clinics to real estate and professional firms, we
-              build practical systems that fit into the tools you already use.
+              From trade services and health clinics to real estate and
+              professional firms, we build practical systems that fit into the
+              tools you already use.
             </p>
 
             <div className="mt-8">
@@ -91,7 +111,7 @@ export function AboutStats() {
                 className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-primary/80"
               >
                 Learn how it works
-                <ArrowRight size={16} />
+                <ArrowRight size={16} color="var(--icon-neutral)" />
               </Link>
             </div>
           </div>
@@ -115,15 +135,17 @@ export function AboutStats() {
                     hover:border-primary/20 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.65),0_12px_28px_-8px_rgba(15,23,42,0.12)]
                     dark:hover:bg-white/[0.05] dark:hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_16px_36px_-10px_rgba(0,0,0,0.6)]"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center mb-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]">
-                    <Icon size={20} variant="Bulk" className="text-primary" />
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center mb-5 ">
+                    <Icon size={20} color="var(--icon-neutral)" />
                   </div>
 
                   <h3 className="text-[15px] font-semibold tracking-[-0.02em] text-foreground">
                     {title}
                   </h3>
 
-                  <p className="mt-2 text-[13px] leading-7 text-muted-foreground">{body}</p>
+                  <p className="mt-2 text-[13px] leading-7 text-muted-foreground">
+                    {body}
+                  </p>
                 </article>
               </GlareHover>
             ))}
@@ -131,5 +153,5 @@ export function AboutStats() {
         </div>
       </div>
     </section>
-  )
+  );
 }
