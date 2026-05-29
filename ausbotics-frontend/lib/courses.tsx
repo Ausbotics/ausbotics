@@ -13,6 +13,7 @@ export type Course = {
   level: "Beginner" | "Intermediate"
   lessonCount: number
   icon: string
+  image: string
   lessons: Lesson[]
 }
 
@@ -25,27 +26,84 @@ export const COURSES: Course[] = [
     level: "Beginner",
     lessonCount: 5,
     icon: "Magicwand",
+    image: "https://images.unsplash.com/photo-1677442d019cecf482f64d0fbb23f9f64d89d74a?w=800&q=80",
     lessons: [
       {
         slug: "what-is-prompt-engineering",
         title: "What Is Prompt Engineering?",
-        duration: "8 min",
+        duration: "12 min",
         content: (
-          <div className="prose prose-sm max-w-none dark:prose-invert">
-            <p>
-              Imagine you're asking a friend to help you with something. The better you explain what you want, the better help you get. Same with AI!
+          <div className="prose prose-sm max-w-none dark:prose-invert space-y-6">
+            <div className="rounded-lg overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1677442d019cecf482f64d0fbb23f9f64d89d74a?w=800&q=80" alt="AI Communication" className="w-full h-64 object-cover" />
+            </div>
+
+            <p className="text-base leading-relaxed">
+              Imagine you're asking a friend to help you design a website. If you say "Make me a website," they might not know where to start. But if you say "I need a modern, clean website for my coffee shop with a dark theme, featuring our menu, customer testimonials, and a booking system," suddenly they have clear direction.
             </p>
-            <p>
-              <strong>Prompt engineering</strong> is the skill of asking AI questions in the best way possible. When you ask an AI tool like ChatGPT or Claude a question, you're giving it a "prompt." The clearer your prompt, the better the answer.
+
+            <p className="text-base leading-relaxed">
+              <strong>Prompt engineering</strong> is the skill of asking AI questions in the best possible way to get exactly the results you want. When you interact with AI tools like ChatGPT, Claude, or other language models, you're providing them with "prompts" — your instructions and questions. The quality of your prompts directly determines the quality of the AI's responses.
             </p>
-            <h3>Why Does This Matter?</h3>
-            <ul>
-              <li>A bad prompt might give you a confusing answer</li>
-              <li>A good prompt gives you exactly what you need</li>
-              <li>A great prompt saves you time and effort</li>
-            </ul>
-            <p>
-              Think of it like cooking. If a recipe is unclear, your dish might not taste good. But if the recipe is detailed and clear, your food turns out amazing. Prompts work the same way!
+
+            <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg border border-slate-200 dark:border-slate-800">
+              <h3 className="text-lg font-semibold mb-4">Why Prompt Engineering Matters</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <span className="font-semibold text-slate-600 dark:text-slate-400">❌ Bad Prompt:</span>
+                  <span>"Tell me about marketing" — vague, could result in generic, unhelpful content</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="font-semibold text-slate-600 dark:text-slate-400">✓ Good Prompt:</span>
+                  <span>"Write 5 practical marketing strategies for a B2B SaaS startup with a limited budget" — specific, targeted, actionable</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="font-semibold text-slate-600 dark:text-slate-400">🎯 Great Prompt:</span>
+                  <span>"I run a B2B SaaS startup selling project management tools. My budget is $2000/month. Write a 30-day marketing plan focusing on strategies that have high ROI and low cost, suitable for a 3-person team" — crystal clear expectations</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900 p-6 rounded-lg">
+              <h3 className="text-lg font-semibold mb-3">The Three Levels of Prompting</h3>
+              <ol className="space-y-3">
+                <li><strong>Level 1 - Basic:</strong> Simple questions that get basic answers</li>
+                <li><strong>Level 2 - Intermediate:</strong> Detailed context that gets targeted, useful answers</li>
+                <li><strong>Level 3 - Expert:</strong> Strategic instructions that guide the AI's thinking process</li>
+              </ol>
+              <p className="text-sm mt-4 text-slate-600 dark:text-slate-400">
+                You'll learn to move through these levels as you progress through this course.
+              </p>
+            </div>
+
+            <p className="text-base leading-relaxed">
+              Think of prompting like giving directions. If you tell someone "Go to the store," they might go to the wrong place. But if you say "Walk three blocks east, turn left at the red brick building, then you'll see the store on your right," they'll get exactly where you need them.
+            </p>
+
+            <div className="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-900 p-6 rounded-lg">
+              <h3 className="text-lg font-semibold mb-3">What You'll Gain</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="text-green-600 dark:text-green-400 mt-1">→</span>
+                  <span>Save 10+ hours per week by getting better AI results faster</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-600 dark:text-green-400 mt-1">→</span>
+                  <span>Create higher-quality content, code, analysis, and creative work</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-600 dark:text-green-400 mt-1">→</span>
+                  <span>Unlock AI's full potential for your specific use case</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-600 dark:text-green-400 mt-1">→</span>
+                  <span>Become proficient with any AI tool you use</span>
+                </li>
+              </ul>
+            </div>
+
+            <p className="text-sm text-slate-600 dark:text-slate-400">
+              In the next lessons, you'll learn the specific techniques and frameworks that professional prompt engineers use every day to get extraordinary results from AI systems.
             </p>
           </div>
         ),
@@ -53,33 +111,104 @@ export const COURSES: Course[] = [
       {
         slug: "be-specific-and-clear",
         title: "Be Specific and Clear",
-        duration: "7 min",
+        duration: "11 min",
         content: (
-          <div className="prose prose-sm max-w-none dark:prose-invert">
-            <h3>Bad Prompt:</h3>
-            <blockquote>
-              <p>Tell me about dogs.</p>
-            </blockquote>
-            <p>
-              This is too vague. The AI doesn't know if you want facts, training tips, or which breed is best.
+          <div className="prose prose-sm max-w-none dark:prose-invert space-y-6">
+            <div className="rounded-lg overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Clarity and Focus" className="w-full h-64 object-cover" />
+            </div>
+
+            <p className="text-base">
+              One of the biggest mistakes people make when prompting AI is being too vague. Vague prompts get vague answers. Clear prompts get clear answers.
             </p>
-            <h3>Good Prompt:</h3>
-            <blockquote>
-              <p>Tell me 5 easy dog breeds for first-time owners, including their temperament and exercise needs.</p>
-            </blockquote>
-            <p>
-              Much better! Now the AI knows exactly what you want.
+
+            <div className="space-y-6">
+              <div className="border-l-4 border-red-400 bg-red-50 dark:bg-red-950/20 p-6 rounded">
+                <h3 className="text-lg font-semibold mb-3 text-red-900 dark:text-red-100">❌ Vague Prompt (Weak)</h3>
+                <blockquote className="italic mb-4 text-red-800 dark:text-red-200">
+                  "Tell me about dogs."
+                </blockquote>
+                <p className="text-sm text-red-700 dark:text-red-300">
+                  This is too open-ended. The AI could respond with dog biology, dog training, dog health, dog breeds, dog history, or anything dog-related. You'll get a generic response that may not help you.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-blue-400 bg-blue-50 dark:bg-blue-950/20 p-6 rounded">
+                <h3 className="text-lg font-semibold mb-3 text-blue-900 dark:text-blue-100">✓ Specific Prompt (Better)</h3>
+                <blockquote className="italic mb-4 text-blue-800 dark:text-blue-200">
+                  "Suggest 5 dog breeds that are good for first-time owners. For each breed, include: temperament, exercise requirements, and average cost. Format as a numbered list."
+                </blockquote>
+                <p className="text-sm text-blue-700 dark:text-blue-300">
+                  Much better! Now the AI knows exactly what you want: 5 breeds, specific attributes, and a particular format. You'll get a useful, well-organized response.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-green-400 bg-green-50 dark:bg-green-950/20 p-6 rounded">
+                <h3 className="text-lg font-semibold mb-3 text-green-900 dark:text-green-100">🎯 Highly Specific Prompt (Best)</h3>
+                <blockquote className="italic mb-4 text-green-800 dark:text-green-200">
+                  "I'm a first-time dog owner living in an apartment with limited outdoor space. I work 8 hours a day and need a dog with moderate energy and a calm temperament. Budget is $500-1000. Suggest 5 breeds with: temperament, daily exercise needs (in minutes), grooming frequency, common health issues, and approximate cost. Format as a comparison table."
+                </blockquote>
+                <p className="text-sm text-green-700 dark:text-green-300">
+                  Perfect! This includes your situation, constraints, preferences, and exact format. You'll get a response tailored specifically to your needs.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg border border-slate-200 dark:border-slate-800">
+              <h3 className="text-lg font-semibold mb-4">The Specificity Framework</h3>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-semibold text-slate-700 dark:text-slate-300 mb-2">1. What do you want? (Be explicit about your goal)</h4>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">Not: "Write something about marketing"</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">But: "Write a LinkedIn post announcing our new product launch"</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-700 dark:text-slate-300 mb-2">2. How much detail? (Scope definition)</h4>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">Not: "Explain machine learning"</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">But: "Explain machine learning in 2 paragraphs, suitable for a 10-year-old"</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-700 dark:text-slate-300 mb-2">3. What format? (Output structure)</h4>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">Not: "Give me ideas"</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">But: "Give me 10 ideas as a numbered list with one-sentence descriptions"</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-700 dark:text-slate-300 mb-2">4. Any constraints? (Boundaries)</h4>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">Not: "Write an email"</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">But: "Write a 100-word professional email requesting a meeting"</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900 p-6 rounded-lg">
+              <h3 className="text-lg font-semibold mb-3">Pro Tips for Clarity</h3>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="font-bold text-amber-700 dark:text-amber-400">•</span>
+                  <span><strong>Use numbers:</strong> "5 ideas" is clearer than "some ideas"</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="font-bold text-amber-700 dark:text-amber-400">•</span>
+                  <span><strong>Specify tone:</strong> "professional," "casual," "humorous" guides the style</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="font-bold text-amber-700 dark:text-amber-400">•</span>
+                  <span><strong>Set constraints:</strong> Word count, time limit, budget, level of expertise</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="font-bold text-amber-700 dark:text-amber-400">•</span>
+                  <span><strong>Request structure:</strong> "bullet points," "table," "paragraphs," "step-by-step"</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="font-bold text-amber-700 dark:text-amber-400">•</span>
+                  <span><strong>Include audience:</strong> "for beginners," "for experts," "for a 5-year-old"</span>
+                </li>
+              </ul>
+            </div>
+
+            <p className="text-base text-slate-600 dark:text-slate-400">
+              The more specific you are, the better the AI understands your needs. Vagueness = generic responses. Clarity = exactly what you need.
             </p>
-            <h3>The Rule:</h3>
-            <p>
-              <strong>Be as specific as possible.</strong> Include:
-            </p>
-            <ul>
-              <li>What you want (the goal)</li>
-              <li>How detailed it should be</li>
-              <li>The format you prefer (list, paragraph, bullet points)</li>
-              <li>Any special requirements</li>
-            </ul>
           </div>
         ),
       },
@@ -173,6 +302,7 @@ export const COURSES: Course[] = [
     level: "Beginner",
     lessonCount: 4,
     icon: "Brain",
+    image: "https://images.unsplash.com/photo-1677543636019-0174e30e9498?w=800&q=80",
     lessons: [
       {
         slug: "intro-claude",
@@ -315,6 +445,7 @@ export const COURSES: Course[] = [
     level: "Beginner",
     lessonCount: 4,
     icon: "ChatMessage",
+    image: "https://images.unsplash.com/photo-1578375050579-30d34b47f856?w=800&q=80",
     lessons: [
       {
         slug: "what-is-chatgpt",
@@ -429,6 +560,7 @@ export const COURSES: Course[] = [
     level: "Beginner",
     lessonCount: 5,
     icon: "Rocket",
+    image: "https://images.unsplash.com/photo-1633356122544-f134324ef6db?w=800&q=80",
     lessons: [
       {
         slug: "what-is-automation",
@@ -605,6 +737,7 @@ export const COURSES: Course[] = [
     level: "Beginner",
     lessonCount: 4,
     icon: "Robot",
+    image: "https://images.unsplash.com/photo-1677442d019cecf482f64d0fbb23f9f64d89d74a?w=800&q=80",
     lessons: [
       {
         slug: "what-are-agents",
@@ -738,6 +871,7 @@ export const COURSES: Course[] = [
     level: "Beginner",
     lessonCount: 4,
     icon: "Setting2",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
     lessons: [
       {
         slug: "what-is-no-code",
@@ -865,6 +999,7 @@ export const COURSES: Course[] = [
     level: "Beginner",
     lessonCount: 4,
     icon: "Tick",
+    image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80",
     lessons: [
       {
         slug: "productivity-foundations",
